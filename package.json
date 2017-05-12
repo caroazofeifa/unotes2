@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/isaias7/unotes2.git",
-  "author": "Carolina Azofeifa - Isaias Salas",
+  "author": "Carolina Azofeifa Solano - Isaias Salas Elizondo",
   "license": "MIT",
   "devDependencies": {
     "webpack": "v2.5.1"
