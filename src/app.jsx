@@ -36,7 +36,7 @@ const App = React.createClass({
             </nav>
           </div>
           {/*<!--TERMINA MENU AZUL-->*/}
-<div className="col-md-11">
+<div className='col-md-11'>
           {/*<!--NOTAS-->*/}
 
           <section className='section notesDropDown'>
@@ -211,7 +211,7 @@ const App = React.createClass({
             <div className='row'>
               <div className='col-md-12'>
                 <section className='textArea'>
-                  <textarea className='textArea__input' type='text' rows='15' id='contentNote' placeholder='Start your note here...'></textarea>
+                  <textarea className='textArea__input' type='text' rows='15' id='contentNote' placeholder='Start your note here...' />
                 </section>
               </div>
             </div>
