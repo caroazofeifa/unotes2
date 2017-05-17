@@ -3,8 +3,8 @@ import { render } from 'react-dom';
 import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import './scss/app.scss';
 
+const NavMenu = require('./NavMenu');
 const DropDown = require('./DropDown');
-
 const Notes = require('./Notes');
 
 const EditorNotes = require('./EditorNotes');
@@ -16,37 +16,14 @@ const App = React.createClass({
         <div className='row' id='mainView'>
           {/*<!--MENU AZUL-->*/}
           <div className='col-md-1 cols'>
-            <nav className='section sideNav'>
-              <ul>
-                <li>
-                  <button className='sideNav__button' id='user'>
-                    <img className='sideNav__image' src='../iconos/user-3.svg' title='User configurations' />
-                  </button>
-                </li>
-                <li>
-                  <button className='sideNav__button' id='buttonNote'>
-                    <img className='sideNav__image' src='../iconos/file.svg' title='New note' />
-                  </button>
-                </li>
-                <li>
-                  <button className='sideNav__button' id='buttonNotebook'>
-                    <img className='sideNav__image' src='../iconos/agenda.svg' title='Notebooks' />
-                  </button>
-                </li>
-                <li>
-                  <button className='sideNav__button' id='buttonTag'>
-                    <img className='sideNav__image' src='../iconos/tag.svg' title='Tags' />
-                  </button>
-                </li>
-              </ul>
-            </nav>
+            <NavMenu />
           </div>
           {/*<!--TERMINA MENU AZUL-->*/}
           {/*<!--NOTAS-->*/}
-            <div className='col-md-11'>
-              <DropDown />
-              <Notes />
-            </div>
+          <div className='col-md-11'>
+            <DropDown />
+            <Notes />
+          </div>
           {/*<!--TERMINA NOTAS-->*/}
         </div>
         {/*<!--CODIGO VIEJO-->*/}
