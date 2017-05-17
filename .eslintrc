@@ -13,7 +13,7 @@
             "img": ["Image"],
             "object": ["Object"],
             "area": ["Area"],
-            "input[type=\"image\"]": ["InputImage"],
+            "input[type=\"image\"]": ["InputImage"]
           }],
     "react/jsx-indent": [0],
     "react/no-unknown-property": [0]

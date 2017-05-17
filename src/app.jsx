@@ -3,6 +3,10 @@ import { render } from 'react-dom';
 import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import './scss/app.scss';
 
+const DropDown = require('./DropDown');
+
+const Notes = require('./Notes');
+
 const App = React.createClass({
   render() {
     return (
@@ -36,114 +40,13 @@ const App = React.createClass({
             </nav>
           </div>
           {/*<!--TERMINA MENU AZUL-->*/}
-<div className='col-md-11'>
           {/*<!--NOTAS-->*/}
-
-          <section className='section notesDropDown'>
-            <div className='col-md-12 cols'>
-              <div className='row'>
-                <div className='col-md-12'>
-                  <select className='notesDropDown__dropdown'>
-                    <option value=''>BrainStation</option>
-                    <option value=''>UCR</option>
-                    <option value=''>ULACIT</option>
-                  </select>
-                  <button className='notesDropDrown__button' id='buttonTag'>
-                    <img className='notesDropDrown__img' src='../iconos/icon.svg' title='UNotes' />
-                  </button>
-                </div>
-              </div>
+            <div className='col-md-11'>
+              <DropDown />
+              <Notes />
             </div>
-          </section>
-
-
-          <section className='section notes'>
-            <div className='row' id='thumbnails'>
-              <div className='col-md-3'>
-                <div className='thumbnail'>
-                  <div className='caption'>
-                    <h3>Nota 1</h3>
-                    <p className='p--shorter'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum obcaecati, hic commodi modi, consequuntur,
-                    sequi et incidunt necessitatibus, id ipsum reprehenderit inventore odio. Consequatur incidunt ipsam,
-                    esse recusandae iste sunt.</p>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/send.svg' title='Send' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/pencil.svg' title='Edit' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/delete.svg' title='Delete' />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className='col-md-3'>
-                <div className='thumbnail'>
-                  <div className='caption'>
-                    <h3>Nota 2</h3>
-                    <p className='p--shorter'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum obcaecati, hic commodi modi, consequuntur,
-                    sequi et incidunt necessitatibus, id ipsum reprehenderit inventore odio. Consequatur incidunt ipsam,
-                    esse recusandae iste sunt.</p>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/send.svg' title='Send' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/pencil.svg' title='Edit' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/delete.svg' title='Delete' />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className='col-md-3'>
-                <div className='thumbnail'>
-                  <div className='caption'>
-                    <h3>Nota 3</h3>
-                    <p className='p--shorter'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum obcaecati, hic commodi modi, consequuntur,
-                    sequi et incidunt necessitatibus, id ipsum reprehenderit inventore odio. Consequatur incidunt ipsam,
-                    esse recusandae iste sunt.</p>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/send.svg' title='Send' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/pencil.svg' title='Edit' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/delete.svg' title='Delete' />
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className='col-md-3'>
-                <div className='thumbnail'>
-                  <div className='caption'>
-                    <h3>Nota 4</h3>
-                    <p className='p--shorter'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum obcaecati, hic commodi modi, consequuntur,
-                    sequi et incidunt necessitatibus, id ipsum reprehenderit inventore odio. Consequatur incidunt ipsam,
-                    esse recusandae iste sunt.</p>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/send.svg' title='Send' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/pencil.svg' title='Edit' />
-                    </button>
-                    <button className='note__button' href='#' id='buttonLib'>
-                      <img className='note__image' src='../iconos/delete.svg' title='Delete' />
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          {/*<!--TERMINA NOTAS-->*/}
         </div>
-        </div>
-        {/*<!--TERMINA NOTAS-->*/}
-
         {/*<!--CODIGO VIEJO-->*/}
         {/*<!--NOTA-->*/}
         <section id='notesModal' className='notesModal'>
