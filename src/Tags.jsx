@@ -1,3 +1,5 @@
+import './scss/pages/_tags.scss';
+
 const React = require('react');
 
 const Tags = React.createClass({

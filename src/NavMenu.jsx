@@ -1,3 +1,5 @@
+import './scss/pages/_nav-menu.scss';
+
 const React = require('react');
 
 const NavMenu = React.createClass({
