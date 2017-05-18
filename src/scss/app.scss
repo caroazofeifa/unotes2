@@ -110,6 +110,13 @@ img:hover{
   word-break:break-all;
   overflow-wrap:hyphenate;
 }
+.title--shorter{
+  height:2.9rem;
+  overflow:hidden;
+  word-wrap: break-word;
+  word-break:break-all;
+  overflow-wrap:hyphenate;
+}
 
 //NOTES MODAL--EDITOR DE NOTAS
 .notesModal{

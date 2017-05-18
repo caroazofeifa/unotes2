@@ -16,7 +16,9 @@
             "input[type=\"image\"]": ["InputImage"]
           }],
     "react/jsx-indent": [0],
-    "react/no-unknown-property": [0]
+    "react/no-unknown-property": [0],
+    "arrow-body-style": [0],
+    "react/prop-types":[0]
   },
   "globals": {
     "document": true
