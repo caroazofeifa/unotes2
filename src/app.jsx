@@ -6,10 +6,9 @@ import './scss/app.scss';
 const NavMenu = require('./NavMenu');
 const DropDown = require('./DropDown');
 const Notes = require('./Notes');
-const Tags = require('./Tags');
-
 const EditorNotes = require('./EditorNotes');
 const Notebooks = require('./Notebooks');
+const Tags = require('./Tags');
 
 const App = React.createClass({
   render() {

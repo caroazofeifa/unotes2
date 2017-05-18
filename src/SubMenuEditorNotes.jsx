@@ -1,6 +1,5 @@
+import React from 'react';
 import './scss/pages/_subMenu-editorNotes.scss';
-
-const React = require('react');
 
 const SubMenuEditorNotes = React.createClass({
   render() {

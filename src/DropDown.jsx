@@ -1,6 +1,5 @@
+import React from 'react';
 import './scss/pages/_dropDown.scss';
-
-const React = require('react');
 
 const DropDown = React.createClass({
   render() {
