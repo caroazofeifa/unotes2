@@ -1,3 +1,5 @@
+import './scss/pages/_text-editorNotes.scss';
+
 const React = require('react');
 
 const TextEditorNotes = React.createClass({

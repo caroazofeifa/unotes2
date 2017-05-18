@@ -1,6 +1,8 @@
+import './scss/pages/_editorNotes.scss';
+
 const React = require('react');
 const MenuEditorNotes = require('./MenuEditorNotes');
-const SubMenuEditorNotes = require('./MenuEditorNotes');
+const SubMenuEditorNotes = require('./SubMenuEditorNotes');
 const TextEditorNotes = require('./TextEditorNotes');
 
 const EditorNotes = React.createClass({

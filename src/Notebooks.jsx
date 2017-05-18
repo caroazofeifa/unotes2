@@ -1,3 +1,5 @@
+import './scss/pages/_notebooks.scss';
+
 const React = require('react');
 
 const Notebooks = React.createClass({

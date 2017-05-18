@@ -1,3 +1,5 @@
+import './scss/pages/_menu-editorNotes.scss';
+
 const React = require('react');
 
 const MenuEditorNotes = React.createClass({
