@@ -1,3 +1,4 @@
+import './scss/pages/_notes.scss';
 import preload from '../public/data.json';
 
 const React = require('react');
