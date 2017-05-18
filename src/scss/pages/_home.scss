@@ -1,3 +1,19 @@
+.container-fluid{
+  padding: 0px;
+}
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.cols {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+ul{
+  list-style: none;
+  margin: 0;
+}
+
 //-- PUSH CARO
 * {
   box-sizing: border-box;
@@ -392,7 +408,7 @@ img:hover{
   .notesDropDrown__img{
     height: 3.5rem;
     width: 3.5rem;
-}
+  }
 }
 /* Tablet Styles */
 @media only screen and (min-width: 401px) and (max-width: 991px) {
@@ -494,20 +510,4 @@ img:hover{
    .navNote{
       justify-content: flex-start;
    }
-}
-.container-fluid{
-  padding: 0px;
-}
-.row {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-.cols {
-    padding-left: 0px;
-    padding-right: 0px;
-}
-ul{
-  list-style: none;
-  margin: 0;
-  
 }
