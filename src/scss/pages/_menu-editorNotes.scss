@@ -9,44 +9,42 @@
 }
 .navNote__image{
   height: 4rem;
-  margin-top: 15px;
-  margin-left: 15px;
-  margin-right: 5px;
-  margin-bottom: 10px; 
+  margin: 4px;
   width: 3rem;
 }
 .navNote__button{
   background-color: transparent;
   border: 0px;
-  margin: 0px;
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 5px;
+  margin-bottom: 10px; 
   display: relative;
 }
 .navNote__input{
   width: 17rem;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 430px) {
   .navNote{
-    height: 14vh;
+    height: 11vh;
     justify-content: flex-start;
   }
   .navNote__input{
-    width: 10.5rem;
+    width: 10.35rem;
   }
   .navNote__image{
-    height: 2rem;
-    margin: 2.5rem 0.7rem 1rem 0rem;
+    height: 2.3rem;
     width: 2.5rem;
   }
 }
 
-@media only screen and (min-width: 401px) and (max-width: 991px) {
+@media only screen and (min-width: 431px) and (max-width: 991px) {
   .navNote{
     justify-content: flex-start;
   }
   .navNote__image{
     height: 3rem;
-    margin: 2.5rem 0.8rem 1rem 0rem;
     width: 4rem;
   }
   .navNote__input{

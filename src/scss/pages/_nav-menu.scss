@@ -16,16 +16,13 @@
   margin: 0px;
   width: 7rem;
 }
-img:hover{
-  background-color:#897044;
-  border-radius: 4px
-}
 
 //MEDIA QUERIES
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
-  .sideNav{
+    .sideNav{
     height: 10vh;
+    background-color: red;
   }
   .sideNav__image{
     height: 3.5rem;
@@ -41,6 +38,7 @@ img:hover{
   .sideNav{
     height: 13vh;
     text-align: end;
+    background-color: yellow;
   }
   .sideNav__image{
     height: 4.5rem;
@@ -54,8 +52,8 @@ img:hover{
 /* Desktop Styles */
 @media only screen and (min-width: 992px) {
   .sideNav__button {
-    margin: 3rem 0rem 3rem 0.2rem;
-    padding: 1rem 0rem 1rem 0.2rem;
+    margin: 3rem 0.2rem 3rem 0.2rem;
+    padding: 1rem 0.2rem 1rem 0.2rem;
   }
   .sideNav{
     height: 100vh;
@@ -63,5 +61,7 @@ img:hover{
     position: fixed;
     top: 0;
     width: 8.4%;
+    background-color: blue;
    }
 }
+
