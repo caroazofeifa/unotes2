@@ -15,30 +15,16 @@ const App = React.createClass({
     return (
       <div className='container-fluid'>
         <div className='row' id='mainView'>
-          {/*<!--MENU AZUL-->*/}
           <div className='col-md-1 cols'>
             <NavMenu />
           </div>
-          {/*<!--TERMINA MENU AZUL-->*/}
-          {/*<!--NOTAS-->*/}
           <div className='col-md-11'>
               <DropDown />
               <Notes />
           </div>
-          {/*<!--TERMINA NOTAS-->*/}
         </div>
-        {/*<!--CODIGO VIEJO-->*/}
-
-        {/*<!--NOTA-->*/}
         <EditorNotes />
-        {/*<!--TERMINA NOTA-->*/}
-
-        {/*<!--MENU NOTEBOOKS-->*/}
         <Notebooks />
-        {/*<!--TERMINA MENU NOTEBOOK-->*/}
-
-        {/*<!--TERMINA TAGS-->*/}
-        {/*<!--AQUI DEBERIA EL DE TAGS-->*/}
         <Tags />
       </div>
     );
