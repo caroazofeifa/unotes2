@@ -1,27 +1,26 @@
 //MENU DE NOTEBOOKS
 .sectionFile{
   background-color:#C9C9C9;
-  top: 0vh;
-  left: -1500%;
-  width: 25%;
+  border: 1px solid #C9C9C9;
   height: 100vh;
+  left: -1500%;
+  padding-bottom: 0.5rem;
   position: absolute;
-  z-index: 2;
-  border: 1px;
-  -webkit-transition: ease 2s;
   transition: ease 2s;
   text-align: center;
-  border: 1px solid #C9C9C9;
-  padding-bottom: 0.5rem;
-  text-align: center;
+  top: 0vh;
+  transition: ease 2s;
+  -webkit-transition: ease 2s;
+  width: 25%;
+  z-index: 2;
 }
 .sectionFile--show{
   left: 8.3%;
 }
 .sectionFile__image{
-  width: 2rem;
   height: 3rem;
-  margin: 0rem 1rem 0rem 0rem;
+  margin: 0rem 2.8rem 0rem 0rem;
+  width: 3rem;
 }
 .sectionFile__button{
   background-color: transparent;
@@ -31,18 +30,19 @@
   margin: 20px;
 }
 .notebooksList{
-  list-style-type: none;
-  border-top: 1px solid gray;
   border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+  list-style-type: none;
+  line-height: 6rem;;
 }
 .sectionFiles__input{
   width: 100%;
   margin: 1rem 1rem 0 1rem;
 }
 .sectionFile__list{
-  color: black;
   //background-color: #66a5ca;
   border-color: transparent;
+  color: black;
   margin: 0px;
   text-align: left;
 }
@@ -54,9 +54,9 @@
 
 @media only screen and (max-width: 400px) {
 .sectionFile--show{
+    left:0;
     top: 11vh;
     width: 100%;
-    left:0;
   }
   .sectionFile__image{
     height: 5rem;

@@ -6,7 +6,7 @@
 .note__button {
   background-color: transparent;
   border: 0;
-  margin: 0;
+  margin: 0 1.5rem 0 1.5rem;
   padding: 4px;
 }
 .note__image {
@@ -17,15 +17,60 @@
 .p--shorter {
   height:8.4rem;
   line-height:20px;
+  // text-overflow: ellipsis;
   overflow:hidden;
+  overflow-wrap:hyphenate;
+  // white-space: nowrap;
   word-wrap: break-word;
   word-break:break-all;
-  overflow-wrap:hyphenate;
 }
 .title--shorter{
   height:2.9rem;
+  text-overflow: ellipsis;
   overflow:hidden;
+  overflow-wrap:hyphenate;
+  white-space: nowrap;
   word-wrap: break-word;
   word-break:break-all;
-  overflow-wrap:hyphenate;
+}
+
+//MEDIA QUERIES
+/* Mobile Styles */
+@media only screen and (max-width: 599px) {
+  .col-md-3{
+    width: 100%;
+    background-color: orange;
+    margin: 0;
+    padding: 5px;
+  }
+  .thumbnail {
+    margin: 0;
+    padding: 0;
+  }
+}
+/* Tablet Styles */
+@media only screen and (min-width: 600px) and (max-width: 800px) {
+  .col-md-3 {
+    width: 50%;
+    float: left;
+    background-color: red;
+    margin: 0;
+    padding: 0;
+  }
+  .thumbnail {
+    margin: 7px;
+    padding: 0;
+  }
+}
+// BIG TABLET
+@media only screen and (min-width: 801px) and (max-width: 1400px) {
+  .col-md-3 {
+    width: 33.33%;
+    float: left;
+    background-color: yellow;
+  }
+  .thumbnail {
+    margin: 5px;
+    padding: 0;
+  }
 }
