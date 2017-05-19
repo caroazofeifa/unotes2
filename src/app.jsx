@@ -3,12 +3,12 @@ import { render } from 'react-dom';
 import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import './scss/app.scss';
 
-const NavMenu = require('./NavMenu');
-const DropDown = require('./DropDown');
-const Notes = require('./Notes');
-const EditorNotes = require('./EditorNotes');
-const Notebooks = require('./Notebooks');
-const Tags = require('./Tags');
+const NavMenu = require('./scss/components/navMenu/NavMenu');
+const DropDown = require('./scss/components/dropDown/DropDown');
+const Notes = require('./scss/components/notes/Notes');
+const EditorNotes = require('./scss/components/editorNotes/EditorNotes');
+const Notebooks = require('./scss/components/notebooks/Notebooks');
+const Tags = require('./scss/components/tags/Tags');
 
 const App = React.createClass({
   render() {

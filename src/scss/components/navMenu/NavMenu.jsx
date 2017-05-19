@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/pages/_nav-menu.scss';
+import './_nav-menu.scss';
 
 const NavMenu = React.createClass({
   render() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import './scss/pages/_notes.scss';
-import preload from '../public/data.json';
-
-const CardNotes = require('./CardNotes');
+import './_notes.scss';
+import preload from '../../../../public/data.json';
+// import preload from '/Users/isaiassalas/Documents/BrainStation/unotes2/public/data.json';
+const CardNotes = require('../cardNotes/CardNotes');
 
 const Notes = React.createClass({
   render() {

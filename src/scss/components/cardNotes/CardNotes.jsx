@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/pages/_card-notes.scss';
+import './_card-notes.scss';
 
 const CardNotes = React.createClass({
   render() {

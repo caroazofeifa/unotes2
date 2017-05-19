@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/pages/_menu-editorNotes.scss';
+import './_menu-editorNotes.scss';
 
 const MenuEditorNotes = React.createClass({
   render() {

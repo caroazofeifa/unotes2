@@ -1,5 +1,5 @@
 import React from 'react';
-import './scss/pages/_tags.scss';
+import './_tags.scss';
 
 const Tags = React.createClass({
   render() {
