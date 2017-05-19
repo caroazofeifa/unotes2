@@ -13,6 +13,9 @@
   margin: 2rem 0rem 2rem 2rem;
   width: 1.7rem;
 }
+.navEditor__button:hover{
+  background-color: transparent;
+}
 .navEditor__button{
   cursor: default;
   background-color: transparent;
@@ -29,7 +32,7 @@
 .navEditor__input{
   width: 10rem;
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 430px) {
 .navEditor__image{
     height: 1.2rem;
     cursor: default;
@@ -47,13 +50,13 @@
     cursor: hand;
   }
   .navEditor__image{
-    height: 1.1rem;
+    height: 1.5rem;
     cursor: default;
     margin: 1rem 0rem 1rem 1rem;
-    width: 1.5rem;
+    width: 1.8rem;
   }
   .navEditor{
-    height: 14vh;
+    height: 11vh;
   }
   .navEditor__ul{
     justify-content: flex-start;
@@ -61,12 +64,12 @@
 
 }
 
-@media only screen and (min-width: 401px) and (max-width: 991px) {
+@media only screen and (min-width: 431px) and (max-width: 991px) {
 .navEditor__image{
-    height: 1.2rem;
+    height: 1.5rem;
     cursor: default;
     margin: 1rem 0rem 1rem 1rem;
-    width: 1.5rem;
+    width: 1.7rem;
   }
   .navNote__input{
     width: 10rem;

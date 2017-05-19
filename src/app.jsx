@@ -22,8 +22,8 @@ const App = React.createClass({
           {/*<!--TERMINA MENU AZUL-->*/}
           {/*<!--NOTAS-->*/}
           <div className='col-md-11'>
-            <DropDown />
-            <Notes />
+              <DropDown />
+              <Notes />
           </div>
           {/*<!--TERMINA NOTAS-->*/}
         </div>

@@ -1,26 +1,27 @@
 //DROPDOWN
 .notesDropDown{
   background-color: #454741;
+  display: block;
+  position: relative;
 }
 .notesDropDown__dropdown{
+  border-radius:4px;
   cursor: hand;
   height: 3.5rem;
-  border-radius:4px;
-  margin: 2.5rem;
-  margin-left: 15px;
+  margin: 3rem;
   width: 20%;
 }
 .notesDropDrown__button{
   background-color: transparent;
   border: 0px;
-  display: relative;
+  display: flex;
   float: right;
   margin: 0.2rem;
   padding: 1rem;
 }
 .notesDropDrown__img{
   height: 5rem;
-  margin: 0px;
+  margin: 0.3rem;
   width: 7rem;
 }
 
@@ -28,17 +29,30 @@
 /* Mobile Styles */
 @media only screen and (max-width: 400px) {
   .notesDropDown__dropdown{
-    width: 55%;
+    justify-content: flex-start;
+    width: 40%;
+
   }
   .notesDropDrown__img{
-    height: 3.5rem;
-    width: 3.5rem;
+    justify-content: flex-end;
+    height: 4rem;
+    width: 6rem;
+  }
+  .notesDropDown{
+    justify-content: none;
   }
 }
 /* Tablet Styles */
 @media only screen and (min-width: 401px) and (max-width: 991px) {
   .notesDropDown__dropdown{
-   width: 40%;
+    justify-content: flex-start;
+    width: 40%;
+  }
+  .notesDropDrown__img{
+    justify-content: flex-end;
+  }
+  .notesDropDown{
+  justify-content: none;
   }
 }
 
