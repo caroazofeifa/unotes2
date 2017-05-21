@@ -18,7 +18,8 @@
     "react/jsx-indent": [0],
     "react/no-unknown-property": [0],
     "arrow-body-style": [0],
-    "react/prop-types":[0]
+    "react/prop-types":[0],
+    "react/jsx-no-bind":[0]
   },
   "globals": {
     "document": true

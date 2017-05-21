@@ -4,7 +4,7 @@ import './_notebooks.scss';
 const Notebooks = React.createClass({
   render() {
     return (
-        <section className='sectionFile' id='sectionFile'>
+        <section id='sectionFile' className={ this.props.showNotebooks.notebook } >
           <div className='row'>
             <div className='col-md-11'>
               <h2>Notebooks</h2>
@@ -20,7 +20,7 @@ const Notebooks = React.createClass({
             <li className='sectionFile__list'>
               <div className='row sectionFile__li'>
                 <div className='col-md-6'>
-                  <h6 contenteditable='true' id='inputName'>BrainStation</h6>
+                  <h6 suppressContentEditableWarning contentEditable='true' id='inputName'>BrainStation</h6>
                 </div>
                 <div className='col-md-7'>
                   <button className='sectionFile__button' href='#' id='buttonEditar'>

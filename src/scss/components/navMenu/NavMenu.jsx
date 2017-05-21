@@ -2,6 +2,17 @@ import React from 'react';
 import './_nav-menu.scss';
 
 const NavMenu = React.createClass({
+  showNotes() {
+    //NO idiota que no se puede editar el prop, pero puede llamar una funcion
+    //this.props.showEditorNotes.showEditor = true;
+    this.props.showEditorNotes();
+  },
+  showNotebooks() {
+    this.props.showNotebooks();
+  },
+  showTags() {
+    this.props.showTags();
+  },
   render() {
     return (
       <nav className='section sideNav'>
@@ -12,17 +23,17 @@ const NavMenu = React.createClass({
             </button>
           </li>
           <li>
-            <button className='sideNav__button' id='buttonNote'>
+            <button className='sideNav__button' id='buttonNote' onClick={ this.showNotes }>
               <img className='sideNav__image' src='../iconos/file.svg' title='New note' />
             </button>
           </li>
           <li>
-            <button className='sideNav__button' id='buttonNotebook'>
+            <button className='sideNav__button' id='buttonNotebook' onClick={ this.showNotebooks } >
               <img className='sideNav__image' src='../iconos/agenda.svg' title='Notebooks' />
             </button>
           </li>
           <li>
-            <button className='sideNav__button' id='buttonTag'>
+            <button className='sideNav__button' id='buttonTag' onClick={ this.showTags } >
               <img className='sideNav__image' src='../iconos/tag.svg' title='Tags' />
             </button>
           </li>

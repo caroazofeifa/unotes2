@@ -4,7 +4,7 @@ import './_tags.scss';
 const Tags = React.createClass({
   render() {
     return (
-      <section className='tagFile' id='tagFile'>
+      <section id='tagFile' className={ this.props.showTags.tag } >
         <div className='row'>
           <div className='col-md-11'>
             <h2>Tags</h2>
@@ -20,7 +20,7 @@ const Tags = React.createClass({
           <li className='tagFile__list'>
             <div className='row tagFile__li'>
               <div className='col-md-6'>
-                <h6 contenteditable='true' id='inputTag'>HTML</h6>
+                <h6 suppressContentEditableWarning contentEditable='true' id='inputTag'>HTML</h6>
               </div>
               <div className='col-md-7'>
                 <button className='tagFile__button' href='#' id='buttonEditar'>

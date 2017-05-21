@@ -8,25 +8,19 @@ const TextEditorNotes = require('../textEditor/TextEditorNotes');
 const EditorNotes = React.createClass({
   render() {
     return (
-        <section id='notesModal' className='notesModal'>
-          <div className='row'>
-            {/*<!--menu notas-->*/}
-            <div className='col-md-12'>
-              <MenuEditorNotes />
-            </div>
-            {/*<!--fin menu de notas-->*/}
-            {/*<!--menu editor de notas-->*/}
-            <div className='col-md-12'>
-              <SubMenuEditorNotes />
-            </div>
-            {/*<!--fin menu editor de notas-->*/}
-            {/*<!--text area-->*/}
-            <div className='col-md-12'>
-                <TextEditorNotes />
-            </div>
+      <section id='notesModal' className={ this.props.showEditorNotes.editorNotes } >
+        <div className='row'>
+          <div className='col-md-12'>
+            <MenuEditorNotes />
           </div>
-          {/*<!--fin textarea-->*/}
-        </section>
+          <div className='col-md-12'>
+            <SubMenuEditorNotes />
+          </div>
+          <div className='col-md-12'>
+            <TextEditorNotes />
+          </div>
+        </div>
+      </section>
     );
   },
 });

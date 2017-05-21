@@ -14,7 +14,18 @@
   z-index: 2;
 }
 .tagFile--show{
+  background-color:#C9C9C9;
+  border: 1px solid #C9C9C9;
+  height: 100vh;
   left: 8.3%;
+  padding-bottom: 0.5rem;
+  position: absolute;
+  text-align: center;
+  top: 0vh;
+  transition: ease 2s;
+  -webkit-transition: ease 2s;
+  width: 25%;
+  z-index: 2;
 }
 .tagFile__image{
   height: 3rem;

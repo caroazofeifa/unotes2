@@ -15,7 +15,7 @@ const MenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <button className='navNote__button' a href='#'>
+                <button className='navNote__button' href='#'>
                     <img className='navNote__image' src='../iconos/send.svg' title='Send' />
                 </button>
                 </li>
