@@ -9,11 +9,12 @@ const Notes = React.createClass({
     return (
       <section className='section notes'>
         <div className='row' id='thumbnails'>
-          {preload.shows.map((show) => {
+          {preload.notes.map((show) => {
             return (
-              <CardNotes key={ show.imdbID } show={ show } />
+              <CardNotes key={ show.idNote } show={ show } />
             );
-          })},
+          })
+          },
         </div>
       </section>
     );
