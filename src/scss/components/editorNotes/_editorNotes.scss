@@ -24,13 +24,13 @@
   z-index: 2;}
 /* Mobile Styles */
 @media only screen and (max-width: 430px) {
-  .notesModal{
+  .notesModal--show{
     left: 0%;
     width: 100%;
   }
 }
 @media only screen and (min-width: 431px) and (max-width: 991px) {
-  .notesModal{
+  .notesModal--show{
     width: 90%;
     left: 5%;
    }

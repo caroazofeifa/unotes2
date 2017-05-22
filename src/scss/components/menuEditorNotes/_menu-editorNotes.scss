@@ -30,17 +30,13 @@
   color: #9E814F;
   display: inline-block;
   font-size: 2.5rem;
+  margin: 2rem;
   text-align: left;
-  text-transform: uppercase;
   width: 17rem;
 }
 .navNote__input:focus {
-  border-bottom: 1px solid gray;
-  border-color: inherit;
-  box-shadow: none;
-  -webkit-box-shadow: none;
+  border-bottom: 1px solid #9E814F;
 }
-
 @media only screen and (max-width: 430px) {
   .navNote{
     height: 11vh;
@@ -50,18 +46,19 @@
     width: 10.35rem;
   }
   .navNote__image{
-    height: 2.3rem;
-    width: 2.5rem;
+    height: 2.0rem;
+    margin: 2.5rem 0rem 2.5rem 0rem;
+    width: 2.0rem;
   }
 }
-
 @media only screen and (min-width: 431px) and (max-width: 991px) {
   .navNote{
     justify-content: flex-start;
   }
   .navNote__image{
-    height: 3rem;
-    width: 4rem;
+    height: 2.3rem;
+    margin: 2.5rem 0rem 2.5rem 0rem;
+    width: 3.3rem;
   }
   .navNote__input{
     width: 10rem;

@@ -26,7 +26,7 @@
 .navEditor__dropdown{
   width: 13.3rem;
   height: 3.5rem;
-  border-radius:4px;
+  border-radius:0px;
   margin: 2rem;
   cursor: hand;
 }
@@ -38,15 +38,12 @@
   color: #FFF;
   display: inline-block;
   font-size: 2.5rem;
+  margin: 2rem;
   text-align: left;
-  text-transform: uppercase;
   width: 17rem;
 }
 .navEditor__input:focus {
-  border-bottom: 1px solid gray;
-  border-color: inherit;
-  box-shadow: none;
-  -webkit-box-shadow: none;
+  border-bottom: 1px solid #FFF;
 }
 @media only screen and (max-width: 430px) {
 .navEditor__image{
@@ -61,7 +58,6 @@
   .navEditor__dropdown{
     width: 10.5rem;
     height: 3.5rem;
-    border-radius:4px;
     margin: 1rem;
     cursor: hand;
   }
@@ -77,9 +73,7 @@
   .navEditor__ul{
     justify-content: flex-start;
   }
-
 }
-
 @media only screen and (min-width: 431px) and (max-width: 991px) {
 .navEditor__image{
     height: 1.5rem;
@@ -93,7 +87,6 @@
   .navEditor__dropdown{
     width: 10rem;
     height: 3.5rem;
-    border-radius:4px;
     margin: 1rem;
     cursor: hand;
   }
@@ -103,5 +96,4 @@
   .navEditor__ul{
     justify-content: flex-start;
    }
-
 }

@@ -11,7 +11,7 @@ const Notebooks = React.createClass({
             </div>
           </div>
           <div className='row section'>
-            <input className='form-control' type='search' placeholder='Search' />
+            <input className='form-control sectionFlile__input' type='search' placeholder='Search' />
             <button className='sectionFile__button sectionFile__button--margin' href='#' id='buttonEditar'>
               <img id='imgEditar' className='sectionFile__image' src='../iconos/search.svg' title='Search' />
             </button>
@@ -37,7 +37,7 @@ const Notebooks = React.createClass({
             </li>
           </ul>
           <div className='row section'>
-            <input className='form-control' type='text' id='inputNoteBook' placeholder='New notebook' />
+            <input className='form-control sectionFlile__input' type='text' id='inputNoteBook' placeholder='New notebook' />
             <button className='sectionFile__button sectionFile__button--margin' href='#' id='addNoteBook'>
               <img className='sectionFile__image' src='../iconos/add.svg' title='Add' />
             </button>
