@@ -2,16 +2,17 @@
 .navEditor{
   background-color:#5b5e56;
   height: 11vh;
+  padding-top: 1.5rem;
   width: 100%;
 }
 .navEditor__ul{
   display: flex;
 }
 .navEditor__image{
-  height: 2.2rem;
+  height: 3.2rem;
   cursor: default;
   margin: 2rem 0rem 2rem 2rem;
-  width: 1.7rem;
+  width: 3.7rem;
 }
 .navEditor__button:hover{
   background-color: transparent;
@@ -30,7 +31,22 @@
   cursor: hand;
 }
 .navEditor__input{
-  width: 10rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: #FFF;
+  display: inline-block;
+  font-size: 2.5rem;
+  text-align: left;
+  text-transform: uppercase;
+  width: 17rem;
+}
+.navEditor__input:focus {
+  border-bottom: 1px solid gray;
+  border-color: inherit;
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
 @media only screen and (max-width: 430px) {
 .navEditor__image{

@@ -2,6 +2,7 @@
 .navNote{
   background-color:#2b4f63; 
   height: 10vh;
+  padding-top: 1.5rem;
   width: 100%;
 }
 .navNote__ul{
@@ -22,7 +23,22 @@
   display: relative;
 }
 .navNote__input{
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  color: #9E814F;
+  display: inline-block;
+  font-size: 2.5rem;
+  text-align: left;
+  text-transform: uppercase;
   width: 17rem;
+}
+.navNote__input:focus {
+  border-bottom: 1px solid gray;
+  border-color: inherit;
+  box-shadow: none;
+  -webkit-box-shadow: none;
 }
 
 @media only screen and (max-width: 430px) {
