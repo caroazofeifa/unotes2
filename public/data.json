@@ -3,27 +3,27 @@
         "title": "House of Cards",
         "idNote": "1",
         "description": "A Congressman works with his equally conniving wife to exact revenge on the people who betrayed him.",
-        "idNotebook":"ULACIT"
+        "idNotebook":"2"
     }, {
         "title": "Bloodline",
         "idNote": "2",
         "description": "A family of adult siblings find that their secrets and scars are revealed when their black sheep of a brother returns home.",
-        "idNotebook":"ULACIT"
+        "idNotebook":"1"
     }, {
         "title": "Love",
         "idNote": "3",
         "description": "A program that follows a couple who must navigate the exhilarations and humiliations of intimacy, commitment and other things they were hoping to avoid.",
-        "idNotebook":"ULACIT"
+        "idNotebook":"1"
     }, {
         "title": "Master of None",
         "idNote": "4",
         "description": "The personal and professional life of Dev, a 30-year-old actor in New York.",
-        "idNotebook":"UCR"
+        "idNotebook":"2"
     }, {
         "title": "w/ Bob & David",
         "idNote": "5",
         "description": "Bob and David emerge from the time machine they entered sixteen years ago and are reunited with the cast of Mr. Show.",
-        "idNotebook":"Brainstation"
+        "idNotebook":"3"
     }],
      "notebooks": [{
         "name": "ULACIT",

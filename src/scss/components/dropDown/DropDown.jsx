@@ -7,9 +7,9 @@ const Option = require('./Option');
 const DropDown = React.createClass({
   handleChange(event) {
     const x = event.currentTarget.selectedIndex;
-    //console.log(event.currentTarget[x].text);
-    const folder = event.currentTarget[x].text;
-    this.props.changeFolder(folder);
+    //console.log(event.currentTarget[x].value);
+    const folderIndex = event.currentTarget[x].value;
+    this.props.selectFolder(folderIndex);
   },
   render() {
     return (

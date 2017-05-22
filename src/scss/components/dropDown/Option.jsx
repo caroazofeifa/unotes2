@@ -2,9 +2,9 @@ import React from 'react';
 
 const Option = React.createClass({
   render() {
-    const { name } = this.props.show;
+    const { name, idNotebook } = this.props.show;
     return (
-      <option value=''>{name}</option>
+      <option value={ idNotebook } >{name}</option>
     );
   },
 });
