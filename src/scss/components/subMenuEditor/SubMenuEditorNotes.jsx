@@ -24,7 +24,7 @@ const SubMenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <input className='navEditor__input form-control' type='text' placeholder='Tag' />
+                <input className='navEditor__input' type='text' placeholder='Tag' />
                 </li>
             </ul>
         </nav>

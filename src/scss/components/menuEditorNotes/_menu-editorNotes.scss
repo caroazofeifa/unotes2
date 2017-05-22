@@ -2,6 +2,7 @@
 .navNote{
   background-color:#2b4f63; 
   height: 10vh;
+  padding-top: 1.5rem;
   width: 100%;
 }
 .navNote__ul{
@@ -22,25 +23,19 @@
   display: relative;
 }
 .navNote__input{
-  border-radius: 0px;
-  background-color: #2b4f63;
-  border: white;
-  border-bottom: 1px solid white;
-  font-size: 16px;
-  outline: none;
-  -webkit-box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
-  box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
-  width: 17rem;
-  color: gray;
-}
-.form-control:focus {
+  background: transparent;
+  border: none;
+  border-radius: 0;
   box-shadow: none;
-  border-bottom: 3px solid white;
+  color: #9E814F;
+  display: inline-block;
+  font-size: 2.5rem;
+  margin: 2rem;
+  text-align: left;
+  width: 17rem;
 }
-.navNote__input:focus{
-  border: 0px;
-  border-bottom: 3px solid white;
-  outline: 0 none;
+.navNote__input:focus {
+  border-bottom: 1px solid #9E814F;
 }
 @media only screen and (max-width: 430px) {
   .navNote{

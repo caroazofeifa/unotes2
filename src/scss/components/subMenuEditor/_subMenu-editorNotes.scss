@@ -2,16 +2,17 @@
 .navEditor{
   background-color:#5b5e56;
   height: 11vh;
+  padding-top: 1.5rem;
   width: 100%;
 }
 .navEditor__ul{
   display: flex;
 }
 .navEditor__image{
-  height: 2.2rem;
+  height: 3.2rem;
   cursor: default;
   margin: 2rem 0rem 2rem 2rem;
-  width: 1.7rem;
+  width: 3.7rem;
 }
 .navEditor__button:hover{
   background-color: transparent;
@@ -30,25 +31,19 @@
   cursor: hand;
 }
 .navEditor__input{
-  border-radius: 0px;
-  background-color: #5b5e56;
-  border: white;
-  border-bottom: 1px solid white;
-  font-size: 16px;
-  outline: none;
-  -webkit-box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
-  box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
-  width: 17rem;
-  color: gray;
-}
-.form-control:focus {
+  background: transparent;
+  border: none;
+  border-radius: 0;
   box-shadow: none;
-  border-bottom: 3px solid white;
+  color: #FFF;
+  display: inline-block;
+  font-size: 2.5rem;
+  margin: 2rem;
+  text-align: left;
+  width: 17rem;
 }
-.navEditor__input:focus{
-  border: 0px;
-  border-bottom: 3px solid white;
-  outline: 0 none;
+.navEditor__input:focus {
+  border-bottom: 1px solid #FFF;
 }
 @media only screen and (max-width: 430px) {
 .navEditor__image{
@@ -78,9 +73,7 @@
   .navEditor__ul{
     justify-content: flex-start;
   }
-
 }
-
 @media only screen and (min-width: 431px) and (max-width: 991px) {
 .navEditor__image{
     height: 1.5rem;
@@ -103,5 +96,4 @@
   .navEditor__ul{
     justify-content: flex-start;
    }
-
 }
