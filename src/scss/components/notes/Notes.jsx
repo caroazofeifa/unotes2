@@ -17,7 +17,7 @@ const Notes = React.createClass({
       }
     }
     return (
-      <section className='section notes'>
+      <section className='notes'>
         <div className='row' id='thumbnails'>
           {arr.map((show) => (
               <CardNotes show={ show } key={ show.idNote } />
