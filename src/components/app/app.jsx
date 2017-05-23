@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-import './scss/app.scss';
+import '../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+import './app.scss';
 
-const AppContainer = require('./containers/AppContainer');
-const NotesContainer = require('./containers/NotesContainer');
+const AppContainer = require('../../containers/AppContainer');
+const NotesContainer = require('../../containers/NotesContainer');
 
 
 const App = React.createClass({
