@@ -7,7 +7,7 @@ const MenuEditorNotes = React.createClass({
         <nav className='section navNote'>
             <ul className='navNote__ul'>
                 <li>
-                <input className='navNote__input' id='nameNote' type='text' placeholder='Title' />
+                <input className='navNote__input' id='nameNote' type='text' placeholder='Title' value={ this.props.editNote.title } />
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>

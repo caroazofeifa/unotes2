@@ -10,14 +10,14 @@ const EditorNotes = React.createClass({
     return (
       <section id='notesModal' className={ this.props.showEditorNotes.editorNotes } >
         <div className='row'>
-          <div className='col-md-12'>
-            <MenuEditorNotes />
+          <div className='col-md-12' >
+            <MenuEditorNotes editNote={ this.props.showEditorNotes } />
           </div>
           <div className='col-md-12'>
-            <SubMenuEditorNotes />
+            <SubMenuEditorNotes editNote={ this.props.showEditorNotes } />
           </div>
           <div className='col-md-12'>
-            <TextEditorNotes />
+            <TextEditorNotes editNote={ this.props.showEditorNotes } />
           </div>
         </div>
       </section>

@@ -7,7 +7,8 @@ let i = 0;
 
 const Notes = React.createClass({
   render() {
-    const { folderIndex, allMyNotes } = this.props.propFolder;
+    const { folderIndex } = this.props.propFolder;
+    const { allMyNotes } = this.props.showData;
     const arr = [];
     //Gets the notes that belong to the notebook with de id of folderIndex
     //TO DO: change to filter
@@ -20,7 +21,7 @@ const Notes = React.createClass({
       <section className='notes'>
         <div className='row' id='thumbnails'>
           {arr.map((show) => (
-              <CardNotes show={ show } key={ show.idNote } />
+              <CardNotes show={ show } key={ show.idNote } editNote={ this.props.editNote } />
             ))}
         </div>
       </section>

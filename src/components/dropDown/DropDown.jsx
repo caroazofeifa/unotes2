@@ -11,7 +11,7 @@ const DropDown = React.createClass({
     this.props.selectFolder(folderIndex);
   },
   render() {
-    const { allMyNotebooks } = this.props.propFolder;
+    const { allMyNotebooks } = this.props.showData;
     return (
       <section className='section notesDropDown'>
         <select className='notesDropDown__dropdown' onChange={ this.handleChange } >

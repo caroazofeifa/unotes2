@@ -1,8 +1,11 @@
 import React from 'react';
 import './_subMenu-editorNotes.scss';
 
+const Option = require('../dropDown/Option');
+
 const SubMenuEditorNotes = React.createClass({
   render() {
+    const { allMyNotebooks, idNotebook } = this.props.editNote;
     return (
        <nav className='navEditor'>
             <ul className='navEditor__ul section'>
@@ -12,10 +15,13 @@ const SubMenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <select className='navEditor__dropdown'>
-                    <option value=''>BrainStation</option>
-                    <option value=''>UCR</option>
-                    <option value=''>ULACIT</option>
+                <select className='navEditor__dropdown' value={ idNotebook } >
+                    {allMyNotebooks.map((show) => {
+                      return (
+                        <Option key={ show.idNotebook } show={ show } />
+                      );
+                    })
+                    },
                 </select>
                 </li>
                 <li>
