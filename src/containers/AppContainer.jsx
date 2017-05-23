@@ -4,7 +4,9 @@ const NavMenu = require('../components/navMenu/NavMenu');
 const EditorNotes = require('../components/editorNotes/EditorNotes');
 const Notebooks = require('../components/notebooks/Notebooks');
 const Tags = require('../components/tags/Tags');
+const reactRouter = require('react-router-dom');
 
+// const Route = reactRouter.Route;
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -59,9 +61,21 @@ class AppContainer extends React.Component {
         <div className='col-md-1 cols'>
           <NavMenu showEditorNotes={ this.showEditorNotes.bind(this) } showNotebooks={ this.showNotebooks.bind(this) } showTags={ this.showTags.bind(this) } />
         </div>
-        <EditorNotes showEditorNotes={ this.state } />
-        <Notebooks showNotebooks={ this.state } />
-        <Tags showTags={ this.state } />
+        {/*<Route
+          path='/newNote' render={ () => (*/}
+            <EditorNotes showEditorNotes={ this.state } />
+          {/*) }
+        />
+        <Route
+          path='/newNotebook' render={ () => (*/}
+            <Notebooks showNotebooks={ this.state } />
+          {/*) }
+        />
+        <Route
+          path='newTag' render={ () => (*/}
+            <Tags showTags={ this.state } />
+          {/*) }
+        />*/}
       </div>
     );
   }
