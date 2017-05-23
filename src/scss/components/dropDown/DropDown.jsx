@@ -1,21 +1,21 @@
 import React from 'react';
 import './_dropDown.scss';
-import preload from '../../../../public/data.json';
 
 const Option = require('./Option');
 
 const DropDown = React.createClass({
+  //Gets the index/value selected from the dropDrown and sends it to the parrent
   handleChange(event) {
     const x = event.currentTarget.selectedIndex;
-    //console.log(event.currentTarget[x].value);
     const folderIndex = event.currentTarget[x].value;
     this.props.selectFolder(folderIndex);
   },
   render() {
+    const { allMyNotebooks } = this.props.propFolder;
     return (
       <section className='section notesDropDown'>
         <select className='notesDropDown__dropdown' onChange={ this.handleChange } >
-          {preload.notebooks.map((show) => {
+          {allMyNotebooks.map((show) => {
             return (
               <Option key={ show.idNotebook } show={ show } />
             );

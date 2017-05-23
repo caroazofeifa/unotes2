@@ -2,14 +2,15 @@ import React from 'react';
 import './_nav-menu.scss';
 
 const NavMenu = React.createClass({
+  //Calls to show the modal editor of notes
   showNotes() {
-    //NO idiota que no se puede editar el prop, pero puede llamar una funcion
-    //this.props.showEditorNotes.showEditor = true;
     this.props.showEditorNotes();
   },
+  //Calls to show the modal of notebooks
   showNotebooks() {
     this.props.showNotebooks();
   },
+  //Calls to show the modal tags
   showTags() {
     this.props.showTags();
   },

@@ -35,7 +35,7 @@
     "eslint-plugin-react": "^6.9.0",
     "html-webpack-plugin": "^2.26.0",
     "json-loader": "^0.5.4",
-     "json-server": "^0.10.1",
+    "json-server": "^0.10.1",
     "node-sass": "^4.3.0",
     "postcss-loader": "^1.2.2",
     "precss": "^1.4.0",
@@ -46,6 +46,7 @@
     "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
+    "axios": "^0.16.1",
     "node-sass": "^4.5.2",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",

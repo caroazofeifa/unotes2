@@ -7,13 +7,13 @@ let i = 0;
 
 const Notes = React.createClass({
   render() {
-    //console.log('Folder: ' + this.props.propFolder.folderIndex);
-    //console.log('Nota: ' + this.props.show[i].idNotebook);
+    const { folderIndex, allMyNotes } = this.props.propFolder;
     const arr = [];
-    for (i = 0; i < this.props.show.length; i++) {
-      if (this.props.show[i].idNotebook === this.props.propFolder.folderIndex) {
-        arr.push(this.props.show[i]);
-        //console.log(this.props.show[i]);
+    //Gets the notes that belong to the notebook with de id of folderIndex
+    //TO DO: change to filter
+    for (i = 0; i < allMyNotes.length; i++) {
+      if (allMyNotes[i].idNotebook === folderIndex) {
+        arr.push(allMyNotes[i]);
       }
     }
     return (
