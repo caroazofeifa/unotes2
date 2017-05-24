@@ -99,19 +99,19 @@ types:
             body:
               application/json:
                 type: Note[]
-                example: { "idNote" : 1, "title" : "Notes title" }
+                example: { "idNote" : 1, "title" : "Notes title", "description" : "Description Note", "idNotebook" : "1" }
       post:
         description: Create a new Note
         body:
           application/json:
             type: Note
-            example: { "idNote" : 2, "title" : "New notes title" }
+            example: { "idNote" : 2, "title" : "New notes title", "description" : "Description Note", "idNotebook" : "1" }
         responses:
           201:
             body:
               application/json:
                 type: Note
-                example: { "idNote" : 2, "title" : "New notes title" }
+                example: { "idNote" : 2, "title" : "New notes title", "description" : "Description Note", "idNotebook" : "1" }
 #/NOTE GET & POST
 /note:
   get:
@@ -124,19 +124,19 @@ types:
         body:
           application/json:
             type: Note[]
-            example: { "idNote" : 1, "title" : "Notes title" }
+            example: { "idNote" : 1, "title" : "Notes title", "description" : "Description Note", "idNotebook" : "1" }
   post:
     description: Create a new Note
     body:
       application/json:
         type: Note
-        example: { "idNote" : 2, "title" : "New notes title" }
+        example: { "idNote" : 2, "title" : "New notes title", "description" : "Description Note", "idNotebook" : "1"  }
     responses:
       201:
         body:
           application/json:
             type: Note
-            example: { "idNote" : 2, "title" : "New notes title" }
+            example: { "idNote" : 2, "title" : "New notes title" , "description" : "Description Note", "idNotebook" : "1"}
 #/NOTE/IDNOTE GET, PUT & DELETE
   /{idNote}:
     get:
@@ -146,7 +146,7 @@ types:
           body:
             application/json:
               type: Note
-              example: { "idNote" : 1, "title" : "Notes title" }
+              example: { "idNote" : 1, "title" : "Notes title", "description" : "Description Note", "idNotebook" : "1"  }
         404:
           body:
             application/json:
@@ -157,13 +157,13 @@ types:
       body:
         application/json:
           type: Note
-          example: { "idNote" : 1, "title" : "Update notes title" }
+          example: { "idNote" : 1, "title" : "Update notes title", "description" : "Description Note", "idNotebook" : "1"  }
       responses:
         200:
           body:
             application/json:
               type: Note
-              example: { "idNote" : 1, "title" : "Update notes title" }
+              example: { "idNote" : 1, "title" : "Update notes title" , "description" : "Description Note", "idNotebook" : "1" }
         404:
           body:
             application/json:

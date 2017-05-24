@@ -7,7 +7,7 @@ const Notebooks = React.createClass({
   render() {
     const { notebook, allMyNotebooks } = this.props.stateApp;
     return (
-      <section id='sectionFile' className={notebook} >
+      <section id='sectionFile' className={ notebook } >
         <div className='row'>
           <div className='col-md-11'>
             <h2>Notebooks</h2>
@@ -23,7 +23,7 @@ const Notebooks = React.createClass({
           <ul id='notebooksList' className='notebooksList'>
             {allMyNotebooks.map((show) => {
               return (
-                <NotebookLi key={show.idNotebook} show={show} />
+                <NotebookLi key={ show.idNotebook } show={ show } />
               );
             })
             },
