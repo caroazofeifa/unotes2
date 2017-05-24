@@ -1,26 +1,32 @@
 #%RAML 1.0
-title: Baeldung Unotes REST Services API
+title: Unotes REST Services API
 version: v1
 protocols: [ HTTPS ]
 baseUri: http://rest-api.baeldung.com/api/{version}
 mediaType: application/json
 types:
-  Note:
+   Note:
     type: object
     properties:
       idNote: integer
       title: string
       description?: string
       idNotebook: integer
+      idTag: integer[]
    Notebook:
     type: object
     properties:
       idNotebook: integer
       name: string
-  Error:
-    properties:
-      code: integer
-      message: string
+    Tags:
+        type: object
+        properties: 
+              idTag: integer
+              name: string
+      Error:
+        properties:
+          code: integer
+          message: string
 # /NOTEBOOK GET & POST 
 /notebook:
   get:
@@ -99,19 +105,33 @@ types:
             body:
               application/json:
                 type: Note[]
-                example: { "idNote" : 1, "title" : "Notes title", "description" : "Description Note", "idNotebook" : "1" }
+                example: |
+                 [
+                  { "idNote" : 1, 
+                    "title" : "Notes title", 
+                    "description" : "Description Note", 
+                    "idNotebook" : "1", 
+                    "idTags" : [1,2,3] 
+                  },
+                  { "idNote" : 2, 
+                    "title" : "Notes title", 
+                    "description" : "Description Note", 
+                    "idNotebook" : "1", 
+                    "idTags" : [2,3] 
+                  }
+                 ]
       post:
         description: Create a new Note
         body:
           application/json:
             type: Note
-            example: { "idNote" : 2, "title" : "New notes title", "description" : "Description Note", "idNotebook" : "1" }
+            example: { "idNote" : 2, "title" : "New notes title", "description" : "Description Note", "idNotebook" : "1", "idTags" : [1,2,3] }
         responses:
           201:
             body:
               application/json:
                 type: Note
-                example: { "idNote" : 2, "title" : "New notes title", "description" : "Description Note", "idNotebook" : "1" }
+                example: { "idNote" : 2, "title" : "New notes title", "description" : "Description Note", "idNotebook" : "1", "idTags" : [1,2,3] }
 #/NOTE GET & POST
 /note:
   get:
@@ -178,3 +198,108 @@ types:
             application/json:
               type: Error
               example: { "message" : "Note not found", "code" : 1001 }
+# /TAG GET & POST 
+/tag:
+  get:
+    description: List all Tags matching query criteria, if provided; otherwise list all Tags
+    queryParameters:
+      idTag?: integer
+      name?: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Tag[]
+            example: { "idTag" : 1, "name" : "Tag name" }
+  post:
+    description: Create a new Notebook
+    body:
+      application/json:
+        type: Tag
+        example: { "idTag" : 2, "name" : "New tag name" }
+    responses:
+      201:
+        body:
+          application/json:
+            type: Tag
+            example: { "idTag" : 2, "name" : "New tag name" }
+#/TAG/IDTAG GET, PUT & DELETE
+  /{idTag}:
+    get:
+      description: Get a Tag by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: Tag
+              example: { "idTag" : 1, "name" : "Tag name" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Tag not found", "code" : 1001 }
+    put:
+      description: Update a Tag by id
+      body:
+        application/json:
+          type: Tag
+          example: { "idTag" : 1, "name" : "Update tag name" }
+      responses:
+        200:
+          body:
+            application/json:
+              type: Tag
+              example: { "idTag" : 1, "name" : "Update tag name" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Note not found", "code" : 1001 }
+    delete:
+      description: Delete a Tag by id
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Note not found", "code" : 1001 } 
+#/TAG/IDTAG/NOTE  GET & POST       
+    /note:
+       get:
+        description: List all Tags matching query criteria, if provided; otherwise list all Tags
+        queryParameters:
+          idTag?: integer
+          title?: string
+        responses:
+          200:
+            body:
+              application/json:
+                type: Note[]
+                example: |
+                  [
+                    { "idNote" : 1, 
+                      "title" : "Notes title", 
+                      "description" : "Description Note", 
+                      "idNotebook" : "1", 
+                      "idTags" : [1,2,3] 
+                    },
+                    { "idNote" : 2, 
+                      "title" : "Notes title", 
+                      "description" : "Description Note", 
+                      "idNotebook" : "1", 
+                      "idTags" : [2,3] 
+                    }
+                  ]
+      post:
+        description: Create a new Note
+        body:
+          application/json:
+            type: Note
+            example: { "idTag" : 2, "title" : "New tags title", "idTags" : [1,2,3] }
+        responses:
+          201:
+            body:
+              application/json:
+                type: Note
+                example: { "idTag" : 2, "title" : "New tags title", "idTags" : [1,2,3] }
