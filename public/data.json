@@ -23,7 +23,7 @@
         "title": "w/ Bob & David",
         "idNote": "5",
         "description": "Bob and David emerge from the time machine they entered sixteen years ago and are reunited with the cast of Mr. Show.",
-        "idNotebook":"3"
+        "idNotebook":"1"
     }],
      "notebooks": [{
         "name": "ULACIT",
@@ -31,12 +31,5 @@
     }, {
         "name": "UCR",
         "idNotebook": "2"
-    }, {
-        "name": "Ingles",
-        "idNotebook": "4"
-    }
-    , {
-        "name": "Brainstation",
-        "idNotebook": "3"       
     }]
 }

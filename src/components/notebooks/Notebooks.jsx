@@ -19,15 +19,17 @@ const Notebooks = React.createClass({
             <img id='imgEditar' className='sectionFile__image' src='../iconos/search.svg' title='Search' />
           </button>
         </div>
-        <div className='col-md-12'>
-          <ul id='notebooksList' className='notebooksList'>
-            {allMyNotebooks.map((show) => {
-              return (
-                <NotebookLi key={ show.idNotebook } show={ show } />
-              );
-            })
-            },
-          </ul>
+        <div className='row section'>
+          <div className='col-md-12 notebooksList'>
+            <ul id='notebooksList'>
+              {allMyNotebooks.map((show) => {
+                return (
+                  <NotebookLi key={ show.idNotebook } show={ show } />
+                );
+              })
+              }
+            </ul>
+          </div>
         </div>
         <div className='row section'>
           <input className='form-control sectionFlile__input' type='text' id='inputNoteBook' placeholder='New notebook' />
