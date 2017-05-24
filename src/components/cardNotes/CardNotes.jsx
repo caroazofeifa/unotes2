@@ -2,7 +2,7 @@ import React from 'react';
 import './_card-notes.scss';
 
 const CardNotes = React.createClass({
-  editNote1() {
+  editNote() {
     this.props.editNote(this.props.show.title, this.props.show.description, this.props.show.idNote, this.props.show.idNotebook);
   },
   render() {
@@ -16,7 +16,7 @@ const CardNotes = React.createClass({
             <button className='note__button' href='#' id='buttonLib'>
               <img className='note__image' src='../iconos/send.svg' title='Send' />
             </button>
-            <button className='note__button' href='#' id='buttonLib' onClick={ this.editNote1 } >
+            <button className='note__button' href='#' id='buttonLib' onClick={ this.editNote } >
               <img className='note__image' src='../iconos/pencil.svg' title='Edit' />
             </button>
             <button className='note__button' href='#' id='buttonLib'>

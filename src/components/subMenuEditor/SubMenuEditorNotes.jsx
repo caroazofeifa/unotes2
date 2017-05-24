@@ -5,7 +5,7 @@ const Option = require('../dropDown/Option');
 
 const SubMenuEditorNotes = React.createClass({
   render() {
-    const { allMyNotebooks, idNotebook } = this.props.editNote;
+    const { allMyNotebooks, idNotebook } = this.props.stateApp;
     return (
        <nav className='navEditor'>
             <ul className='navEditor__ul section'>

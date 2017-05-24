@@ -1,0 +1,74 @@
+#%RAML 1.0
+title: Builing Foo REST Services API using Data Types
+version: v1
+protocols: [ HTTPS ] 
+baseUri: http://myapi.mysite.com/api/{version}
+mediaType: application/json
+
+securitySchemes:
+  basicAuth:
+    description: Each request must contain the headers necessary for basic authentication
+    type: Basic Authentication
+    describedBy:
+      headers:
+        Authorization:
+          description: Used to send the Base64-encoded "username:password"credentials
+          type: string
+      responses:
+        401:
+          description: |
+            Unauthorized. Either the provided username and password
+            combination is invalid, or the user is not allowed to access
+            the content provided by the requested URL.
+            types:
+types:
+  Foo:
+    properties:
+      id: integer
+      name: string
+      ownerName?: string
+  Error:
+    properties:
+      code: integer
+      message: string
+/foos:
+  get:
+    description: List all Foos matching query criteria, if provided;otherwise list all Foos
+    queryParameters:
+      name?: string
+      ownerName?: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Foo[]
+            example: |
+              [
+                { "id" : 1, "name" : "First Foo" },
+                { "id" : 2, "name" : "Second Foo" }
+              ]
+  post:
+    description: Create a new Foo
+    body:
+      application/json:
+        type: Foo
+        example: { "id" : 5, "name" : "Another foo" }
+    responses:
+      201:
+        body:
+          application/json:
+            type: Foo
+            example: { "id" : 5, "name" : "Another foo" }
+  //{id}:
+    get:
+      description: Get a Foo by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: Foo
+              example: { "id" : 1, "name" : "First Foo" }
+    put:
+    delete:
+  /name/{name}:
+    get:

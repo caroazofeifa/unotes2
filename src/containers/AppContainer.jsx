@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 const NotesContainer = require('./NotesContainer');
+
 const NavMenu = require('../components/navMenu/NavMenu');
 const EditorNotes = require('../components/editorNotes/EditorNotes');
 const Notebooks = require('../components/notebooks/Notebooks');
@@ -52,6 +53,7 @@ class AppContainer extends React.Component {
         this.setState({ allMyNotebooks });
       });
   }
+  //Sets true/salse variables to show Modal editor of notes
   showEditorNotes() {
     if (this.state.showEditor) {
       this.setState({ showEditor: false });
@@ -59,6 +61,7 @@ class AppContainer extends React.Component {
       this.setState({ showEditor: true });
     }
   }
+  //Sets true/false variables to show Menu of Notebooks
   showNotebooks() {
     if (this.state.showNotebook) {
       this.setState({ showNotebook: false });
@@ -66,6 +69,7 @@ class AppContainer extends React.Component {
       this.setState({ showNotebook: true });
     }
   }
+  //Sets true/false variables to show Menu of Tags
   showTags() {
     if (this.state.showTag) {
       this.setState({ showTag: false });
@@ -73,6 +77,8 @@ class AppContainer extends React.Component {
       this.setState({ showTag: true });
     }
   }
+  //Sets vars in the STATE from selected note
+  //Shows Modal editor of notes
   editNote(titleI, descriptionI, idNoteI, idNotebookI) {
     this.setState({ title: titleI });
     this.setState({ description: descriptionI });
@@ -103,12 +109,12 @@ class AppContainer extends React.Component {
         </div>
         {/*<Route
           path='/newNote' render={ () => (*/}
-            <EditorNotes showEditorNotes={ this.state } />
+            <EditorNotes stateApp={ this.state } />
           {/*) }
         />
         <Route
           path='/newNotebook' render={ () => (*/}
-            <Notebooks showNotebooks={ this.state } />
+            <Notebooks stateApp={ this.state } />
           {/*) }
         />
         <Route
@@ -116,9 +122,8 @@ class AppContainer extends React.Component {
             <Tags showTags={ this.state } />
           {/*) }
         />*/}
-        <NotesContainer showData={ this.state } editNote={ this.editNote.bind(this) } />
+        <NotesContainer stateApp={ this.state } editNote={ this.editNote.bind(this) } />
         {/*<Route path='/' component={ NotesContainer } />*/}
-
       </div>
     );
   }

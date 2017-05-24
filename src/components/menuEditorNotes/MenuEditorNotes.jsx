@@ -3,11 +3,12 @@ import './_menu-editorNotes.scss';
 
 const MenuEditorNotes = React.createClass({
   render() {
+    const { title } = this.props.stateApp;
     return (
         <nav className='section navNote'>
             <ul className='navNote__ul'>
                 <li>
-                <input className='navNote__input' id='nameNote' type='text' placeholder='Title' value={ this.props.editNote.title } />
+                <input className='navNote__input' id='nameNote' type='text' placeholder='Title' value={ title } />
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>

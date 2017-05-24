@@ -7,18 +7,22 @@ class NotesContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      folderIndex: '1', //This id should be 0 or -1?
+      indexSelectedNotebook: '1', //This id should be 0 or -1?
     };
   }
   //Set the index of the folder/notebook selected in the dropDown
-  changeFolder(folderI) {
-    this.setState({ folderIndex: folderI });
+  changeNotebook(notebookI) {
+    this.setState({ indexSelectedNotebook: notebookI });
   }
   render() {
     return (
       <div className='col-md-11'>
-        <DropDown showData={ this.props.showData } propFolder={ this.state } editNote={ this.props.editNote } selectFolder={ this.changeFolder.bind(this) } />
-        <Notes showData={ this.props.showData } propFolder={ this.state } editNote={ this.props.editNote } />
+        {/*1.State app: all data from appContainer
+        2.StateDropDown: index of the selected notebook
+        3.editNote: function in appContainer to select a notebook
+        4.changeNotebook: change its own id of notebook (state)*/}
+        <DropDown stateApp={ this.props.stateApp } changeNotebook={ this.changeNotebook.bind(this) } />
+        <Notes stateApp={ this.props.stateApp } stateNotes={ this.state } editNote={ this.props.editNote } />
       </div>
     );
   }

@@ -6,6 +6,7 @@ const reactRouter = require('react-router-dom');
 // const Switch = reactRouter.Switch;
 const Link = reactRouter.Link;
 // const About = <h1>hola</h1>;
+
 const NavMenu = React.createClass({
   //Calls to show the modal editor of notes
   showNotes() {

@@ -7,17 +7,18 @@ const TextEditorNotes = require('../textEditor/TextEditorNotes');
 
 const EditorNotes = React.createClass({
   render() {
+    const { editorNotes } = this.props.stateApp;
     return (
-      <section id='notesModal' className={ this.props.showEditorNotes.editorNotes } >
+      <section id='notesModal' className={ editorNotes } >
         <div className='row'>
           <div className='col-md-12' >
-            <MenuEditorNotes editNote={ this.props.showEditorNotes } />
+            <MenuEditorNotes stateApp={ this.props.stateApp } />
           </div>
           <div className='col-md-12'>
-            <SubMenuEditorNotes editNote={ this.props.showEditorNotes } />
+            <SubMenuEditorNotes stateApp={ this.props.stateApp } />
           </div>
           <div className='col-md-12'>
-            <TextEditorNotes editNote={ this.props.showEditorNotes } />
+            <TextEditorNotes stateApp={ this.props.stateApp } />
           </div>
         </div>
       </section>
