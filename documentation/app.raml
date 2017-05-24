@@ -1,0 +1,180 @@
+#%RAML 1.0
+title: Baeldung Unotes REST Services API
+version: v1
+protocols: [ HTTPS ]
+baseUri: http://rest-api.baeldung.com/api/{version}
+mediaType: application/json
+types:
+  Note:
+    type: object
+    properties:
+      idNote: integer
+      title: string
+      description?: string
+      idNotebook: integer
+   Notebook:
+    type: object
+    properties:
+      idNotebook: integer
+      name: string
+  Error:
+    properties:
+      code: integer
+      message: string
+# /NOTEBOOK GET & POST 
+/notebook:
+  get:
+    description: List all Notebooks matching query criteria, if provided; otherwise list all Notebooks
+    queryParameters:
+      idNotebook?: integer
+      name?: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Notebook[]
+            example: { "idNotebook" : 1, "name" : "Notebook name" }
+  post:
+    description: Create a new Notebook
+    body:
+      application/json:
+        type: Notebook
+        example: { "idNotebook" : 2, "name" : "New notebok name" }
+    responses:
+      201:
+        body:
+          application/json:
+            type: Notebook
+            example: { "idNotebook" : 2, "name" : "New notebok name" }
+#/NOTEBOOK/IDNOTEBOOK GET, PUT & DELETE
+  /{idNotebook}:
+    get:
+      description: Get a Notebook by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: Notebook
+              example: { "idNotebook" : 1, "name" : "Notebook name" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Notebook not found", "code" : 1001 }
+    put:
+      description: Update a Notebook by id
+      body:
+        application/json:
+          type: Notebook
+          example: { "idNotebook" : 1, "name" : "Update notebook name" }
+      responses:
+        200:
+          body:
+            application/json:
+              type: Notebook
+              example: { "idNotebook" : 1, "name" : "Update notes name" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Note not found", "code" : 1001 }
+    delete:
+      description: Delete a Notebook by id
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Note not found", "code" : 1001 } 
+#/NOTEBOOK/IDNOTEBOOK/NOTE  GET & POST       
+    /note:
+       get:
+        description: List all Notes matching query criteria, if provided; otherwise list all Notes
+        queryParameters:
+          idNote?: integer
+          title?: string
+        responses:
+          200:
+            body:
+              application/json:
+                type: Note[]
+                example: { "idNote" : 1, "title" : "Notes title" }
+      post:
+        description: Create a new Note
+        body:
+          application/json:
+            type: Note
+            example: { "idNote" : 2, "title" : "New notes title" }
+        responses:
+          201:
+            body:
+              application/json:
+                type: Note
+                example: { "idNote" : 2, "title" : "New notes title" }
+#/NOTE GET & POST
+/note:
+  get:
+    description: List all Notes matching query criteria, if provided; otherwise list all Notes
+    queryParameters:
+      idNote?: integer
+      title?: string
+    responses:
+      200:
+        body:
+          application/json:
+            type: Note[]
+            example: { "idNote" : 1, "title" : "Notes title" }
+  post:
+    description: Create a new Note
+    body:
+      application/json:
+        type: Note
+        example: { "idNote" : 2, "title" : "New notes title" }
+    responses:
+      201:
+        body:
+          application/json:
+            type: Note
+            example: { "idNote" : 2, "title" : "New notes title" }
+#/NOTE/IDNOTE GET, PUT & DELETE
+  /{idNote}:
+    get:
+      description: Get a Note by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: Note
+              example: { "idNote" : 1, "title" : "Notes title" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Note not found", "code" : 1001 }
+    put:
+      description: Update a Note by id
+      body:
+        application/json:
+          type: Note
+          example: { "idNote" : 1, "title" : "Update notes title" }
+      responses:
+        200:
+          body:
+            application/json:
+              type: Note
+              example: { "idNote" : 1, "title" : "Update notes title" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Note not found", "code" : 1001 }
+    delete:
+      description: Delete a Note by id
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Note not found", "code" : 1001 }
