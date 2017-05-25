@@ -6,7 +6,6 @@
   left: -1500%;
   padding-bottom: 0.5rem;
   position: absolute;
-  transition: ease 2s;
   text-align: center;
   top: 0vh;
   transition: ease 2s;
@@ -21,7 +20,6 @@
   left: 8.3%;
   padding-bottom: 0.5rem;
   position: absolute;
-  transition: ease 2s;
   text-align: center;
   top: 0vh;
   transition: ease 2s;
@@ -102,7 +100,7 @@
     margin: 0.7rem 0.7rem 0.7rem 0.7rem;
     width: 1.1rem;
   }
-    .col--width{
+  .col--width{
     width: 100%;
   }
   h6{

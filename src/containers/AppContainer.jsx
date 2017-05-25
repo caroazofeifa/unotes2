@@ -104,6 +104,15 @@ class AppContainer extends React.Component {
         console.log('saved successfully');
       });
   }
+  addTag(nameTagI) {
+    console.log(nameTagI);
+    const newTag = { name: nameTagI };
+    axios
+      .post(serverTags, queryString.stringify(newTag))
+      .then(function (response) {
+        console.log('saved successfully');
+      });
+  }
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';

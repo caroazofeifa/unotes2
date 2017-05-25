@@ -1,18 +1,7 @@
-
 const express = require('express');
+const app = express();
+const routes = require('./routes/');
 
-var app = express();
+app.use('/api', routes);
 
-app.get('/', (req,res) => {
-    res.send("hello world");
-});
-
-app.get('/bretes', (req,res) => {
-     res.json({
-        "name":"brete"
-     });
-});
-
-app.listen(3000, () =>{
-    console.log('exp list on port 3000');
-});
+module.exports = app;

@@ -13,7 +13,7 @@
     "watch": "npm run build -- --watch",
     "api": "json-server --watch public/data.json",
     "start": "concurrently \"npm run dev\" \"npm run api\"",
-    "start:server": "nodemon ./api"
+    "start:server": "nodemon ./api/start"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.0",
@@ -51,7 +51,9 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
+    "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "mongoose": "^4.10.2",
     "node-sass": "^4.5.2",
     "query-string": "^4.3.4",
     "react": "^15.4.2",

@@ -7,7 +7,7 @@ const preload = '../src/images/';
 
 const Tags = React.createClass({
   handleChange(event) {
-    const name =updateNameTag.value;
+    const name = event.currentTarget.value;
     this.props.updateNameTag(name);
   },
   addTag() {

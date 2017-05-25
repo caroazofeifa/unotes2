@@ -40,14 +40,17 @@
   margin: 20px;
 }
 .tagsList{
-  border-bottom: 1px solid gray;
-  border-top: 1px solid gray;
+  display: inline;
   list-style-type: none;
   line-height: 6rem;
 }
+.tagsList--border{
+  border-bottom: 1px solid gray;
+  border-top: 1px solid gray;
+}
 .tagFile__input{
   margin: 1rem 1rem 0 1rem;
-  width: 100%;
+  // width: 100%;
 }
 .tagFile__list{
   //background-color: #66a5ca;
@@ -83,35 +86,83 @@
   border-color: #2b4f63;
   box-shadow: none;
 }
+.col--width{
+  width: 100%;
+}
 //MEDIA QUERIES
 /* Mobile Styles */
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 350px) {
   .tagFile--show{
     left:0;
     top: 11vh;
     width: 100%;
   }
   .tagFile__image{
-    height: 5rem;
-    margin: 0.6rem 0.6rem 0.6rem 0.6rem;
-    width: 3rem;
-  }     
+    height: 2.2rem;
+    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    width: 1.1rem;
+  }
+  .col--width{
+    width: 100;
+  }
+  h6{
+    font-size: 1.2rem;
+  }
 }
 /* Tablet Styles */
-@media only screen and (min-width: 401px) and (max-width: 991px) {
+@media only screen and (min-width: 351px) and (max-width: 519px) {
   .tagFile--show{
-    top: 14vh;
-    width: 60%;
-    left: 20%;
+    left: 0;
+    top: 11vh;
+    width: 100%;
    }
   .tagFile__image{
-    height: 5.5rem;
+    height: 4rem;
     margin: 0.7rem 0.7rem 0.7rem 0.7rem;
     width: 3.5rem;
   }
+  .col--width{
+    width: 100%;
+  }
+  h6{
+    font-size: 1.2rem;
+  }
 }
-@media only screen and (min-width: 992px) and (max-width: 1253px) {
-  .tagFile--show{
-    width: 35.4%;
+@media only screen and (min-width: 520px) and (max-width: 789px) {
+.tagFile--show{
+    top: 14vh;
+    width: 65%;
+    left: 15%;
    }
+  .tagFile{
+    height: 4rem;
+    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    width: 2rem;
+  }
+  .col--width{
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 790px) and (max-width: 991px) {
+.tagFile--show{
+    top: 14vh;
+    width: 60%;
+    left: 15%;
+   }
+  .tagFile__image{
+    height: 4rem;
+    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    width: 2rem;
+  }
+  .col--width{
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1250px) {
+.tagFile--show{
+    width: 33%;
+   }
+  .col--width{
+    width: 100%;
+  }
 }
