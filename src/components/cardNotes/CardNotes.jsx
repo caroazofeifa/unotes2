@@ -1,6 +1,8 @@
 import React from 'react';
 import './_card-notes.scss';
 
+const preload = '../src/images/';
+
 const CardNotes = React.createClass({
   editNote() {
     this.props.editNote(this.props.show.title, this.props.show.description, this.props.show.idNote, this.props.show.idNotebook);
@@ -14,13 +16,13 @@ const CardNotes = React.createClass({
             <h3 className='title--shorter'>{title}</h3>
             <p className='p--shorter'>{description}</p>
             <button className='note__button' href='#' id='buttonLib'>
-              <img className='note__image' src='../iconos/send.svg' title='Send' />
+              <img className='note__image' src={ `${preload}send.svg` } title='Send' />
             </button>
             <button className='note__button' href='#' id='buttonLib' onClick={ this.editNote } >
-              <img className='note__image' src='../iconos/pencil.svg' title='Edit' />
+              <img className='note__image' src={ `${preload}pencil.svg` } title='Edit' />
             </button>
             <button className='note__button' href='#' id='buttonLib'>
-              <img className='note__image' src='../iconos/delete.svg' title='Delete' />
+              <img className='note__image' src={ `${preload}delete.svg` } title='Delete' />
             </button>
           </div>
         </div>

@@ -3,6 +3,8 @@ import './_subMenu-editorNotes.scss';
 
 const Option = require('../dropDown/Option');
 
+const preload = '../src/images/';
+
 const SubMenuEditorNotes = React.createClass({
   render() {
     const { allMyNotebooks, idNotebook } = this.props.stateApp;
@@ -11,7 +13,7 @@ const SubMenuEditorNotes = React.createClass({
             <ul className='navEditor__ul section'>
                 <li>
                 <button className='navEditor__button' href='#'>
-                    <img className='navEditor__image' src='../iconos/agenda.svg' title='Notebook' />
+                    <img className='navEditor__image' src={ `${preload}agenda.svg` } title='Notebook' />
                 </button>
                 </li>
                 <li>
@@ -26,7 +28,7 @@ const SubMenuEditorNotes = React.createClass({
                 </li>
                 <li>
                 <button className='navEditor__button' href='#'>
-                    <img className='navEditor__image' src='../iconos/tag.svg' title='Tags' />
+                    <img className='navEditor__image' src={ `${preload}tag.svg` } title='Tags' />
                 </button>
                 </li>
                 <li>

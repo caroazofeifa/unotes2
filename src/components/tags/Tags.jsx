@@ -3,7 +3,16 @@ import './_tags.scss';
 
 const TagLi = require('./TagLi');
 
+const preload = '../src/images/';
+
 const Tags = React.createClass({
+  handleChange(event) {
+    const name =updateNameTag.value;
+    this.props.updateNameTag(name);
+  },
+  addTag() {
+    this.props.addTagContainer();
+  },
   render() {
     const { tag, allMyTags } = this.props.stateApp;
     return (
@@ -16,7 +25,7 @@ const Tags = React.createClass({
         <div className='row section'>
           <input className='form-control tagFile__input' type='search' placeholder='Search' />
           <button className='tagFile__button tagFile__button--margin' href='#' id='buttonEditar'>
-            <img id='imgEditar' className='tagFile__image' src='../iconos/search.svg' title='Search' />
+            <img id='imgEditar' className='tagFile__image' src={ `${preload}search.svg` } title='Search' />
           </button>
         </div>
         <div className='rowsection'>
@@ -34,7 +43,7 @@ const Tags = React.createClass({
         <div className='row section'>
           <input className='form-control tagFile__input' type='text' id='inputNewTag' placeholder='New tags' />
           <button className='tagFile__button tagFile__button--margin' href='#' id='addTag'>
-            <img className='tagFile__image' src='../iconos/add.svg' title='Add' />
+            <img className='tagFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>
         </div>
       </section>

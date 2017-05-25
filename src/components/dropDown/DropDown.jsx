@@ -3,6 +3,8 @@ import './_dropDown.scss';
 
 const Option = require('./Option');
 
+const preload = '../src/images/';
+
 const DropDown = React.createClass({
   //Gets the index/value selected from the dropDrown and sends it to the parrent
   handleChange(event) {
@@ -24,7 +26,7 @@ const DropDown = React.createClass({
           },
         </select>
         <button className='notesDropDrown__button' id='buttonTag'>
-          <img className='notesDropDrown__img' src='../iconos/icon.svg' title='UNotes' />
+          <img className='notesDropDrown__img' src={ `${preload}icon.svg` } title='UNotes' />
         </button>
       </section>
     );

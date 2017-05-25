@@ -6,6 +6,7 @@ const reactRouter = require('react-router-dom');
 // const Switch = reactRouter.Switch;
 const Link = reactRouter.Link;
 // const About = <h1>hola</h1>;
+const preload = '../src/images/';
 
 const NavMenu = React.createClass({
   //Calls to show the modal editor of notes
@@ -27,28 +28,28 @@ const NavMenu = React.createClass({
           <li>
             <Link to='/'>
             <button className='sideNav__button' id='user'>
-              <img className='sideNav__image' src='../iconos/user-3.svg' title='User configurations' />
+              <img className='sideNav__image' src={ `${preload}user-3.svg` } title='User configurations' />
             </button>
             </Link>
           </li>
             <li>
               <Link to='/newNote'>
               <button className='sideNav__button' id='buttonNote' onClick={ this.showNotes }>
-                <img className='sideNav__image' src='../iconos/file.svg' title='New note' />
+                <img className='sideNav__image' src={ `${preload}file.svg` } title='New note' />
               </button>
               </Link>
             </li>
           <li>
             <Link to='newNotebook'>
             <button className='sideNav__button' id='buttonNotebook' onClick={ this.showNotebooks } >
-              <img className='sideNav__image' src='../iconos/agenda.svg' title='Notebooks' />
+              <img className='sideNav__image' src={ `${preload}agenda.svg` } title='Notebooks' />
             </button>
             </Link>
           </li>
           <li>
             <Link to='/newTag'>
             <button className='sideNav__button' id='buttonTag' onClick={ this.showTags } >
-              <img className='sideNav__image' src='../iconos/tag.svg' title='Tags' />
+              <img className='sideNav__image' src={ `${preload}tag.svg` } title='Tags' />
             </button>
             </Link>
           </li>
