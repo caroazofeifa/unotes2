@@ -11,6 +11,7 @@ const Tags = require('../components/tags/Tags');
 
 const serverNotes = 'http://localhost:3000/notes';
 const serverNotebooks = 'http://localhost:3000/notebooks';
+const serverTags = 'http://localhost:3000/tags';
 
 // const Route = reactRouter.Route;
 
@@ -33,6 +34,7 @@ class AppContainer extends React.Component {
       //Data
       allMyNotes: [],
       allMyNotebooks: [],
+      allMyTags: [],
     };
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
@@ -51,6 +53,12 @@ class AppContainer extends React.Component {
       .then(res => {
         const allMyNotebooks = res.data;
         this.setState({ allMyNotebooks });
+      });
+    axios
+      .get(serverTags)
+      .then(res => {
+        const allMyTags = res.data;
+        this.setState({ allMyTags });
       });
   }
   //Sets true/salse variables to show Modal editor of notes
@@ -119,7 +127,7 @@ class AppContainer extends React.Component {
         />
         <Route
           path='newTag' render={ () => (*/}
-            <Tags showTags={ this.state } />
+            <Tags stateApp={ this.state } />
           {/*) }
         />*/}
         <NotesContainer stateApp={ this.state } editNote={ this.editNote.bind(this) } />
