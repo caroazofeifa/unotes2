@@ -21,9 +21,9 @@ const Notebooks = React.createClass({
             <img id='imgEditar' className='sectionFile__image' src={ `${preload}search.svg` } title='Search' />
           </button>
         </div>
-        <div className='row section'>
-          <div className='col-md-12 notebooksList'>
-            <ul id='notebooksList'>
+        <div className='row'>
+          <div className='col-md-12 notebooksList--border'>
+            <ul id='notebooksList' className='notebooksList'>
               {allMyNotebooks.map((show) => {
                 return (
                   <NotebookLi key={ show.idNotebook } show={ show } />
