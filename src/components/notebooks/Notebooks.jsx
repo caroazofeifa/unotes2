@@ -6,6 +6,13 @@ const NotebookLi = require('./NotebookLi');
 const preload = '../src/images/';
 
 const Notebooks = React.createClass({
+  handleChange(event) {
+    const name = event.currentTarget.value;
+    this.props.updateNameNotebook(name);
+  },
+  addNoteBook() {
+    this.props.addNotebookContainer();
+  },
   render() {
     const { notebook, allMyNotebooks } = this.props.stateApp;
     return (
@@ -34,8 +41,8 @@ const Notebooks = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control sectionFlile__input' type='text' id='inputNoteBook' placeholder='New notebook' />
-          <button className='sectionFile__button sectionFile__button--margin' href='#' id='addNoteBook'>
+          <input className='form-control sectionFlile__input' type='text' id='inputNoteBook' placeholder='New notebook' onChange={ this.handleChange } />
+          <button className='sectionFile__button sectionFile__button--margin' href='#' id='addNoteBook' onClick={ this.addNoteBook }>
             <img className='sectionFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>
         </div>

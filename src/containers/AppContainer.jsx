@@ -1,11 +1,12 @@
 import React from 'react';
 import axios from 'axios';
 
+const queryString = require('query-string');
 const NotesContainer = require('./NotesContainer');
+const NotebooksContainer = require('./NotebooksContainer');
 
 const NavMenu = require('../components/navMenu/NavMenu');
 const EditorNotes = require('../components/editorNotes/EditorNotes');
-const Notebooks = require('../components/notebooks/Notebooks');
 const Tags = require('../components/tags/Tags');
 //const reactRouter = require('react-router-dom');
 
@@ -86,6 +87,15 @@ class AppContainer extends React.Component {
     this.setState({ idNotebook: idNotebookI });
     this.setState({ showEditor: true });
   }
+  addNotebook(nameNotebookI) {
+    console.log(nameNotebookI);
+    const newNotebook = { name: nameNotebookI };
+    axios
+      .post(serverNotebooks, queryString.stringify(newNotebook))
+      .then(function(response){
+        console.log('saved successfully')
+       }); 
+  }
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';
@@ -114,7 +124,7 @@ class AppContainer extends React.Component {
         />
         <Route
           path='/newNotebook' render={ () => (*/}
-            <Notebooks stateApp={ this.state } />
+            <NotebooksContainer stateApp={ this.state } addNotebook={ this.addNotebook.bind(this) } />
           {/*) }
         />
         <Route
