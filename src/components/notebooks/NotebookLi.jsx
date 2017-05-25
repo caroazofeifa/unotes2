@@ -1,6 +1,8 @@
 import React from 'react';
 import './_notebooks.scss';
 
+const preload = '../src/images/';
+
 const NotebookLi = React.createClass({
   render() {
     const { name } = this.props.show;
@@ -13,13 +15,13 @@ const NotebookLi = React.createClass({
             </div>
             <div className='col-md-7'>
               <button className='sectionFile__button' href='#' id='buttonEditar'>
-                <img id='imgEditar' className='sectionFile__image' src='../iconos/pencil.svg' title='Edit' />
+                <img id='imgEditar' className='sectionFile__image' src={ `${preload}pencil.svg` } title='Edit' />
               </button>
               <button className='sectionFile__button' href='#'>
-                <img className='sectionFile__image' src='../iconos/file.svg' title='New note' />
+                <img className='sectionFile__image' src={ `${preload}file.svg` } title='New note' />
               </button>
               <button className='sectionFile__button' href='#'>
-                <img className='sectionFile__image' src='../iconos/delete.svg' title='Delete' />
+                <img className='sectionFile__image' src={ `${preload}delete.svg` } title='Delete' />
               </button>
             </div>
           </div>

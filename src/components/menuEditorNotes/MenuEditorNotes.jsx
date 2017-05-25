@@ -1,6 +1,8 @@
 import React from 'react';
 import './_menu-editorNotes.scss';
 
+const preload = '../src/images/';
+
 const MenuEditorNotes = React.createClass({
   render() {
     const { title } = this.props.stateApp;
@@ -12,22 +14,22 @@ const MenuEditorNotes = React.createClass({
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>
-                    <img className='navNote__image' src='../iconos/user-2.svg' title='Add contribuitor' />
+                    <img className='navNote__image' src={ `${preload}user-2.svg` } title='Add contribuitor' />
                 </button>
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>
-                    <img className='navNote__image' src='../iconos/send.svg' title='Send' />
+                    <img className='navNote__image' src={ `${preload}send.svg` } title='Send' />
                 </button>
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>
-                    <img className='navNote__image' src='../iconos/delete.svg' title='Delete' />
+                    <img className='navNote__image' src={ `${preload}delete.svg` } title='Delete' />
                 </button>
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>
-                    <img className='navNote__image' src='../iconos/info-button.svg' title='Information' />
+                    <img className='navNote__image' src={ `${preload}info-button.svg` } title='Information' />
                 </button>
                 </li>
             </ul>

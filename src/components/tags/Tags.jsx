@@ -1,6 +1,8 @@
 import React from 'react';
 import './_tags.scss';
 
+const preload = '../src/images/';
+
 const Tags = React.createClass({
   render() {
     return (
@@ -13,7 +15,7 @@ const Tags = React.createClass({
         <div className='row section'>
           <input className='form-control tagFile__input' type='search' placeholder='Search' />
           <button className='tagFile__button tagFile__button--margin' href='#' id='buttonEditar'>
-            <img id='imgEditar' className='tagFile__image' src='../iconos/search.svg' title='Search' />
+            <img id='imgEditar' className='tagFile__image' src={ `${preload}search.svg` } title='Search' />
           </button>
         </div>
         <ul id='tagList' className='tagsList'>
@@ -24,10 +26,10 @@ const Tags = React.createClass({
               </div>
               <div className='col-md-7'>
                 <button className='tagFile__button' href='#' id='buttonEditar'>
-                  <img id='imgEditar' className='tagFile__image' src='../iconos/pencil.svg' title='Edit' />
+                  <img id='imgEditar' className='tagFile__image' src={ `${preload}pencil.svg` } title='Edit' />
                 </button>
                 <button className='tagFile__button' href='#'>
-                  <img className='tagFile__image' src='../iconos/delete.svg' alt='Delete' />
+                  <img className='tagFile__image' src={ `${preload}delete.svg` } alt='Delete' />
                 </button>
               </div>
             </div>
@@ -36,7 +38,7 @@ const Tags = React.createClass({
         <div className='row section'>
           <input className='form-control tagFile__input' type='text' id='inputNewTag' placeholder='New tags' />
           <button className='tagFile__button tagFile__button--margin' href='#' id='addTag'>
-            <img className='tagFile__image' src='../iconos/add.svg' title='Add' />
+            <img className='tagFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>
         </div>
       </section>
