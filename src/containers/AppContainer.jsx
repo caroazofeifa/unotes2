@@ -1,19 +1,18 @@
 import React from 'react';
 import axios from 'axios';
+import { Route } from 'react-router-dom';
+import { Redirect } from 'react-router'
 
 const queryString = require('query-string');
 const NotesContainer = require('./NotesContainer');
 const NotebooksContainer = require('./NotebooksContainer');
+const EditorNotesContainer = require('./EditorNotesContainer');
 
 const NavMenu = require('../components/navMenu/NavMenu');
-const EditorNotes = require('../components/editorNotes/EditorNotes');
 const Tags = require('../components/tags/Tags');
-//const reactRouter = require('react-router-dom');
 
 const serverNotes = 'http://localhost:3000/notes';
 const serverNotebooks = 'http://localhost:3000/notebooks';
-
-// const Route = reactRouter.Route;
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -92,9 +91,9 @@ class AppContainer extends React.Component {
     const newNotebook = { name: nameNotebookI };
     axios
       .post(serverNotebooks, queryString.stringify(newNotebook))
-      .then(function(response){
-        console.log('saved successfully')
-       }); 
+      .then(function (response) {
+        console.log('saved successfully');
+      });
   }
   render() {
     if (this.state.showEditor) {
@@ -117,23 +116,33 @@ class AppContainer extends React.Component {
         <div className='col-md-1 cols'>
           <NavMenu showEditorNotes={ this.showEditorNotes.bind(this) } showNotebooks={ this.showNotebooks.bind(this) } showTags={ this.showTags.bind(this) } />
         </div>
-        {/*<Route
-          path='/newNote' render={ () => (*/}
-            <EditorNotes stateApp={ this.state } />
-          {/*) }
-        />
-        <Route
-          path='/newNotebook' render={ () => (*/}
+        <Route path="/Tags" render={() => (
+            this.state.showTag ? (
+              <Tags showTags={ this.state } />
+            ) : (
+              <Redirect to="/"/>
+            )
+          )}/>
+        <Route path="/Notebooks" render={() => (
+          this.state.showNotebook ? (
             <NotebooksContainer stateApp={ this.state } addNotebook={ this.addNotebook.bind(this) } />
-          {/*) }
-        />
+          ) : (
+            <Redirect to="/"/>
+          )
+        )}/>
+
+        <Route path="/NoteEditor" render={() => (
+          this.state.showEditor ? (
+            <EditorNotesContainer stateApp={ this.state } />
+          ) : (
+            <Redirect to="/"/>
+          )
+        )}/>
         <Route
-          path='newTag' render={ () => (*/}
-            <Tags showTags={ this.state } />
-          {/*) }
-        />*/}
-        <NotesContainer stateApp={ this.state } editNote={ this.editNote.bind(this) } />
-        {/*<Route path='/' component={ NotesContainer } />*/}
+          path='/' render={ () => (
+            <NotesContainer stateApp={ this.state } editNote={ this.editNote.bind(this) } />
+          ) }
+        />
       </div>
     );
   }

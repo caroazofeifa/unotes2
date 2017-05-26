@@ -33,21 +33,21 @@ const NavMenu = React.createClass({
             </Link>
           </li>
             <li>
-              <Link to='/newNote'>
-              <button className='sideNav__button' id='buttonNote' onClick={ this.showNotes }>
+              <Link to='/NoteEditor'>
+              <button className='sideNav__button' id='buttonNote' onClick={ this.showNotes } >
                 <img className='sideNav__image' src={ `${preload}file.svg` } title='New note' />
               </button>
               </Link>
             </li>
           <li>
-            <Link to='newNotebook'>
+            <Link to='/Notebooks'>
             <button className='sideNav__button' id='buttonNotebook' onClick={ this.showNotebooks } >
               <img className='sideNav__image' src={ `${preload}agenda.svg` } title='Notebooks' />
             </button>
             </Link>
           </li>
           <li>
-            <Link to='/newTag'>
+            <Link to='/Tags'>
             <button className='sideNav__button' id='buttonTag' onClick={ this.showTags } >
               <img className='sideNav__image' src={ `${preload}tag.svg` } title='Tags' />
             </button>

@@ -7,7 +7,8 @@ const preload = '../src/images/';
 
 const SubMenuEditorNotes = React.createClass({
   render() {
-    const { allMyNotebooks, idNotebook } = this.props.stateApp;
+    const { allMyNotebooks } = this.props.stateApp;
+    const { idNotebookNote } = this.props.infoEditorNote;
     return (
        <nav className='navEditor'>
             <ul className='navEditor__ul section'>
@@ -17,7 +18,7 @@ const SubMenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <select className='navEditor__dropdown' value={ idNotebook } >
+                <select className='navEditor__dropdown' value={ idNotebookNote } onChange={ this.handleChange } >
                     {allMyNotebooks.map((show) => {
                       return (
                         <Option key={ show.idNotebook } show={ show } />

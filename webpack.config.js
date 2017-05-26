@@ -10,6 +10,9 @@ module.exports = {
         javascript: './components/app/app.jsx',
     },
     devtool: 'eval',
+    devServer: {
+        historyApiFallback: true,
+    },
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'bundle.js'

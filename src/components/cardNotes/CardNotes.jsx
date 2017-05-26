@@ -1,6 +1,8 @@
 import React from 'react';
 import './_card-notes.scss';
 
+const reactRouter = require('react-router-dom');
+const Link = reactRouter.Link;
 const preload = '../src/images/';
 
 const CardNotes = React.createClass({
@@ -18,9 +20,11 @@ const CardNotes = React.createClass({
             <button className='note__button' href='#' id='buttonLib'>
               <img className='note__image' src={ `${preload}send.svg` } title='Send' />
             </button>
-            <button className='note__button' href='#' id='buttonLib' onClick={ this.editNote } >
-              <img className='note__image' src={ `${preload}pencil.svg` } title='Edit' />
-            </button>
+            <Link to='/NoteEditor'>
+              <button className='note__button' href='#' id='buttonLib' onClick={ this.editNote } >
+                <img className='note__image' src={ `${preload}pencil.svg` } title='Edit' />
+              </button>
+            </Link>
             <button className='note__button' href='#' id='buttonLib'>
               <img className='note__image' src={ `${preload}delete.svg` } title='Delete' />
             </button>

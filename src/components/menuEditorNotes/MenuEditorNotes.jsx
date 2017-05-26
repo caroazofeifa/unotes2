@@ -4,13 +4,19 @@ import './_menu-editorNotes.scss';
 const preload = '../src/images/';
 
 const MenuEditorNotes = React.createClass({
+  handleChange(event) {
+    const title = event.currentTarget.value;
+    console.log(title);
+    this.props.updateTitleNote(title);
+  },
   render() {
-    const { title } = this.props.stateApp;
+    const { titleNote } = this.props.infoEditorNote;
+    //this.props.updateTitleNote(nameNote.value.text);
     return (
         <nav className='section navNote'>
             <ul className='navNote__ul'>
                 <li>
-                <input className='navNote__input' id='nameNote' type='text' placeholder='Title' value={ title } />
+                <input className='navNote__input' id='nameNote' type='text' placeholder='Title' value={ titleNote } onChange={ this.handleChange } />
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>
