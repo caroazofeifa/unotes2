@@ -133,6 +133,21 @@ class AppContainer extends React.Component {
         <div className='col-md-1 cols'>
           <NavMenu showEditorNotes={ this.showEditorNotes.bind(this) } showNotebooks={ this.showNotebooks.bind(this) } showTags={ this.showTags.bind(this) } />
         </div>
+        <Route
+          path='/newNote' render={ () => (
+            <EditorNotes stateApp={ this.state } />
+          ) }
+        />
+        <Route
+          path='/newNotebook' render={ () => (
+            <NotebooksContainer stateApp={ this.state } addNotebook={ this.addNotebook.bind(this) } />
+          ) }
+        />
+        <Route
+          path='/newTag' render={ () => (
+            <Tags stateApp={ this.state } />
+          ) }
+        />
         <Route path="/Tags" render={() => (
             this.state.showTag ? (
               <Tags stateApp={ this.state } />
@@ -147,7 +162,6 @@ class AppContainer extends React.Component {
             <Redirect to="/"/>
           )
         )}/>
-
         <Route path="/NoteEditor" render={() => (
           this.state.showEditor ? (
             <EditorNotesContainer stateApp={ this.state } />
