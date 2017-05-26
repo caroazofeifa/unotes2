@@ -12,7 +12,7 @@ const EditorNotes = React.createClass({
       <section id='notesModal' className={ editorNotes } >
         <div className='row'>
           <div className='col-md-12' >
-            <MenuEditorNotes infoEditorNote={ this.props.infoEditorNote } stateApp={ this.props.stateApp } updateTitleNote={ this.props.updateTitleNote } />
+            <MenuEditorNotes infoEditorNote={ this.props.infoEditorNote } stateApp={ this.props.stateApp } updateTitleNote={ this.props.updateTitleNote } saveNote={ this.props.saveNote } />
           </div>
           <div className='col-md-12'>
             <SubMenuEditorNotes infoEditorNote={ this.props.infoEditorNote } stateApp={ this.props.stateApp } updateIdNotebookNote={ this.props.updateIdNotebookNote } />

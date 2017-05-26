@@ -7,7 +7,7 @@ class NotesContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      indexSelectedNotebook: '1', //This id should be 0 or -1?
+      indexSelectedNotebook: 1, //This id should be 0 or -1?
     };
   }
   //Set the index of the folder/notebook selected in the dropDown
