@@ -41,8 +41,8 @@ const Tags = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control tagFile__input' type='text' id='inputNewTag' placeholder='New tags' />
-          <button className='tagFile__button tagFile__button--margin' href='#' id='addTag'>
+          <input className='form-control tagFile__input' type='text' id='inputNewTag' placeholder='New tags' onChange={ this.handleChange } />
+          <button className='tagFile__button tagFile__button--margin' href='#' id='addTag'  onClick={ this.addTag }>
             <img className='tagFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>
         </div>

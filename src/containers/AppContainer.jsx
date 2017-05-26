@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {Route} from 'react-router-dom';
 
 const queryString = require('query-string');
 const NotesContainer = require('./NotesContainer');
@@ -134,23 +135,26 @@ class AppContainer extends React.Component {
         <div className='col-md-1 cols'>
           <NavMenu showEditorNotes={ this.showEditorNotes.bind(this) } showNotebooks={ this.showNotebooks.bind(this) } showTags={ this.showTags.bind(this) } />
         </div>
-        {/*<Route
-          path='/newNote' render={ () => (*/}
+        <Route
+          path='/newNote' render={ () => (
             <EditorNotes stateApp={ this.state } />
-          {/*) }
+          ) }
         />
         <Route
-          path='/newNotebook' render={ () => (*/}
+          path='/newNotebook' render={ () => (
             <NotebooksContainer stateApp={ this.state } addNotebook={ this.addNotebook.bind(this) } />
-          {/*) }
+          ) }
         />
         <Route
-          path='newTag' render={ () => (*/}
+          path='/newTag' render={ () => (
             <Tags stateApp={ this.state } />
-          {/*) }
-        />*/}
-        <NotesContainer stateApp={ this.state } editNote={ this.editNote.bind(this) } />
-        {/*<Route path='/' component={ NotesContainer } />*/}
+          ) }
+        />
+        <Route
+          path='/' render={ () => (
+            <NotesContainer stateApp={ this.state } editNote={ this.editNote.bind(this) } />
+          ) }
+        />
       </div>
     );
   }
