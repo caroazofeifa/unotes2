@@ -13,6 +13,7 @@ const Tags = require('../components/tags/Tags');
 
 const serverNotes = 'http://localhost:3000/notes';
 const serverNotebooks = 'http://localhost:3000/notebooks';
+const serverTags = 'http://localhost:3000/tags';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -33,6 +34,7 @@ class AppContainer extends React.Component {
       //Data
       allMyNotes: [],
       allMyNotebooks: [],
+      allMyTags: [],
     };
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
@@ -51,6 +53,12 @@ class AppContainer extends React.Component {
       .then(res => {
         const allMyNotebooks = res.data;
         this.setState({ allMyNotebooks });
+      });
+    axios
+      .get(serverTags)
+      .then(res => {
+        const allMyTags = res.data;
+        this.setState({ allMyTags });
       });
   }
   //Sets true/salse variables to show Modal editor of notes
@@ -95,6 +103,15 @@ class AppContainer extends React.Component {
         console.log('saved successfully');
       });
   }
+  addTag(nameTagI) {
+    console.log(nameTagI);
+    const newTag = { name: nameTagI };
+    axios
+      .post(serverTags, queryString.stringify(newTag))
+      .then(function (response) {
+        console.log('saved successfully');
+      });
+  }
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';
@@ -118,7 +135,7 @@ class AppContainer extends React.Component {
         </div>
         <Route path="/Tags" render={() => (
             this.state.showTag ? (
-              <Tags showTags={ this.state } />
+              <Tags stateApp={ this.state } />
             ) : (
               <Redirect to="/"/>
             )
