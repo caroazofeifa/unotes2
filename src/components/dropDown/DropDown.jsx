@@ -20,7 +20,7 @@ const DropDown = React.createClass({
         <select className='notesDropDown__dropdown' onChange={ this.handleChange } >
           {allMyNotebooks.map((show) => {
             return (
-              <Option key={ show.idNotebook } show={ show } />
+              <Option key={ show.id } show={ show } />
             );
           })
           },

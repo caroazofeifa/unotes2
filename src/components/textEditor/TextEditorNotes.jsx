@@ -8,10 +8,10 @@ const TextEditorNotes = React.createClass({
     this.props.updateDescriptionNote(desc);
   },
   render() {
-    const { description } = this.props.stateApp;
+    const { descriptionNote } = this.props.infoEditorNote;
     return (
         <section className='textArea'>
-          <textarea className='textArea__input' type='text' rows='15' id='contentNote' placeholder='Start your note here...' value={ description } onChange={ this.handleChange } />
+          <textarea className='textArea__input' type='text' rows='15' id='contentNote' placeholder='Start your note here...' value={ descriptionNote } onChange={ this.handleChange } />
         </section>
     );
   },

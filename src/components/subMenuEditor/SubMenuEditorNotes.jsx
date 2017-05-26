@@ -6,6 +6,14 @@ const Option = require('../dropDown/Option');
 const preload = '../src/images/';
 
 const SubMenuEditorNotes = React.createClass({
+  handleChange(event) {
+    const i = event.currentTarget.selectedIndex;
+    const notebookIndex = event.currentTarget[i].value;
+    //console.log(indexDropDown);
+    console.log('INDEX SELECCIONADO:')
+    console.log(notebookIndex)
+    this.props.updateIdNotebookNote(notebookIndex);
+  },
   render() {
     const { allMyNotebooks } = this.props.stateApp;
     const { idNotebookNote } = this.props.infoEditorNote;
@@ -21,7 +29,7 @@ const SubMenuEditorNotes = React.createClass({
                 <select className='navEditor__dropdown' value={ idNotebookNote } onChange={ this.handleChange } >
                     {allMyNotebooks.map((show) => {
                       return (
-                        <Option key={ show.idNotebook } show={ show } />
+                        <Option key={ show.id } show={ show } />
                       );
                     })
                     },

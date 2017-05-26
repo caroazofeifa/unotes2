@@ -13,7 +13,7 @@ class NotebooksContainer extends React.Component {
     this.setState({ nameNotebook: nameNotebookI });
   }
   addNotebookContainer() {
-    console.log('estoy en noteb container');
+    //console.log('estoy en noteb container');
     this.props.addNotebook(this.state.nameNotebook);
   }
   render() {

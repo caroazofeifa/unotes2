@@ -29,7 +29,7 @@ class AppContainer extends React.Component {
       //information of the consulted note
       title: '',
       description: '',
-      idNotebook: '',
+      idNotebook: 0,
       idNote: '',
       //Data
       allMyNotes: [],
@@ -95,7 +95,7 @@ class AppContainer extends React.Component {
     this.setState({ showEditor: true });
   }
   addNotebook(nameNotebookI) {
-    console.log(nameNotebookI);
+    //console.log(nameNotebookI);
     const newNotebook = { name: nameNotebookI };
     axios
       .post(serverNotebooks, queryString.stringify(newNotebook))
@@ -104,7 +104,7 @@ class AppContainer extends React.Component {
       });
   }
   addTag(nameTagI) {
-    console.log(nameTagI);
+    //console.log(nameTagI);
     const newTag = { name: nameTagI };
     axios
       .post(serverTags, queryString.stringify(newTag))

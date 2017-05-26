@@ -6,8 +6,11 @@ const preload = '../src/images/';
 const MenuEditorNotes = React.createClass({
   handleChange(event) {
     const title = event.currentTarget.value;
-    console.log(title);
+    //console.log(title);
     this.props.updateTitleNote(title);
+  },
+  saveNote() {
+    this.props.saveNote();
   },
   render() {
     const { titleNote } = this.props.infoEditorNote;
@@ -34,7 +37,7 @@ const MenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <button className='navNote__button' href='#'>
+                <button className='navNote__button' href='#'  onClick={ this.saveNote } >
                     <img className='navNote__image' src={ `${preload}info-button.svg` } title='Information' />
                 </button>
                 </li>
