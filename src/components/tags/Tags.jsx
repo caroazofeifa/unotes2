@@ -2,9 +2,7 @@ import React from 'react';
 import './_tags.scss';
 
 const TagLi = require('./TagLi');
-
 const preload = '../src/images/';
-
 const Tags = React.createClass({
   handleChange(event) {
     const name = event.currentTarget.value;
@@ -24,13 +22,13 @@ const Tags = React.createClass({
         </div>
         <div className='row section'>
           <input className='form-control tagFile__input' type='search' placeholder='Search' />
-          <button className='tagFile__button tagFile__button--margin' href='#' id='buttonEditar'>
+          <button className='tagFile__button--margin' href='#' id='buttonEditar'>
             <img id='imgEditar' className='tagFile__image' src={ `${preload}search.svg` } title='Search' />
           </button>
         </div>
-        <div className='rowsection'>
-          <div className='col-md-12 tagsList'>
-            <ul id='tagsList'>
+        <div className='row'>
+          <div className='col-md-12 tagsList--border'>
+            <ul id='tagsList' className='tagsList'>
               {allMyTags.map((show) => {
                 return (
                   <TagLi key={ show.idTag } show={ show } />
@@ -42,7 +40,7 @@ const Tags = React.createClass({
         </div>
         <div className='row section'>
           <input className='form-control tagFile__input' type='text' id='inputNewTag' placeholder='New tags' onChange={ this.handleChange } />
-          <button className='tagFile__button tagFile__button--margin' href='#' id='addTag'  onClick={ this.addTag }>
+          <button className='tagFile__button--margin' href='#' id='addTag'  onClick={ this.addTag }>
             <img className='tagFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>
         </div>

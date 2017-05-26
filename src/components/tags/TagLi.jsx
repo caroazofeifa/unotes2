@@ -8,7 +8,7 @@ const TagLi = React.createClass({
     const { name } = this.props.show;
     return (
       <div className='col-md-12 col--width'>
-        <li className='sectionFile__list'>
+        <li className='tagFile__list'>
           <div className='row tagFile__li'>
             <div className='col-md-5 col--width'>
               <h6 suppressContentEditableWarning contentEditable='true' id='inputName'>{name}</h6>

@@ -35,8 +35,11 @@
 .sectionFile__button{
   background-color: transparent;
   border: 0px;
+  margin: 0;
 }
 .sectionFile__button--margin{
+  background-color: transparent;
+  border: 0px;
   margin: 20px;
 }
 .notebooksList{
@@ -97,7 +100,7 @@
   }
   .sectionFile__image{
     height: 2.2rem;
-    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    margin: 0.3rem;
     width: 1.1rem;
   }
   .col--width{
@@ -115,7 +118,7 @@
   }
   .sectionFile__image{
     height: 4rem;
-    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    margin: 0.3rem;
     width: 2rem;
   }
     .col--width{
@@ -133,7 +136,7 @@
    }
   .sectionFile__image{
     height: 4rem;
-    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    margin: 0.3rem;
     width: 2rem;
   }
   .col--width{
@@ -148,7 +151,7 @@
    }
   .sectionFile__image{
     height: 4rem;
-    margin: 0.7rem 0.7rem 0.7rem 0.7rem;
+    margin: 0.3rem;
     width: 2rem;
   }
   .col--width{
