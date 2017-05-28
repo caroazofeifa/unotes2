@@ -37,7 +37,7 @@ const MenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <button className='navNote__button' href='#'  onClick={ this.saveNote } >
+                <button className='navNote__button' href='#' onClick={ this.saveNote } >
                     <img className='navNote__image' src={ `${preload}info-button.svg` } title='Information' />
                 </button>
                 </li>

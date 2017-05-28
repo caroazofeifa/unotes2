@@ -2,6 +2,7 @@ import React from 'react';
 import './_notebooks.scss';
 
 const NotebookLi = require('./NotebookLi');
+
 const preload = '../src/images/';
 const Notebooks = React.createClass({
   handleChange(event) {
@@ -31,7 +32,7 @@ const Notebooks = React.createClass({
             <ul id='notebooksList' className='notebooksList'>
               {allMyNotebooks.map((show) => {
                 return (
-                  <NotebookLi key={ show.idNotebook } show={ show } />
+                  <NotebookLi key={ show._id } show={ show } />
                 );
               })
               }

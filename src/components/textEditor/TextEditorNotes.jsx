@@ -4,7 +4,7 @@ import './_text-editorNotes.scss';
 const TextEditorNotes = React.createClass({
   handleChange(event) {
     const desc = event.currentTarget.value;
-    console.log(desc);
+    //console.log(desc);
     this.props.updateDescriptionNote(desc);
   },
   render() {

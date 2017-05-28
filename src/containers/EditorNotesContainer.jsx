@@ -8,17 +8,15 @@ class EditorNotesContainer extends React.Component {
     this.state = {
       titleNote: '123',
       descriptionNote: '',
-      idNotebookNote:-1,
-      idNote:-1,
+      idNotebookNote: -1,
+      idNote: -1,
     };
-
   }
-  componentWillMount(){
+  componentWillMount() {
     this.setState({ titleNote: this.props.stateApp.title });
     this.setState({ descriptionNote: this.props.stateApp.description });
     this.setState({ notebookNote: this.props.stateApp.idNotebooks });
-    this.setState({ idNote: this.props.stateApp.id });
-
+    this.setState({ idNote: this.props.stateApp.idNote });
   }
   updateTitleNote(titleNoteI) {
     this.setState({ titleNote: titleNoteI });
@@ -29,22 +27,24 @@ class EditorNotesContainer extends React.Component {
   updateDescriptionNote(descriptionNoteI) {
     this.setState({ descriptionNote: descriptionNoteI });
   }
-  saveNote(){
+  saveNote() {
     console.log('Save note');
-    console.log(this.state.titleNote);
-    console.log(this.state.descriptionNote);
-    console.log(this.state.idNotebookNote);
-    console.log(this.state.idNote);
+    //console.log(this.state.titleNote);
+    //console.log(this.state.descriptionNote);
+    //console.log(this.state.idNotebookNote);
+    //console.log(this.state.idNote);
+    this.props.addNote(this.state.titleNote, this.state.descriptionNote, this.state.idNotebookNote);
   }
   render() {
     return (
-      <EditorNotes 
-      infoEditorNote={ this.state } 
-      stateApp={ this.props.stateApp } 
-      updateTitleNote={ this.updateTitleNote.bind(this) }
-      updateDescriptionNote={ this.updateDescriptionNote.bind(this) }
-      updateIdNotebookNote={ this.updateIdNotebookNote.bind(this) }
-      saveNote={ this.saveNote.bind(this) }
+      <EditorNotes
+        infoEditorNote={ this.state }
+        stateApp={ this.props.stateApp }
+        updateTitleNote={ this.updateTitleNote.bind(this) }
+        updateDescriptionNote={ this.updateDescriptionNote.bind(this) }
+        updateIdNotebookNote={ this.updateIdNotebookNote.bind(this) }
+        saveNote={ this.saveNote.bind(this) }
+        addNote={ this.props.addNote }
       />
     );
   }

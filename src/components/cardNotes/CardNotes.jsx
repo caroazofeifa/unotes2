@@ -2,15 +2,17 @@ import React from 'react';
 import './_card-notes.scss';
 
 const reactRouter = require('react-router-dom');
+
 const Link = reactRouter.Link;
 const preload = '../src/images/';
 
 const CardNotes = React.createClass({
   editNote() {
-    this.props.editNote(this.props.show.title, this.props.show.description, this.props.show.idNote, this.props.show.idNotebook);
+    this.props.editNote(this.props.show.title, this.props.show.description, this.props.show.id, this.props.show.idNotebook);
   },
   render() {
     const { title, description } = this.props.show;
+    //console.log(`Llega la nota: ${title} ${description}`);
     return (
       <div className='col-md-3'>
         <div className='thumbnail'>

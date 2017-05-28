@@ -10,8 +10,8 @@ const SubMenuEditorNotes = React.createClass({
     const i = event.currentTarget.selectedIndex;
     const notebookIndex = event.currentTarget[i].value;
     //console.log(indexDropDown);
-    console.log('INDEX SELECCIONADO:')
-    console.log(notebookIndex)
+    //console.log('INDEX SELECCIONADO:');
+    //console.log(notebookIndex);
     this.props.updateIdNotebookNote(notebookIndex);
   },
   render() {
@@ -29,7 +29,7 @@ const SubMenuEditorNotes = React.createClass({
                 <select className='navEditor__dropdown' value={ idNotebookNote } onChange={ this.handleChange } >
                     {allMyNotebooks.map((show) => {
                       return (
-                        <Option key={ show.id } show={ show } />
+                        <Option key={ show._id } show={ show } />
                       );
                     })
                     },
