@@ -9,16 +9,22 @@ class NotebooksContainer extends React.Component {
       nameNotebook: '',
     };
   }
+  //Set the nameNote to the name received from param
   updateNameNotebook(nameNotebookI) {
     this.setState({ nameNotebook: nameNotebookI });
   }
+  //Calls to AppContainer to add a new notebook
   addNotebookContainer() {
-    //console.log('estoy en noteb container');
     this.props.addNotebook(this.state.nameNotebook);
   }
   render() {
     return (
-      <Notebooks stateApp={ this.props.stateApp } addNotebookContainer={ this.addNotebookContainer.bind(this) } updateNameNotebook={ this.updateNameNotebook.bind(this) } />
+      <Notebooks
+        stateApp={ this.props.stateApp }
+        addNotebookContainer={ this.addNotebookContainer.bind(this) }
+        updateNameNotebook={ this.updateNameNotebook.bind(this) }
+        deleteNotebook={ this.props.deleteNotebook }
+      />
     );
   }
 }

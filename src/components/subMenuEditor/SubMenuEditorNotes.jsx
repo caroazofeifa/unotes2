@@ -27,12 +27,13 @@ const SubMenuEditorNotes = React.createClass({
                 </li>
                 <li>
                 <select className='navEditor__dropdown' value={ idNotebookNote } onChange={ this.handleChange } >
-                    {allMyNotebooks.map((show) => {
-                      return (
-                        <Option key={ show._id } show={ show } />
-                      );
-                    })
-                    },
+                  <option value={ 0 } >Select</option>
+                  {allMyNotebooks.map((show) => {
+                    return (
+                      <Option key={ show._id } show={ show } />
+                    );
+                  })
+                  },
                 </select>
                 </li>
                 <li>

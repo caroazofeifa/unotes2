@@ -8,31 +8,31 @@ class EditorNotesContainer extends React.Component {
     this.state = {
       titleNote: '123',
       descriptionNote: '',
-      idNotebookNote: -1,
+      idNotebookNote: 0,
       idNote: -1,
     };
   }
+  //Before component is mounted sets the state from props, used when a note is going to be edited
   componentWillMount() {
     this.setState({ titleNote: this.props.stateApp.title });
     this.setState({ descriptionNote: this.props.stateApp.description });
     this.setState({ notebookNote: this.props.stateApp.idNotebooks });
     this.setState({ idNote: this.props.stateApp.idNote });
   }
+  //Updates the title of the note
   updateTitleNote(titleNoteI) {
     this.setState({ titleNote: titleNoteI });
   }
+  //Uodates the id of the notebook wich the note belongs
   updateIdNotebookNote(IdNotebookNoteI) {
     this.setState({ idNotebookNote: IdNotebookNoteI });
   }
+  //Updates the description of the note
   updateDescriptionNote(descriptionNoteI) {
     this.setState({ descriptionNote: descriptionNoteI });
   }
+  //Calls to add note
   saveNote() {
-    console.log('Save note');
-    //console.log(this.state.titleNote);
-    //console.log(this.state.descriptionNote);
-    //console.log(this.state.idNotebookNote);
-    //console.log(this.state.idNote);
     this.props.addNote(this.state.titleNote, this.state.descriptionNote, this.state.idNotebookNote);
   }
   render() {
@@ -45,6 +45,7 @@ class EditorNotesContainer extends React.Component {
         updateIdNotebookNote={ this.updateIdNotebookNote.bind(this) }
         saveNote={ this.saveNote.bind(this) }
         addNote={ this.props.addNote }
+        deleteNote={ this.props.deleteNote }
       />
     );
   }

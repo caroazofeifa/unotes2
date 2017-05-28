@@ -4,8 +4,11 @@ import './_notebooks.scss';
 const preload = '../src/images/';
 
 const NotebookLi = React.createClass({
+  deleteNotebook() {
+    this.props.deleteNotebook(this.props.show._id);
+  },
   render() {
-    const { name } = this.props.show;
+    const { name, } = this.props.show;
     return (
       <div className='col-md-12 col--width'>
         <li className='sectionFile__list'>
@@ -20,7 +23,7 @@ const NotebookLi = React.createClass({
               <button className='sectionFile__button' href='#'>
                 <img className='sectionFile__image' src={ `${preload}file.svg` } title='New note' />
               </button>
-              <button className='sectionFile__button' href='#'>
+              <button className='sectionFile__button' href='#' onClick={ this.deleteNotebook }>
                 <img className='sectionFile__image' src={ `${preload}delete.svg` } title='Delete' />
               </button>
             </div>

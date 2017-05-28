@@ -24,3 +24,16 @@ exports.createNotes = (req, res) => {
         }   
     });
 };
+
+exports.deleteNote = (req, res) => {
+    console.log('Delete note')
+    //console.log(req);
+    Note.findByIdAndRemove(req.params.id, (err, data) => {
+    if (!err) {
+      res.status(204).json({});
+    }
+    else {
+      res.status(500).json({});
+    }
+  });
+};

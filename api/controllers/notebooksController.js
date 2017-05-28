@@ -26,3 +26,15 @@ exports.createNotebooks = (req, res) => {
     });
 };
 
+exports.deleteNotebook = (req, res) => {
+    console.log('Delete notebook')
+    //console.log(req);
+    Notebook.findByIdAndRemove(req.params.id, (err, data) => {
+    if (!err) {
+      res.status(204).json({});
+    }
+    else {
+      res.status(500).json({});
+    }
+  });
+};

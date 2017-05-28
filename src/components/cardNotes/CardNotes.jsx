@@ -8,7 +8,10 @@ const preload = '../src/images/';
 
 const CardNotes = React.createClass({
   editNote() {
-    this.props.editNote(this.props.show.title, this.props.show.description, this.props.show.id, this.props.show.idNotebook);
+    this.props.editNote(this.props.show.title, this.props.show.description, this.props.show._id, this.props.show.idNotebook);
+  },
+  deleteNote() {
+    this.props.deleteNote( this.props.show._id );
   },
   render() {
     const { title, description } = this.props.show;
@@ -27,7 +30,7 @@ const CardNotes = React.createClass({
                 <img className='note__image' src={ `${preload}pencil.svg` } title='Edit' />
               </button>
             </Link>
-            <button className='note__button' href='#' id='buttonLib'>
+            <button className='note__button' href='#' id='buttonLib' onClick={ this.deleteNote } >
               <img className='note__image' src={ `${preload}delete.svg` } title='Delete' />
             </button>
           </div>

@@ -9,7 +9,6 @@ const DropDown = React.createClass({
   //Gets the index/value selected from the dropDrown and sends it to the parrent
   handleChange(event) {
     //gets the the selected value from the dropdown
-    //console.log(`Index seleccionado: `);
     const i = event.currentTarget.selectedIndex;
     const notebookIndex = event.currentTarget[i].value;
     //console.log(`Index seleccionado: ${i}`);
@@ -21,7 +20,9 @@ const DropDown = React.createClass({
     return (
       <section className='section notesDropDown'>
         <select className='notesDropDown__dropdown' onChange={ this.handleChange } >
-          {allMyNotebooks.map((show) => {
+          <option value={0} >All</option>
+          {
+            allMyNotebooks.map((show) => {   
             return (
               <Option key={ show._id } show={ show } />
             );

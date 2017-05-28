@@ -12,6 +12,9 @@ const MenuEditorNotes = React.createClass({
   saveNote() {
     this.props.saveNote();
   },
+  deleteNote() {
+    this.props.deleteNote( this.props.infoEditorNote.idNote );
+  },
   render() {
     const { titleNote } = this.props.infoEditorNote;
     //this.props.updateTitleNote(nameNote.value.text);
@@ -20,6 +23,11 @@ const MenuEditorNotes = React.createClass({
             <ul className='navNote__ul'>
                 <li>
                 <input className='navNote__input' id='nameNote' type='text' placeholder='Title' value={ titleNote } onChange={ this.handleChange } />
+                </li>
+                <li>
+                <button className='navNote__button' href='#' onClick={ this.saveNote } >
+                    <img className='navNote__image' src={ `${preload}diskette.svg` } title='Information' />
+                </button>
                 </li>
                 <li>
                 <button className='navNote__button' href='#'>
@@ -32,15 +40,10 @@ const MenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <button className='navNote__button' href='#'>
+                <button className='navNote__button' href='#' onClick={ this.deleteNote } >
                     <img className='navNote__image' src={ `${preload}delete.svg` } title='Delete' />
                 </button>
-                </li>
-                <li>
-                <button className='navNote__button' href='#' onClick={ this.saveNote } >
-                    <img className='navNote__image' src={ `${preload}info-button.svg` } title='Information' />
-                </button>
-                </li>
+                </li>                
             </ul>
         </nav>
     );

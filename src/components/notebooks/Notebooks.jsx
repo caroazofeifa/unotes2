@@ -32,7 +32,11 @@ const Notebooks = React.createClass({
             <ul id='notebooksList' className='notebooksList'>
               {allMyNotebooks.map((show) => {
                 return (
-                  <NotebookLi key={ show._id } show={ show } />
+                  <NotebookLi
+                    key={ show._id }
+                    show={ show }
+                    deleteNotebook={ this.props.deleteNotebook } 
+                  />
                 );
               })
               }

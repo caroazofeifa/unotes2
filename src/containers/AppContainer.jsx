@@ -40,20 +40,21 @@ class AppContainer extends React.Component {
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
   //This method is only executed once during the component’s life.
   componentDidMount() {
-    //Get notes with axios from json server
+    //Get notes with axios from the api
     axios
       .get(serverNotes)
       .then(res => {
         const allMyNotes = res.data;
         this.setState({ allMyNotes });
       });
-    //Get notes with axios from json server
+    //Get notes with axios from the api
     axios
       .get(serverNotebooks)
       .then(res => {
         const allMyNotebooks = res.data;
         this.setState({ allMyNotebooks });
       });
+    //Get tags with axios from json server
     /*axios
       .get(serverTags)
       .then(res => {
@@ -94,18 +95,28 @@ class AppContainer extends React.Component {
     this.setState({ idNotebook: idNotebookI });
     this.setState({ showEditor: true });
   }
+  //ADD NOTE 
   addNote(titleI, descriptionI, idNotebookI) {
-    console.log('Creating note');
-    const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
-    //console.log(newNote);
-    axios
-      .post(serverNotes, newNote)
-      .then(function (response) {
-        console.log(`saved successfully ${response}`);
-      });
+    if( titleI =='' || idNotebookI ==0 ){
+      window.alert('Make sure you selected the notbook and the title for your note! ');
+    } else{
+      const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
+      axios
+        .post(serverNotes, newNote)
+        .then(function (response) {
+          //console.log(`saved successfully ${response}`);
+        });
+      axios
+        .get(serverNotes)
+        .then(res => {
+          const allMyNotes = res.data;
+          //console.log('setting state');
+          this.setState({ allMyNotes });
+        });
+    }
   }
+  //ADD NOTEBOOK
   addNotebook(nameNotebookI) {
-    console.log(nameNotebookI);
     const newNotebook = { 'name': nameNotebookI };
     axios
       .post(serverNotebooks, newNotebook)
@@ -113,6 +124,7 @@ class AppContainer extends React.Component {
         console.log(`saved successfully ${response}`);
       });
   }
+  //ADD TAG
   addTag(nameTagI) {
     //console.log(nameTagI);
     const newTag = { name: nameTagI };
@@ -120,6 +132,25 @@ class AppContainer extends React.Component {
       .post(serverTags, queryString.stringify(newTag))
       .then(function (response) {
         console.log(`saved successfully ${response}`);
+      });
+  }
+  //DELETE NOTE
+  deleteNote(noteId){
+    const deleteNote = { 'id': noteId };
+    axios
+      .delete(serverNotes+'/'+noteId, deleteNote)
+      .then(function (response) {
+        console.log(`deleted successfully ${response}`);        
+      });
+  }
+  //DELETE NOTEBOOK
+  deleteNotebook(notebookId){
+    console.log(notebookId);
+    const deleteNotebook = { 'id': notebookId };
+    axios
+      .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
+      .then(function (response) {
+        console.log(`deleted successfully ${response}`);
       });
   }
   render() {
@@ -138,14 +169,21 @@ class AppContainer extends React.Component {
     } else {
       this.state.tag = 'tagFile';
     }
+    console.log('rendering');
     return (
       <div>
         <div className='col-md-1 cols'>
-          <NavMenu showEditorNotes={ this.showEditorNotes.bind(this) } showNotebooks={ this.showNotebooks.bind(this) } showTags={ this.showTags.bind(this) } />
+          <NavMenu
+            showEditorNotes={ this.showEditorNotes.bind(this) }
+            showNotebooks={ this.showNotebooks.bind(this) }
+            showTags={ this.showTags.bind(this) }
+          />
         </div>
         <Route
           path='/newNote' render={ () => (
-            <EditorNotesContainer stateApp={ this.state } />
+            <EditorNotesContainer
+              stateApp={ this.state }
+            />
           ) }
         />
         <Route
@@ -160,7 +198,11 @@ class AppContainer extends React.Component {
         <Route
           path='/Notebooks' render={ () => (
           this.state.showNotebook ? (
-            <NotebooksContainer stateApp={ this.state } addNotebook={ this.addNotebook.bind(this) } />
+            <NotebooksContainer
+              stateApp={ this.state }
+              addNotebook={ this.addNotebook.bind(this) }
+              deleteNotebook={ this.deleteNotebook.bind(this) }
+            />
           ) : (
             <Redirect to='/' />
           )
@@ -169,7 +211,12 @@ class AppContainer extends React.Component {
         <Route
           path='/NoteEditor' render={ () => (
           this.state.showEditor ? (
-            <EditorNotesContainer stateApp={ this.state } addNote={ this.addNote.bind(this) }/>
+            <EditorNotesContainer
+              stateApp={ this.state }
+              addNote={ this.addNote.bind(this) }
+              deleteNote={ this.deleteNote.bind(this) }
+
+            />
           ) : (
             <Redirect to='/' />
           )
@@ -177,7 +224,11 @@ class AppContainer extends React.Component {
         />
         <Route
           path='/' render={ () => (
-            <NotesContainer stateApp={ this.state } editNote={ this.editNote.bind(this) } />
+            <NotesContainer
+              stateApp={ this.state }
+              editNote={ this.editNote.bind(this) }
+              deleteNote={ this.deleteNote.bind(this) }
+            />
           ) }
         />
       </div>
