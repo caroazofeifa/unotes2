@@ -187,6 +187,15 @@ class AppContainer extends React.Component {
   setEditing() {
     this.state.editing=true;
   }
+  //UPDATE TAGS
+  updateTag(tagId) {
+    const uptadeTag = { 'name': nameTag };
+    axios
+    .put(serverTags+'/'+nameTag, updateTag)
+    .then(function (response) {
+      console.log(`update successfully ${response}`);
+    });
+  }
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';
