@@ -108,7 +108,7 @@ class AppContainer extends React.Component {
         this.setState({ allMyTags });
       });
   }
-  //ADD NOTE
+  //ADD /UPDATE NOTE
   addNote(titleI, descriptionI, idNotebookI) {
     if (titleI =='' || idNotebookI ==0) {
       window.alert('Make sure you selected the notbook and the title for your note! ');
@@ -183,19 +183,22 @@ class AppContainer extends React.Component {
         this.getAllTags()
       }.bind(this));
   } 
-  //EDIT NOTE
+  //UPDATE NOTE
   setEditing() {
     this.state.editing=true;
   }
-  //UPDATE TAGS
-  updateTag(tagId) {
-    const uptadeTag = { 'name': nameTag };
+  //UPDATE NOTEBOOK
+  updateNotebook(idNotebook, nameNotebook ) {
+    const updateNotebook = { '_id': idNotebook, 'name': nameNotebook };
+    console.log(updateNotebook);
     axios
-    .put(serverTags+'/'+nameTag, updateTag)
-    .then(function (response) {
-      console.log(`update successfully ${response}`);
-    });
+      .put(serverNotebooks+'/'+idNotebook, updateNotebook)
+      .then(function (response) {
+        this.getAllNotebooks()
+      }.bind(this));
   }
+  
+  //UPDATE TAGS
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';
@@ -241,6 +244,7 @@ class AppContainer extends React.Component {
               stateApp={ this.state }
               addNotebook={ this.addNotebook.bind(this) }
               deleteNotebook={ this.deleteNotebook.bind(this) }
+              updateNotebook={ this.updateNotebook.bind(this) }
             />
           ) : (
             <Redirect to='/' />

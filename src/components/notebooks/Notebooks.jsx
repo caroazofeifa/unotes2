@@ -5,10 +5,10 @@ const NotebookLi = require('./NotebookLi');
 
 const preload = '../src/images/';
 const Notebooks = React.createClass({
-  handleChange(event) {
-    const name = event.currentTarget.value;
-    this.props.updateNameNotebook(name);
-  },
+  // handleChange(event) {
+  //   const name = event.currentTarget.value;
+  //   this.props.updateNameNotebook(name);
+  // },
   addNoteBook() {
     this.props.addNotebookContainer();
     inputNoteBook.value ='';
@@ -36,8 +36,10 @@ const Notebooks = React.createClass({
                   <NotebookLi
                     key={ show._id }
                     show={ show }
+                    stateNotebook={ this.props.stateNotebook}
                     deleteNotebook={ this.props.deleteNotebook }
                     updateNameNotebook={ this.props.updateNameNotebook }
+                    updateNotebook={ this.props.updateNotebook }
                   />
                 );
               })

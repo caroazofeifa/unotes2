@@ -9,21 +9,24 @@ const NotebookLi = React.createClass({
   },
   handleChange(event) {
     const nameNotebook = event.currentTarget.value;
+    //console.log(nameNotebook);
     this.props.updateNameNotebook(nameNotebook);
   },
   handleKeyPress(e) {
     if (e.key === 'Enter') {
       console.log(' ENTER validate');
+      this.props.updateNotebook(this.props.show._id);
     }
   },
   render() {
-    const { name, } = this.props.show;
+    const { name, _id } = this.props.show;
+    const { nameNotebook } = this.props.stateNotebook;
     return (
-      <div className='col-md-12 col--width'>
+      <div className='col-md-12 col--width' >
         <li className='sectionFile__list'>
           <div className='row sectionFile__li'>
             <div className='col-md-5 col--width'>
-              <h6 suppressContentEditableWarning contentEditable='true' id='inputName' onChange={ this.handleChange} >{name}</h6>
+              <input className='form-control sectionFlile__input' value={ nameNotebook } id='inputName' type='text' placeholder='Search' onKeyDown={ this.handleKeyPress } onChange={ this.handleChange} />
             </div>
             <div className='col-md-5 col--width'>
               <button className='sectionFile__button' href='#'>
