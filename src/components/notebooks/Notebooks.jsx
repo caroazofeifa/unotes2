@@ -35,7 +35,7 @@ const Notebooks = React.createClass({
                   <NotebookLi
                     key={ show._id }
                     show={ show }
-                    deleteNotebook={ this.props.deleteNotebook } 
+                    deleteNotebook={ this.props.deleteNotebook }
                   />
                 );
               })

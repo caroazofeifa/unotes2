@@ -1,21 +1,21 @@
 const mongoose = require('mongoose');
-const Notebook = require('../models/Notebook');
+const Notebook = require('../models/Tag');
 
-exports.getNotebooks = (req, res) => {
-  console.log('Ver notebooks');
+exports.getTags = (req, res) => {
+  console.log('Ver tags');
   Notebook.find().exec(function (err, data) {
     res.status(200);
     res.json(data);
   });
 };
 
-exports.createNotebooks = (req, res) => {
-  console.log('Create notebook');
-  const notebook = new Notebook(req.body);
+exports.createTags = (req, res) => {
+  console.log('Create tag');
+  const tag = new Tag(req.body);
   //notebook.name=body.name;
   //console.log(notebook);
   //console.log(req.body);
-  notebook.save(err => {
+  tag.save(err => {
     if (err) {
       res.status(404);
       res.json(err);
@@ -26,10 +26,10 @@ exports.createNotebooks = (req, res) => {
   });
 };
 
-exports.deleteNotebook = (req, res) => {
-  console.log('Delete notebook')
+exports.deleteTag = (req, res) => {
+  console.log('Delete tag')
   //console.log(req);
-  Notebook.findByIdAndRemove(req.params.id, (err, data) => {
+  Tag.findByIdAndRemove(req.params.id, (err, data) => {
     if (!err) {
       res.status(204).json({});
     } else {

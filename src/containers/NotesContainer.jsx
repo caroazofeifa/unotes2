@@ -13,7 +13,7 @@ class NotesContainer extends React.Component {
   //Before component is mounted
   componentWillMount() {
     console.log(`ALL MY NOTEBOOKS: ${this.props.stateApp.allMyNotebooks}`);
-    //this.setState({ indexSelectedNotebook: this.props.stateApp.allMyNotebooks[0]._id });    
+    //this.setState({ indexSelectedNotebook: this.props.stateApp.allMyNotebooks[0]._id });
   }
   //Set the index of the folder/notebook selected in the dropDown
   changeNotebook(notebookI) {
@@ -31,7 +31,7 @@ class NotesContainer extends React.Component {
         <DropDown
           stateApp={ this.props.stateApp }
           changeNotebook={ this.changeNotebook.bind(this) }
-          stateNotes={ this.state } 
+          stateNotes={ this.state }
         />
         <Notes
           stateApp={ this.props.stateApp }

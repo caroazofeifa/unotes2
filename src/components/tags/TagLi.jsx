@@ -4,6 +4,9 @@ import './_tags.scss';
 const preload = '../src/images/';
 
 const TagLi = React.createClass({
+  deleteTag() {
+    this.props.deleteTag(this.props.show._id);
+  },
   render() {
     const { name } = this.props.show;
     return (
@@ -20,7 +23,7 @@ const TagLi = React.createClass({
               <button className='tagFile__button' href='#'>
                 <img className='tagFile__image' src={ `${preload}file.svg` } title='New tag' />
               </button>
-              <button className='tagFile__button' href='#'>
+              <button className='tagFile__button' href='#'  onClick={ this.deleteTag }>
                 <img className='tagFile__image' src={ `${preload}delete.svg` } title='Delete' />
               </button>
             </div>

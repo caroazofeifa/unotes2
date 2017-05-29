@@ -7,13 +7,14 @@ const queryString = require('query-string');
 const NotesContainer = require('./NotesContainer');
 const NotebooksContainer = require('./NotebooksContainer');
 const EditorNotesContainer = require('./EditorNotesContainer');
+const TagsContainer = require('./TagsContainer');
 
 const NavMenu = require('../components/navMenu/NavMenu');
 const Tags = require('../components/tags/Tags');
 
 const serverNotes = 'http://localhost:3000/api/notes';
 const serverNotebooks = 'http://localhost:3000/api/notebooks';
-const serverTags = 'http://localhost:3000/tags';
+const serverTags = 'http://localhost:3000/api/tags';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -55,12 +56,12 @@ class AppContainer extends React.Component {
         this.setState({ allMyNotebooks });
       });
     //Get tags with axios from json server
-    /*axios
+    axios
       .get(serverTags)
       .then(res => {
         const allMyTags = res.data;
         this.setState({ allMyTags });
-      });*/
+      });
   }
   //Sets true/salse variables to show Modal editor of notes
   showEditorNotes() {
@@ -95,11 +96,11 @@ class AppContainer extends React.Component {
     this.setState({ idNotebook: idNotebookI });
     this.setState({ showEditor: true });
   }
-  //ADD NOTE 
+  //ADD NOTE
   addNote(titleI, descriptionI, idNotebookI) {
-    if( titleI =='' || idNotebookI ==0 ){
+    if (titleI =='' || idNotebookI ==0) {
       window.alert('Make sure you selected the notbook and the title for your note! ');
-    } else{
+    } else {
       const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
       axios
         .post(serverNotes, newNote)
@@ -126,31 +127,40 @@ class AppContainer extends React.Component {
   }
   //ADD TAG
   addTag(nameTagI) {
-    //console.log(nameTagI);
-    const newTag = { name: nameTagI };
+    const newTag = { 'name': nameTagI };
     axios
-      .post(serverTags, queryString.stringify(newTag))
+      .post(serverTags, newTag)
       .then(function (response) {
         console.log(`saved successfully ${response}`);
       });
   }
   //DELETE NOTE
-  deleteNote(noteId){
+  deleteNote(noteId) {
     const deleteNote = { 'id': noteId };
     axios
       .delete(serverNotes+'/'+noteId, deleteNote)
       .then(function (response) {
-        console.log(`deleted successfully ${response}`);        
+        console.log(`deleted successfully ${response}`);
       });
   }
   //DELETE NOTEBOOK
-  deleteNotebook(notebookId){
+  deleteNotebook(notebookId) {
     console.log(notebookId);
     const deleteNotebook = { 'id': notebookId };
     axios
       .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
       .then(function (response) {
         console.log(`deleted successfully ${response}`);
+      });
+  }
+  //DELETE TAG
+  deleteTag(tagId) {
+    console.log(tagId);
+    const deleteTag = { 'id': tagId };
+    axios
+      .delete(serverTags+'/'+tagId, deleteTag)
+      .then(function (response) {
+        console.log(`delete successfully ${response}`);
       });
   }
   render() {
@@ -189,7 +199,11 @@ class AppContainer extends React.Component {
         <Route
           path='/Tags' render={ () => (
             this.state.showTag ? (
-              <Tags stateApp={ this.state } />
+              <Tags
+                stateApp={ this.state }
+                addTag={this.addTag.bind(this) }
+                deleteTag={ this.deleteNote.bind(this) }
+              />
             ) : (
               <Redirect to='/' />
             )
