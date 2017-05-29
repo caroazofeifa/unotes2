@@ -37,6 +37,7 @@ const Notebooks = React.createClass({
                     key={ show._id }
                     show={ show }
                     deleteNotebook={ this.props.deleteNotebook }
+                    updateNameNotebook={ this.props.updateNameNotebook }
                   />
                 );
               })
