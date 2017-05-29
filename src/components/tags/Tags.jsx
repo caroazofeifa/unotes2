@@ -12,6 +12,7 @@ const Tags = React.createClass({
   },
   addTag() {
     this.props.addTagContainer();
+    inputNewTag.value ='';
   },
   render() {
     const { tag, allMyTags } = this.props.stateApp;

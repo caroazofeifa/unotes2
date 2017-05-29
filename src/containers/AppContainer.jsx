@@ -36,8 +36,6 @@ class AppContainer extends React.Component {
       allMyNotes: [],
       allMyNotebooks: [],
       allMyTags: [],
-      //
-
     };
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
@@ -48,12 +46,7 @@ class AppContainer extends React.Component {
     //Get notebooks with axios from the api
     this.getAllNotebooks();
     //Get tags with axios from json server
-    axios
-      .get(serverTags)
-      .then(res => {
-        const allMyTags = res.data;
-        this.setState({ allMyTags });
-      });
+    this.getAllTags();
   }
   //Sets true/salse variables to show Modal editor of notes
   showEditorNotes() {
@@ -88,20 +81,28 @@ class AppContainer extends React.Component {
     this.setState({ idNotebook: idNotebookI });
     this.setState({ showEditor: true });
   }
-  getAllNotes(){
+  getAllNotes() {
     axios
       .get(serverNotes)
       .then(res => {
         this.setState({ allMyNotes: res.data});
       });
   }
-  getAllNotebooks(){
+  getAllNotebooks() {
     axios
       .get(serverNotebooks)
       .then(res => {
         this.setState({ allMyNotebooks: res.data });
       });
-}
+  }
+  getAllTags() {
+    axios
+      .get(serverTags)
+      .then(res => {
+        const allMyTags = res.data;
+        this.setState({ allMyTags });
+      });
+  }
   //ADD NOTE
   addNote(titleI, descriptionI, idNotebookI) {
     if (titleI =='' || idNotebookI ==0) {
@@ -113,6 +114,7 @@ class AppContainer extends React.Component {
         .then(function (response) {
           this.getAllNotes()
         }.bind(this));
+        this.showEditorNotes();
     }
   }
   //ADD NOTEBOOK
@@ -131,8 +133,8 @@ class AppContainer extends React.Component {
     axios
       .post(serverTags, newTag)
       .then(function (response) {
-        console.log(`saved successfully ${response}`);
-      });
+        this.getAllTags()
+      }.bind(this));
   }
   //DELETE NOTE
   deleteNote(noteId) {
@@ -160,8 +162,8 @@ class AppContainer extends React.Component {
     axios
       .delete(serverTags+'/'+tagId, deleteTag)
       .then(function (response) {
-        console.log(`delete successfully ${response}`);
-      });
+        this.getAllTags()
+      }.bind(this));
   }
   render() {
     if (this.state.showEditor) {
