@@ -9,6 +9,7 @@ const preload = '../src/images/';
 const CardNotes = React.createClass({
   editNote() {
     this.props.editNote(this.props.show.title, this.props.show.description, this.props.show._id, this.props.show.idNotebook);
+    this.props.setEditing();
   },
   deleteNote() {
     this.props.deleteNote( this.props.show._id );

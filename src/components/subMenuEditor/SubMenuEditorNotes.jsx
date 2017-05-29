@@ -16,7 +16,9 @@ const SubMenuEditorNotes = React.createClass({
   },
   render() {
     const { allMyNotebooks } = this.props.stateApp;
+    const { idNotebook } = this.props.stateApp;
     const { idNotebookNote } = this.props.infoEditorNote;
+    //console.log(idNotebookNote);
     return (
        <nav className='navEditor'>
             <ul className='navEditor__ul section'>

@@ -38,6 +38,7 @@ class NotesContainer extends React.Component {
           stateNotes={ this.state }
           editNote={ this.props.editNote }
           deleteNote={ this.props.deleteNote }
+          setEditing={ this.props.setEditing }
         />
       </div>
     );

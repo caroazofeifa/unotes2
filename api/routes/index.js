@@ -15,6 +15,8 @@ router.delete('/notes/:id', notesController.deleteNote);
 router.delete('/notebooks/:id', notebooksController.deleteNotebook);
 router.delete('/tags/:id',tagsController.deleteTag);
 
+router.put('/noteS/:id',notesController.updateNote);
+
 router.get('/', (request, response) => {
   //console.log('HIIII');
   response.send('Hello World');

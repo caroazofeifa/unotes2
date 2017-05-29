@@ -27,7 +27,7 @@ const Notes = React.createClass({
       <section className='notes'>
         <div className='row' id='thumbnails'>
           {arr.map((show) => (
-              <CardNotes show={ show } key={ show._id } editNote={ this.props.editNote } deleteNote={ this.props.deleteNote } />
+              <CardNotes show={ show } key={ show._id } editNote={ this.props.editNote } deleteNote={ this.props.deleteNote } setEditing={ this.props.setEditing } />
             ))}
         </div>
       </section>

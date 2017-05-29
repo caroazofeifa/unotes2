@@ -16,6 +16,8 @@ const serverNotes = 'http://localhost:3000/api/notes';
 const serverNotebooks = 'http://localhost:3000/api/notebooks';
 const serverTags = 'http://localhost:3000/api/tags';
 
+let stateEditorNotes = '';
+
 class AppContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +38,8 @@ class AppContainer extends React.Component {
       allMyNotes: [],
       allMyNotebooks: [],
       allMyTags: [],
+      //Edit
+      editing:false,
     };
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
@@ -80,6 +84,7 @@ class AppContainer extends React.Component {
     this.setState({ idNote: idNoteI });
     this.setState({ idNotebook: idNotebookI });
     this.setState({ showEditor: true });
+    //console.log(this.state);
   }
   getAllNotes() {
     axios
@@ -108,13 +113,26 @@ class AppContainer extends React.Component {
     if (titleI =='' || idNotebookI ==0) {
       window.alert('Make sure you selected the notbook and the title for your note! ');
     } else {
-      const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
-      axios
-        .post(serverNotes, newNote)
-        .then(function (response) {
-          this.getAllNotes()
-        }.bind(this));
-        this.showEditorNotes();
+      if(this.state.editing){
+        const updateNote = { '_id': this.state.idNote, 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
+        //UPDATE NOTE
+        axios
+          .put(serverNotes+'/'+this.state.idNote, updateNote)
+          .then(function (response) {
+            this.getAllNotes()
+          }.bind(this));
+          this.showEditorNotes();
+          this.state.editing=false;
+        } else {
+          //ADD NEW NOTE
+        const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
+        axios
+          .post(serverNotes, newNote)
+          .then(function (response) {
+            this.getAllNotes()
+          }.bind(this));
+          this.showEditorNotes();
+      }
     }
   }
   //ADD NOTEBOOK
@@ -164,6 +182,10 @@ class AppContainer extends React.Component {
       .then(function (response) {
         this.getAllTags()
       }.bind(this));
+  } 
+  //EDIT NOTE
+  setEditing() {
+    this.state.editing=true;
   }
   render() {
     if (this.state.showEditor) {
@@ -190,13 +212,6 @@ class AppContainer extends React.Component {
             showTags={ this.showTags.bind(this) }
           />
         </div>
-        <Route
-          path='/newNote' render={ () => (
-            <EditorNotesContainer
-              stateApp={ this.state }
-            />
-          ) }
-        />
         <Route
           path='/Tags' render={ () => (
             this.state.showTag ? (
@@ -242,6 +257,7 @@ class AppContainer extends React.Component {
               stateApp={ this.state }
               editNote={ this.editNote.bind(this) }
               deleteNote={ this.deleteNote.bind(this) }
+              setEditing={ this.setEditing.bind(this) }
             />
           ) }
         />

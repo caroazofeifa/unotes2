@@ -37,3 +37,16 @@ exports.deleteNotebook = (req, res) => {
     }
   });
 };
+
+exports.updateNotebook = (req, res) => {
+  console.log('Update notebook')
+  //console.log(req);
+  /*
+  Notebook.findByIdAndUpdate(req.params.id, (err, data) => {
+    if (!err) {
+      res.status(201).json({});
+    } else {
+      res.status(500).json({});
+    }
+  });*/
+};

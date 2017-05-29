@@ -37,3 +37,14 @@ exports.deleteNote = (req, res) => {
     }
   });
 };
+
+exports.updateNote = (req, res) => {
+  console.log('Update note');
+  Note.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+    if (!err) {
+      res.status(201).json({});
+    } else {
+      res.status(500).json({});
+    }
+  });
+};

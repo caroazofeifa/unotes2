@@ -16,8 +16,9 @@ class EditorNotesContainer extends React.Component {
   componentWillMount() {
     this.setState({ titleNote: this.props.stateApp.title });
     this.setState({ descriptionNote: this.props.stateApp.description });
-    this.setState({ notebookNote: this.props.stateApp.idNotebooks });
+    this.setState({ idNotebookNote: this.props.stateApp.idNotebook });
     this.setState({ idNote: this.props.stateApp.idNote });
+    //console.log(this.props.stateApp.idNotebooks);
   }
   //Updates the title of the note
   updateTitleNote(titleNoteI) {
