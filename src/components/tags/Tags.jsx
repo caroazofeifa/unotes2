@@ -6,6 +6,7 @@ const TagLi = require('./TagLi');
 const preload = '../src/images/';
 const Tags = React.createClass({
   handleChange(event) {
+    console.log('hola guapa');
     const name = event.currentTarget.value;
     this.props.updateNameTag(name);
   },
@@ -32,7 +33,11 @@ const Tags = React.createClass({
             <ul id='tagsList' className='tagsList'>
               {allMyTags.map((show) => {
                 return (
-                  <TagLi key={ show._id } show={ show } />
+                  <TagLi
+                    key={ show._id }
+                    show={ show }
+                    deleteTag={ this.props.deleteTag }
+                  />
                 );
               })
               }
@@ -40,7 +45,7 @@ const Tags = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control tagFile__input' type='text' id='inputNewTag' placeholder='New tags' onChange={ this.handleChange } />
+          <input className='form-control tagFile__input' type='text' id='inputNewTag' placeholder='New tag' onChange={ this.handleChange } />
           <button className='tagFile__button--margin' href='#' id='addTag' onClick={ this.addTag }>
             <img className='tagFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>

@@ -20,13 +20,13 @@ const DropDown = React.createClass({
     return (
       <section className='section notesDropDown'>
         <select className='notesDropDown__dropdown' onChange={ this.handleChange } >
-          <option value={0} >All</option>
+          <option value={ 0 } >All</option>
           {
-            allMyNotebooks.map((show) => {   
-            return (
-              <Option key={ show._id } show={ show } />
-            );
-          })
+            allMyNotebooks.map((show) => {
+              return (
+                <Option key={ show._id } show={ show } />
+              );
+            })
           },
         </select>
         <button className='notesDropDrown__button' id='buttonTag'>

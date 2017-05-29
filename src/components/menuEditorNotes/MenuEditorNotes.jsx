@@ -43,7 +43,7 @@ const MenuEditorNotes = React.createClass({
                 <button className='navNote__button' href='#' onClick={ this.deleteNote } >
                     <img className='navNote__image' src={ `${preload}delete.svg` } title='Delete' />
                 </button>
-                </li>                
+                </li>
             </ul>
         </nav>
     );
