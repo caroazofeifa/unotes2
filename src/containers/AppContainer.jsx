@@ -165,6 +165,15 @@ class AppContainer extends React.Component {
         console.log(`delete successfully ${response}`);
       });
   }
+  //UPDATE TAGS
+  updateTag(tagId) {
+    const uptadeTag = { 'name': nameTag };
+    axios
+    .put(serverTags+'/'+nameTag, updateTag)
+    .then(function (response) {
+      console.log(`update successfully ${response}`);
+    });
+  }
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';
@@ -231,7 +240,6 @@ class AppContainer extends React.Component {
               stateApp={ this.state }
               addNote={ this.addNote.bind(this) }
               deleteNote={ this.deleteNote.bind(this) }
-
             />
           ) : (
             <Redirect to='/' />

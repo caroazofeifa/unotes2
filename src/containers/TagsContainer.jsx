@@ -9,6 +9,10 @@ class TagsContainer extends React.Component {
       nameTag: '',
     };
   }
+  //Before component is mounted sets the state from props, used when a note is going to be edited
+  componentWillMount() {
+    this.setState({ nameTag: this.props.stateApp.nameTag });
+  }
   //Set the nameTag to the name received from param
   updateNameTag(nameTagI) {
     this.setState({ nameTag: nameTagI });

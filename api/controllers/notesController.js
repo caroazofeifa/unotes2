@@ -4,31 +4,31 @@ const Note = require('../models/Note');
 
 
 exports.getNotes = (req, res) => {
-    console.log('Ver notes')
-    Note.find().exec(function(err, data) {
-        res.status(200);
-        res.json(data);
-    });
+  console.log('Ver notes')
+  Note.find().exec(function (err, data) {
+    res.status(200);
+    res.json(data);
+  });
 };
 
 exports.createNotes = (req, res) => {
-    console.log('Create note!!');
-    const note = new Note(req.body);
-    note.save(err => {
-        if (err) {
-            res.status(404);
-            res.json(err);
-        } else {
-            res.status(201);
-            res.json(note);
-        }   
-    });
+  console.log('Create note!!');
+  const note = new Note(req.body);
+  note.save(err => {
+    if (err) {
+      res.status(404);
+      res.json(err);
+    } else {
+      res.status(201);
+      res.json(note);
+    }
+  });
 };
 
 exports.deleteNote = (req, res) => {
-    console.log('Delete note')
-    //console.log(req);
-    Note.findByIdAndRemove(req.params.id, (err, data) => {
+  console.log('Delete note')
+  //console.log(req);
+  Note.findByIdAndRemove(req.params.id, (err, data) => {
     if (!err) {
       res.status(204).json({});
     }

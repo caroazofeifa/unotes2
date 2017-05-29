@@ -4,6 +4,9 @@ import './_tags.scss';
 const preload = '../src/images/';
 
 const TagLi = React.createClass({
+  updateTag() {
+    this.props.editTag(this.props.show.name, this.props.show._id);
+  },
   deleteTag() {
     this.props.deleteTag(this.props.show._id);
   },
@@ -17,7 +20,7 @@ const TagLi = React.createClass({
               <h6 suppressContentEditableWarning contentEditable='true' id='inputName'>{name}</h6>
             </div>
             <div className='col-md-5 col--width'>
-              <button className='tagFile__button' href='#' id='buttonEditar'>
+              <button className='tagFile__button' href='#' id='buttonEditar' id='buttonLib' onClick={ this.updateTag }>
                 <img id='imgEditar' className='tagFile__image' src={ `${preload}pencil.svg` } title='Edit' />
               </button>
               <button className='tagFile__button' href='#'>
