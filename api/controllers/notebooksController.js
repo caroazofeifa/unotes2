@@ -13,7 +13,7 @@ exports.createNotebooks = (req, res) => {
   console.log('Create notebook');
   const notebook = new Notebook(req.body);
   //notebook.name=body.name;
-  //console.log(notebook);
+  // console.log(notebook);
   //console.log(req.body);
   notebook.save(err => {
     if (err) {

@@ -6,6 +6,7 @@ const TagLi = require('./TagLi');
 const preload = '../src/images/';
 const Tags = React.createClass({
   handleChange(event) {
+    console.log('hola guapa');
     const name = event.currentTarget.value;
     this.props.updateNameTag(name);
   },

@@ -9,11 +9,11 @@ router.get('/tags',tagsController.getTags);
 
 router.post('/notes',notesController.createNotes);
 router.post('/notebooks',notebooksController.createNotebooks);
-// router.post('/tags',tagsController.createTags);
+router.post('/tags',tagsController.createTags);
 
 router.delete('/notes/:id', notesController.deleteNote);
 router.delete('/notebooks/:id', notebooksController.deleteNotebook);
-// router.delete('/tags/:id',tagsController.deleteTags);
+router.delete('/tags/:id',tagsController.deleteTag);
 
 router.get('/', (request, response) => {
   //console.log('HIIII');

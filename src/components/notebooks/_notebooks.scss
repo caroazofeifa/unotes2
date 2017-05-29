@@ -93,7 +93,7 @@
   width: 100%;
 }
 @media only screen and (max-width: 350px) {
-.sectionFile--show{
+  .sectionFile--show{
     left:0;
     top: 11vh;
     width: 100%;
@@ -111,7 +111,7 @@
   }
 }
 @media only screen and (min-width: 351px) and (max-width: 519px) {
-.sectionFile--show{
+  .sectionFile--show{
     left:0;
     top: 11vh;
     width: 100%;
@@ -129,7 +129,7 @@
   }
 }
 @media only screen and (min-width: 520px) and (max-width: 789px) {
-.sectionFile--show{
+  .sectionFile--show{
     top: 14vh;
     width: 65%;
     left: 15%;
@@ -144,7 +144,7 @@
   }
 }
 @media only screen and (min-width: 790px) and (max-width: 991px) {
-.sectionFile--show{
+  .sectionFile--show{
     top: 14vh;
     width: 60%;
     left: 15%;
@@ -159,7 +159,7 @@
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1250px) {
-.sectionFile--show{
+  .sectionFile--show{
     width: 33%;
    }
   .col--width{

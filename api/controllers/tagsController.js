@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
-const Notebook = require('../models/Tag');
+const Tag = require('../models/Tag');
 
 exports.getTags = (req, res) => {
   console.log('Ver tags');
-  Notebook.find().exec(function (err, data) {
+  Tag.find().exec(function (err, data) {
     res.status(200);
     res.json(data);
   });
@@ -12,8 +12,8 @@ exports.getTags = (req, res) => {
 exports.createTags = (req, res) => {
   console.log('Create tag');
   const tag = new Tag(req.body);
-  //notebook.name=body.name;
-  //console.log(notebook);
+  //tag.name=body.name;
+  // console.log(tag);
   //console.log(req.body);
   tag.save(err => {
     if (err) {
@@ -21,7 +21,7 @@ exports.createTags = (req, res) => {
       res.json(err);
     } else {
       res.status(201);
-      res.json(notebook);
+      res.json(tag);
     }
   });
 };

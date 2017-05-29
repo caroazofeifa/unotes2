@@ -128,6 +128,7 @@ class AppContainer extends React.Component {
   //ADD TAG
   addTag(nameTagI) {
     const newTag = { 'name': nameTagI };
+    // console.log(nameTagI);
     axios
       .post(serverTags, newTag)
       .then(function (response) {
@@ -155,6 +156,7 @@ class AppContainer extends React.Component {
   }
   //DELETE TAG
   deleteTag(tagId) {
+    console.log('jjjjjjjjj');
     console.log(tagId);
     const deleteTag = { 'id': tagId };
     axios
@@ -199,10 +201,10 @@ class AppContainer extends React.Component {
         <Route
           path='/Tags' render={ () => (
             this.state.showTag ? (
-              <Tags
+              <TagsContainer
                 stateApp={ this.state }
                 addTag={this.addTag.bind(this) }
-                deleteTag={ this.deleteNote.bind(this) }
+                deleteTag={ this.deleteTag.bind(this) }
               />
             ) : (
               <Redirect to='/' />
