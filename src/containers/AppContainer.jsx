@@ -40,28 +40,13 @@ class AppContainer extends React.Component {
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
   //This method is only executed once during the component’s life.
-  componentDidMount() {
+  componentDidMount() {   
     //Get notes with axios from the api
-    axios
-      .get(serverNotes)
-      .then(res => {
-        const allMyNotes = res.data;
-        this.setState({ allMyNotes });
-      });
-    //Get notes with axios from the api
-    axios
-      .get(serverNotebooks)
-      .then(res => {
-        const allMyNotebooks = res.data;
-        this.setState({ allMyNotebooks });
-      });
+    this.getAllNotes();
+    //Get notebooks with axios from the api
+    this.getAllNotebooks();
     //Get tags with axios from json server
-    axios
-      .get(serverTags)
-      .then(res => {
-        const allMyTags = res.data;
-        this.setState({ allMyTags });
-      });
+    this.getAllTags();
   }
   //Sets true/salse variables to show Modal editor of notes
   showEditorNotes() {
@@ -96,6 +81,28 @@ class AppContainer extends React.Component {
     this.setState({ idNotebook: idNotebookI });
     this.setState({ showEditor: true });
   }
+  getAllNotes() {
+    axios
+      .get(serverNotes)
+      .then(res => {
+        this.setState({ allMyNotes: res.data});
+      });
+  }
+  getAllNotebooks() {
+    axios
+      .get(serverNotebooks)
+      .then(res => {
+        this.setState({ allMyNotebooks: res.data });
+      });
+  }
+  getAllTags() {
+    axios
+      .get(serverTags)
+      .then(res => {
+        const allMyTags = res.data;
+        this.setState({ allMyTags });
+      });
+  }
   //ADD NOTE
   addNote(titleI, descriptionI, idNotebookI) {
     if (titleI =='' || idNotebookI ==0) {
@@ -105,15 +112,9 @@ class AppContainer extends React.Component {
       axios
         .post(serverNotes, newNote)
         .then(function (response) {
-          //console.log(`saved successfully ${response}`);
-        });
-      axios
-        .get(serverNotes)
-        .then(res => {
-          const allMyNotes = res.data;
-          //console.log('setting state');
-          this.setState({ allMyNotes });
-        });
+          this.getAllNotes()
+        }.bind(this));
+        this.showEditorNotes();
     }
   }
   //ADD NOTEBOOK
@@ -122,8 +123,8 @@ class AppContainer extends React.Component {
     axios
       .post(serverNotebooks, newNotebook)
       .then(function (response) {
-        console.log(`saved successfully ${response}`);
-      });
+        this.getAllNotebooks()
+      }.bind(this));
   }
   //ADD TAG
   addTag(nameTagI) {
@@ -132,8 +133,8 @@ class AppContainer extends React.Component {
     axios
       .post(serverTags, newTag)
       .then(function (response) {
-        console.log(`saved successfully ${response}`);
-      });
+        this.getAllTags()
+      }.bind(this));
   }
   //DELETE NOTE
   deleteNote(noteId) {
@@ -141,8 +142,8 @@ class AppContainer extends React.Component {
     axios
       .delete(serverNotes+'/'+noteId, deleteNote)
       .then(function (response) {
-        console.log(`deleted successfully ${response}`);
-      });
+        this.getAllNotes()
+      }.bind(this));
   }
   //DELETE NOTEBOOK
   deleteNotebook(notebookId) {
@@ -151,19 +152,18 @@ class AppContainer extends React.Component {
     axios
       .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
       .then(function (response) {
-        console.log(`deleted successfully ${response}`);
-      });
+        this.getAllNotebooks()
+      }.bind(this));
   }
   //DELETE TAG
   deleteTag(tagId) {
-    console.log('jjjjjjjjj');
     console.log(tagId);
     const deleteTag = { 'id': tagId };
     axios
       .delete(serverTags+'/'+tagId, deleteTag)
       .then(function (response) {
-        console.log(`delete successfully ${response}`);
-      });
+        this.getAllTags()
+      }.bind(this));
   }
   //UPDATE TAGS
   updateTag(tagId) {
@@ -190,8 +190,7 @@ class AppContainer extends React.Component {
     } else {
       this.state.tag = 'tagFile';
     }
-    console.log('rendering');
-    return (
+    return (      
       <div>
         <div className='col-md-1 cols'>
           <NavMenu

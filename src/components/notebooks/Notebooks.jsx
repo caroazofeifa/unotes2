@@ -11,6 +11,7 @@ const Notebooks = React.createClass({
   },
   addNoteBook() {
     this.props.addNotebookContainer();
+    inputNoteBook.value ='';
   },
   render() {
     const { notebook, allMyNotebooks } = this.props.stateApp;
