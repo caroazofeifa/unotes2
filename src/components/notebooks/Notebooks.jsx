@@ -1,7 +1,7 @@
 import React from 'react';
 import './_notebooks.scss';
 
-const NotebookLi = require('./NotebookLi');
+const NotebookLiContainer = require('../../containers/NotebookLiContainer');
 
 const preload = '../src/images/';
 const Notebooks = React.createClass({
@@ -23,7 +23,7 @@ const Notebooks = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control sectionFlile__input' type='search' placeholder='Search' />
+          <input className='form-control sectionFile__input' type='search' placeholder='Search' />
           <button className='sectionFile__button--margin' href='#' id='buttonEditar'>
             <img id='imgEditar' className='sectionFile__image' src={ `${preload}search.svg` } title='Search' />
           </button>
@@ -33,7 +33,7 @@ const Notebooks = React.createClass({
             <ul id='notebooksList' className='notebooksList'>
               {allMyNotebooks.map((show) => {
                 return (
-                  <NotebookLi
+                  <NotebookLiContainer
                     key={ show._id }
                     show={ show }
                     stateNotebook={ this.props.stateNotebook}
@@ -48,7 +48,7 @@ const Notebooks = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control sectionFlile__input' type='text' id='inputNoteBook' placeholder='New notebook' onChange={ this.handleChange } />
+          <input className='form-control sectionFile__input' type='text' id='inputNoteBook' placeholder='New notebook' onChange={ this.handleChange } />
           <button className='sectionFile__button--margin' href='#' id='addNoteBook' onClick={ this.addNoteBook }>
             <img className='sectionFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>

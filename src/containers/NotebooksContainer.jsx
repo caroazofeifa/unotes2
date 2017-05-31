@@ -26,6 +26,7 @@ class NotebooksContainer extends React.Component {
     return (
       <Notebooks
         stateApp={ this.props.stateApp }
+        stateNotebook={ this.state }
         addNotebookContainer={ this.addNotebookContainer.bind(this) }
         updateNameNotebook={ this.updateNameNotebook.bind(this) }
         deleteNotebook={ this.props.deleteNotebook }
