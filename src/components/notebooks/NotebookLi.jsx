@@ -29,7 +29,7 @@ const NotebookLi = React.createClass({
         <li className='sectionFile__list'>
           <div className='row sectionFile__li'>
             <div className='col-md-5 col--width'>
-              <input className='form-control sectionFlile__input' value={ name } id='inputName' type='text' placeholder='Search' onKeyDown={ this.handleKeyPress } onChange={ this.handleChange} />
+              <input className='sectionFile__input--list' value={ name } id='inputName' type='text' placeholder='Search' onKeyDown={ this.handleKeyPress } onChange={ this.handleChange} />
             </div>
             <div className='col-md-5 col--width'>
               <button className='sectionFile__button' href='#' onClick={ this.updateNotebook } >
