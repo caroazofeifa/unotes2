@@ -40,7 +40,7 @@ exports.deleteNotebook = (req, res) => {
 
 exports.updateNotebook = (req, res) => {
   console.log('Update notebook')
-  Note.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+  Notebook.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
     if (!err) {
       res.status(201).json({});
     } else {

@@ -1,14 +1,14 @@
 import React from 'react';
 import './_notebooks.scss';
 
-const NotebookLi = require('./NotebookLi');
+const NotebookLiContainer = require('../../containers/NotebookLiContainer');
 
 const preload = '../src/images/';
 const Notebooks = React.createClass({
-  // handleChange(event) {
-  //   const name = event.currentTarget.value;
-  //   this.props.updateNameNotebook(name);
-  // },
+  handleChange(event) {
+    const name = event.currentTarget.value;
+    this.props.updateNameNotebook(name);
+  },
   addNoteBook() {
     this.props.addNotebookContainer();
     inputNoteBook.value ='';
@@ -33,7 +33,7 @@ const Notebooks = React.createClass({
             <ul id='notebooksList' className='notebooksList'>
               {allMyNotebooks.map((show) => {
                 return (
-                  <NotebookLi
+                  <NotebookLiContainer
                     key={ show._id }
                     show={ show }
                     stateNotebook={ this.props.stateNotebook}

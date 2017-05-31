@@ -189,7 +189,7 @@ class AppContainer extends React.Component {
   }
   //UPDATE NOTEBOOK
   updateNotebook(idNotebook, nameNotebook ) {
-    const updateNotebook = { '_id': idNotebook, 'name': nameNotebook };
+    const updateNotebook = { 'id': idNotebook, 'name': nameNotebook };
     console.log(updateNotebook);
     axios
       .put(serverNotebooks+'/'+idNotebook, updateNotebook)
