@@ -11,6 +11,7 @@ class NotebooksContainer extends React.Component {
   }
   //Set the nameNote to the name received from param
   updateNameNotebook(nameNotebookI) {
+    console.log('UPDATING');
     console.log(nameNotebookI);
     this.setState({ nameNotebook: nameNotebookI });
   }
@@ -25,7 +26,6 @@ class NotebooksContainer extends React.Component {
     return (
       <Notebooks
         stateApp={ this.props.stateApp }
-        stateNotebook={ this.state}
         addNotebookContainer={ this.addNotebookContainer.bind(this) }
         updateNameNotebook={ this.updateNameNotebook.bind(this) }
         deleteNotebook={ this.props.deleteNotebook }

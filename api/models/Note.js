@@ -4,6 +4,7 @@ const Note = new Schema({
   title: String,
   description: String,
   idNotebook: String,
+  idTags:[],
   //missing the tags atrib
 });
 

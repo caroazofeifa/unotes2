@@ -15,7 +15,12 @@ const EditorNotes = React.createClass({
             <MenuEditorNotes infoEditorNote={ this.props.infoEditorNote } stateApp={ this.props.stateApp } updateTitleNote={ this.props.updateTitleNote } saveNote={ this.props.saveNote } deleteNote={ this.props.deleteNote } />
           </div>
           <div className='col-md-12'>
-            <SubMenuEditorNotes infoEditorNote={ this.props.infoEditorNote } stateApp={ this.props.stateApp } updateIdNotebookNote={ this.props.updateIdNotebookNote } />
+            <SubMenuEditorNotes
+              infoEditorNote={ this.props.infoEditorNote }
+              stateApp={ this.props.stateApp }
+              updateIdNotebookNote={ this.props.updateIdNotebookNote }
+              insertTaginArray = { this.props.insertTaginArray }
+            />
           </div>
           <div className='col-md-12'>
             <TextEditorNotes infoEditorNote={ this.props.infoEditorNote } stateApp={ this.props.stateApp } updateDescriptionNote={ this.props.updateDescriptionNote } />

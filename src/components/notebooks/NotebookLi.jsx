@@ -8,25 +8,26 @@ const NotebookLi = React.createClass({
     this.props.deleteNotebook(this.props.show._id);
   },
   handleChange(event) {
-    const nameNotebook = event.currentTarget.value;
-    //console.log(nameNotebook);
-    this.props.updateNameNotebook(nameNotebook);
+    //const nameNotebook = this.refs.inputName;
+    console.log(this.refs);
+    //this.props.updateNameNotebook(nameNotebook);
   },
   handleKeyPress(e) {
     if (e.key === 'Enter') {
       console.log(' ENTER validate');
+      //const name = inputName.value.text();
+      console.log(this.props.show._id);
       this.props.updateNotebook(this.props.show._id);
     }
   },
   render() {
     const { name, _id } = this.props.show;
-    const { nameNotebook } = this.props.stateNotebook;
     return (
       <div className='col-md-12 col--width' >
         <li className='sectionFile__list'>
           <div className='row sectionFile__li'>
             <div className='col-md-5 col--width'>
-              <input className='form-control sectionFlile__input' value={ nameNotebook } id='inputName' type='text' placeholder='Search' onKeyDown={ this.handleKeyPress } onChange={ this.handleChange} />
+              <h6 suppressContentEditableWarning contentEditable='true' id='inputName' onChange={ this.handleChange} onKeyDown={ this.handleKeyPress } onInput={this.handleChange} >{name}</h6>
             </div>
             <div className='col-md-5 col--width'>
               <button className='sectionFile__button' href='#'>

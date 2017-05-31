@@ -34,6 +34,7 @@ class AppContainer extends React.Component {
       description: '',
       idNotebook: -1,
       idNote: -1,
+      idTags:[],
       //Data
       allMyNotes: [],
       allMyNotebooks: [],
@@ -44,7 +45,7 @@ class AppContainer extends React.Component {
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
   //This method is only executed once during the component’s life.
-  componentDidMount() {   
+  componentWillMount() {   
     //Get notes with axios from the api
     this.getAllNotes();
     //Get notebooks with axios from the api
@@ -78,11 +79,14 @@ class AppContainer extends React.Component {
   }
   //Sets vars in the STATE from selected note
   //Shows Modal editor of notes
-  editNote(titleI, descriptionI, idNoteI, idNotebookI) {
+  editNote(titleI, descriptionI, idNoteI, idNotebookI, idTagsI) {
     this.setState({ title: titleI });
     this.setState({ description: descriptionI });
     this.setState({ idNote: idNoteI });
     this.setState({ idNotebook: idNotebookI });
+    this.setState({ idTags: idTagsI });
+    this.state.idTags = idTagsI;
+    //console.log(this.state.idTags);
     this.setState({ showEditor: true });
     //console.log(this.state);
   }
@@ -109,12 +113,13 @@ class AppContainer extends React.Component {
       });
   }
   //ADD /UPDATE NOTE
-  addNote(titleI, descriptionI, idNotebookI) {
+  //addNote(titleI, descriptionI, idNotebookI,arrTags) {
+  addNote(titleI, descriptionI, idNotebookI,idTagsI) {
     if (titleI =='' || idNotebookI ==0) {
       window.alert('Make sure you selected the notbook and the title for your note! ');
     } else {
       if(this.state.editing){
-        const updateNote = { '_id': this.state.idNote, 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
+        const updateNote = { '_id': this.state.idNote, 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI, 'idTags':idTagsI };
         //UPDATE NOTE
         axios
           .put(serverNotes+'/'+this.state.idNote, updateNote)
@@ -125,7 +130,7 @@ class AppContainer extends React.Component {
           this.state.editing=false;
         } else {
           //ADD NEW NOTE
-        const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI };
+        const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI, 'idTags':idTagsI };
         axios
           .post(serverNotes, newNote)
           .then(function (response) {
@@ -145,14 +150,15 @@ class AppContainer extends React.Component {
       }.bind(this));
   }
   //ADD TAG
-  addTag(nameTagI) {
-    const newTag = { 'name': nameTagI };
+  addTag(nameTagI,colorTagI) {
+    const newTag = { 'name': nameTagI, 'color':colorTagI };
     // console.log(nameTagI);
     axios
       .post(serverTags, newTag)
       .then(function (response) {
-        this.getAllTags()
+        this.getAllTags();
       }.bind(this));
+    
   }
   //DELETE NOTE
   deleteNote(noteId) {
@@ -160,7 +166,8 @@ class AppContainer extends React.Component {
     axios
       .delete(serverNotes+'/'+noteId, deleteNote)
       .then(function (response) {
-        this.getAllNotes()
+        this.getAllNotes();
+        //this.deleteFromState(deleteNote);
       }.bind(this));
   }
   //DELETE NOTEBOOK
@@ -197,7 +204,6 @@ class AppContainer extends React.Component {
         this.getAllNotebooks()
       }.bind(this));
   }
-  
   //UPDATE TAGS
   render() {
     if (this.state.showEditor) {
@@ -257,6 +263,7 @@ class AppContainer extends React.Component {
             <EditorNotesContainer
               stateApp={ this.state }
               addNote={ this.addNote.bind(this) }
+              addTag={this.addTag.bind(this) }
               deleteNote={ this.deleteNote.bind(this) }
             />
           ) : (

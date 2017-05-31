@@ -14,10 +14,19 @@ const SubMenuEditorNotes = React.createClass({
     //console.log(notebookIndex);
     this.props.updateIdNotebookNote(notebookIndex);
   },
+  handleKeyPress(e) {
+    if (e.key === 'Enter') {
+      const nameTag = inputTag.value;
+      const color='0';
+      console.log(nameTag);      
+      this.props.insertTaginArray(nameTag,color);
+      inputTag.value='';
+    }
+  },
   render() {
-    const { allMyNotebooks } = this.props.stateApp;
+    const { allMyNotebooks, allMyTags } = this.props.stateApp;
     const { idNotebook } = this.props.stateApp;
-    const { idNotebookNote } = this.props.infoEditorNote;
+    const { idNotebookNote, idTagsNote, arrTagsInNote, arrNewTagsInNote } = this.props.infoEditorNote;
     //console.log(idNotebookNote);
     return (
        <nav className='navEditor'>
@@ -44,7 +53,30 @@ const SubMenuEditorNotes = React.createClass({
                 </button>
                 </li>
                 <li>
-                <input className='navEditor__input' type='text' placeholder='Tag' />
+                  <input id='inputTag' className='navEditor__input' type='text' placeholder='Tag' onKeyDown={ this.handleKeyPress } />
+                </li>
+                <li>
+                  <div className='row section section--display'>
+                    {arrTagsInNote.map((tag) => {
+                        if(tag!=undefined) {
+                          console.log(tag);
+                          if(tag._id ==undefined){
+                            const objectTag = allMyTags.find(e => e.name === tag.name);
+                            const nameTag = objectTag.name;
+                            return (
+                              <div className={`circle circle--margin color${tag.color}` } title={nameTag} ></div> 
+                            )
+                          } else{
+                          const objectTag = allMyTags.find(e => e._id === tag._id);
+                          const nameTag = objectTag.name;
+                          return (
+                              <div key={tag._id} className={`circle circle--margin color${tag.color}` } title={nameTag} ></div> 
+                          )
+                        }
+                    }
+                    })
+                    }
+                  </div>
                 </li>
             </ul>
         </nav>

@@ -41,6 +41,7 @@
   background-color: transparent;
   border: 0px;
   margin: 20px;
+  margin-left: 15%;
 }
 .tagsList{
   display: inline;
@@ -55,6 +56,7 @@
   //width: 100%;
   margin: 1rem 1rem 0 1rem;
 }
+
 .tagFile__list{
   //background-color: #66a5ca;
   border-color: transparent;
@@ -165,4 +167,57 @@
   .col--width{
     width: 100%;
   }
+}
+.circle {
+  cursor:pointer;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+.circle--margin{
+  margin: 4rem 0rem 2rem 0rem;
+}
+.circle:hover{
+  border:2px solid black;
+}
+.color0 {
+  background: #60CBFC;
+}
+.color1 {
+  background: #F79267;
+}
+.color2 {
+  background: #855379;
+}
+.color3 {
+  background: #F7C974;
+}
+.color4{
+  background: #87B6A7;
+}
+.color5 {
+  background: #F25C85;
+}
+.color6 {
+  background: #FFF;
+}
+.col--pading{
+  padding: 3px;
+}
+.tagFile__input--margin{
+  width:30%;
+}
+.section--display{
+  justify-content: flex-start;
+}
+.circle__selected{
+  cursor:pointer;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border:2px solid black;
 }

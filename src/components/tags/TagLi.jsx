@@ -11,21 +11,19 @@ const TagLi = React.createClass({
     this.props.deleteTag(this.props.show._id);
   },
   render() {
-    const { name } = this.props.show;
+    const { name,color } = this.props.show;
+    const { circleStyle } = this.props.stateTag;
     return (
       <div className='col-md-12 col--width'>
         <li className='tagFile__list'>
           <div className='row tagFile__li'>
-            <div className='col-md-5 col--width'>
+            <div className ='col-md-1' >
+              <div className={`circle color${color}`}></div>
+            </div>
+            <div className='col-md-6 col--width'>
               <h6 suppressContentEditableWarning contentEditable='true' id='inputName'>{name}</h6>
             </div>
             <div className='col-md-5 col--width'>
-              <button className='tagFile__button' href='#' id='buttonEditar' id='buttonLib' onClick={ this.updateTag }>
-                <img id='imgEditar' className='tagFile__image' src={ `${preload}pencil.svg` } title='Edit' />
-              </button>
-              <button className='tagFile__button' href='#'>
-                <img className='tagFile__image' src={ `${preload}file.svg` } title='New tag' />
-              </button>
               <button className='tagFile__button' href='#'  onClick={ this.deleteTag }>
                 <img className='tagFile__image' src={ `${preload}delete.svg` } title='Delete' />
               </button>
