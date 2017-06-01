@@ -12,7 +12,13 @@ const EditorNotes = React.createClass({
       <section id='notesModal' className={ editorNotes } >
         <div className='row'>
           <div className='col-md-12' >
-            <MenuEditorNotes infoEditorNote={ this.props.infoEditorNote } stateApp={ this.props.stateApp } updateTitleNote={ this.props.updateTitleNote } saveNote={ this.props.saveNote } deleteNote={ this.props.deleteNote } />
+            <MenuEditorNotes
+              infoEditorNote={ this.props.infoEditorNote }
+              stateApp={ this.props.stateApp }
+              updateTitleNote={ this.props.updateTitleNote }
+              saveNote={ this.props.saveNote }
+              deleteNote={ this.props.deleteNote }
+            />
           </div>
           <div className='col-md-12'>
             <SubMenuEditorNotes
@@ -20,6 +26,7 @@ const EditorNotes = React.createClass({
               stateApp={ this.props.stateApp }
               updateIdNotebookNote={ this.props.updateIdNotebookNote }
               insertTaginArray = { this.props.insertTaginArray }
+              deleteTagFromNote ={ this.props.deleteTagFromNote }
             />
           </div>
           <div className='col-md-12'>

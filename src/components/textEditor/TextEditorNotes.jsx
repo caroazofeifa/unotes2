@@ -2,9 +2,9 @@ import React from 'react';
 import './_text-editorNotes.scss';
 
 const TextEditorNotes = React.createClass({
+  //gets the event when the description is changed (text area)
   handleChange(event) {
     const desc = event.currentTarget.value;
-    //console.log(desc);
     this.props.updateDescriptionNote(desc);
   },
   render() {

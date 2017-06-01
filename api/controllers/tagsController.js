@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectID = require('mongodb').ObjectID;
 const Tag = require('../models/Tag');
 
 exports.getTags = (req, res) => {
@@ -11,17 +12,19 @@ exports.getTags = (req, res) => {
 
 exports.createTags = (req, res) => {
   console.log('Create tag');
-  const tag = new Tag(req.body);
-  //tag.name=body.name;
-  // console.log(tag);
-  //console.log(req.body);
+  const id= new ObjectID();
+  const tag = new Tag({
+    _id: id,
+    name: req.body.name,
+    color:req.body.color,
+  });  
   tag.save(err => {
     if (err) {
       res.status(404);
       res.json(err);
     } else {
       res.status(201);
-      res.json(tag);
+      res.json(id);
     }
   });
 };
