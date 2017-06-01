@@ -13,8 +13,13 @@ const Notebooks = React.createClass({
     this.props.addNotebookContainer();
     inputNoteBook.value ='';
   },
+  handleChangeSearch(event) {
+    const searchInput = event.currentTarget.value;
+    this.props.updateSearchInput(searchInput);
+  },
   render() {
     const { notebook, allMyNotebooks } = this.props.stateApp;
+    const { searchInput } = this.props.stateNotebook;
     return (
       <section id='sectionFile' className={ notebook } >
         <div className='row'>
@@ -23,7 +28,7 @@ const Notebooks = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control sectionFile__input' type='search' placeholder='Search' />
+          <input className='form-control sectionFile__input' type='search' placeholder='Search' onChange={ this.handleChangeSearch } />
           <button className='sectionFile__button--margin' href='#' id='buttonEditar'>
             <img id='imgEditar' className='sectionFile__image' src={ `${preload}search.svg` } title='Search' />
           </button>
@@ -31,8 +36,9 @@ const Notebooks = React.createClass({
         <div className='row'>
           <div className='col-md-12 notebooksList--border'>
             <ul id='notebooksList' className='notebooksList'>
-              {allMyNotebooks.map((show) => {
-                return (
+              {allMyNotebooks
+                .filter((show) => show.name.toUpperCase().indexOf(searchInput.toUpperCase()) >= 0)
+                .map((show) => (
                   <NotebookLiContainer
                     key={ show._id }
                     show={ show }
@@ -41,8 +47,7 @@ const Notebooks = React.createClass({
                     updateNameNotebook={ this.props.updateNameNotebook }
                     updateNotebook={ this.props.updateNotebook }
                   />
-                );
-              })
+                ))
               }
             </ul>
           </div>

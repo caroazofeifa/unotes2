@@ -9,11 +9,16 @@ class TagsContainer extends React.Component {
       nameTag: '',
       circle: ['0','1','2','3','4','5','6'],
       circleSelected:0,
+      searchInput:'',
     };
   }
   //Set the name Tag to the name received from param
   updateNameTag(nameTagI) {
     this.setState({ nameTag: nameTagI });
+  }
+  //Set the searchInput to the name received from param
+  updateSearchInput(searchInputI) {
+    this.setState({ searchInput: searchInputI });
   }
   //Calls to AppContainer to add a new tag
   addTagContainer() {
@@ -36,6 +41,7 @@ class TagsContainer extends React.Component {
         selectColor={ this.selectColor.bind(this) }
         deleteTag={ this.props.deleteTag }
         updateTag={ this.updateTag.bind(this) }
+        updateSearchInput={ this.updateSearchInput.bind(this) }
       />
     );
   }

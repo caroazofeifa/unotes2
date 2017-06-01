@@ -22,9 +22,13 @@ const Tags = React.createClass({
     //console.log(event.currentTarget.id);
     this.props.selectColor(event.currentTarget.id);
   },
+  handleChangeSearch(event) {
+    const searchInput = event.currentTarget.value;
+    this.props.updateSearchInput(searchInput);
+  },
   render() {
     const { tag, allMyTags } = this.props.stateApp;
-    const { circle, circleSelected } = this.props.stateTag;
+    const { circle, circleSelected, searchInput } = this.props.stateTag;
     return (
       <section id='tagFile' className={tag} >
         <div className='row'>
@@ -33,7 +37,7 @@ const Tags = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control tagFile__input' type='search' placeholder='Search' />
+          <input className='form-control tagFile__input' type='search' placeholder='Search' onChange={ this.handleChangeSearch } />
           <button className='tagFile__button--margin' href='#' id='buttonEditar'>
             <img id='imgEditar' className='tagFile__image' src={`${preload}search.svg`} title='Search' />
           </button>
@@ -41,8 +45,9 @@ const Tags = React.createClass({
         <div className='row'>
           <div className='col-md-12 tagsList--border'>
             <ul id='tagsList' className='tagsList'>
-              {allMyTags.map((show) => {
-                return (
+              {allMyTags
+                .filter((show) => show.name.toUpperCase().indexOf(searchInput.toUpperCase()) >= 0)
+                .map((show) => (
                   <TagsLiContainer
                     key={ show._id }
                     show={ show }
@@ -51,8 +56,7 @@ const Tags = React.createClass({
                     updateNameTag={ this.props.updateNameTag }
                     updateTag={ this.props.updateTag }
                   />
-                );
-              })
+                ))
               }
             </ul>
           </div>
