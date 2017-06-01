@@ -5,7 +5,7 @@ const MenuEditorNotes = require('../menuEditorNotes/MenuEditorNotes');
 const SubMenuEditorNotes = require('../subMenuEditor/SubMenuEditorNotes');
 const TextEditorNotes = require('../textEditor/TextEditorNotes');
 
-const EditorNotes = React.createClass({
+class EditorNotes extends React.Component{
   render() {
     const { editorNotes } = this.props.stateApp;
     return (
@@ -35,7 +35,7 @@ const EditorNotes = React.createClass({
         </div>
       </section>
     );
-  },
-});
+  }
+};
 
 module.exports = EditorNotes;

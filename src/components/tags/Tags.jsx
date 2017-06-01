@@ -4,11 +4,11 @@ import './_tags.scss';
 const TagsLiContainer = require('../../containers/TagsLiContainer');
 
 const preload = '../src/images/';
-const Tags = React.createClass({
+class Tags extends React.Component{
   handleChange(event) {
     const name = event.currentTarget.value;
     this.props.updateNameTag(name);
-  },
+  }
   addTag() {
     console.log('BEF')
     console.log(this.props.stateApp.allMyTags);
@@ -16,16 +16,16 @@ const Tags = React.createClass({
     console.log('AFT');
     console.log(this.props.stateApp.allMyTags);
     inputNewTag.value = '';
-  },
+  }
   selectColor(event) {
     //console.log('Select color');
     //console.log(event.currentTarget.id);
     this.props.selectColor(event.currentTarget.id);
-  },
+  }
   handleChangeSearch(event) {
     const searchInput = event.currentTarget.value;
     this.props.updateSearchInput(searchInput);
-  },
+  }
   render() {
     const { tag, allMyTags } = this.props.stateApp;
     const { circle, circleSelected, searchInput } = this.props.stateTag;
@@ -79,7 +79,7 @@ const Tags = React.createClass({
         </div>
       </section>
     );
-  },
-});
+  }
+};
 
 module.exports = Tags;

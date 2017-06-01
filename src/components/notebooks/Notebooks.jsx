@@ -4,19 +4,19 @@ import './_notebooks.scss';
 const NotebookLiContainer = require('../../containers/NotebookLiContainer');
 
 const preload = '../src/images/';
-const Notebooks = React.createClass({
+class Notebooks extends React.Component{
   handleChange(event) {
     const name = event.currentTarget.value;
     this.props.updateNameNotebook(name);
-  },
+  }
   addNoteBook() {
     this.props.addNotebookContainer();
     inputNoteBook.value ='';
-  },
+  }
   handleChangeSearch(event) {
     const searchInput = event.currentTarget.value;
     this.props.updateSearchInput(searchInput);
-  },
+  }
   render() {
     const { notebook, allMyNotebooks } = this.props.stateApp;
     const { searchInput } = this.props.stateNotebook;
@@ -62,7 +62,7 @@ const Notebooks = React.createClass({
         </div>
       </section>
     );
-  },
-});
+  }
+};
 
 module.exports = Notebooks;

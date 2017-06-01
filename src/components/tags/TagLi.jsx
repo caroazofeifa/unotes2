@@ -3,15 +3,15 @@ import './_tags.scss';
 
 const preload = '../src/images/';
 
-const TagLi = React.createClass({
+class TagLi extends React.Component{
   deleteTag() {
     this.props.deleteTag(this.props.show._id);
-  },
+  }
   handleChange(event) {
     const nameInput = event.currentTarget.value;
     this.props.updateNameTagLi(nameInput);
     this.props.showOpacityInput();
-  },
+  }
   handleKeyPress(e) {
     if (e.key === 'Enter') {
       console.log('modificar tag');
@@ -19,11 +19,11 @@ const TagLi = React.createClass({
       this.props.updateTag(this.props.show._id);
       this.props.hideOpacityInput();
     }
-  },
+  }
   updateTag(event) {
     // this.props.editTag(this.props.show.name, this.props.show._id);
     this.props.updateTag(this.props.show._id);
-  },
+  }
   render() {
     const { nameTag } = this.props.stateTag;
     const { name, color, circleStyle, styleInputTag } = this.props.stateTagLi;
@@ -48,7 +48,7 @@ const TagLi = React.createClass({
         </li>
       </div>
     );
-  },
-});
+  }
+};
 
 module.exports = TagLi;

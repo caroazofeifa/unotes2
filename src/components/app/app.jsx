@@ -10,7 +10,7 @@ const Route = reactRouter.Route;
 // const Link = reactRouter.Link;
 const AppContainer = require('../../containers/AppContainer');
 
-const App = React.createClass({
+class App extends React.Component{
   render() {
     return (
       <Router>
@@ -21,6 +21,6 @@ const App = React.createClass({
         </div>
       </Router>
     );
-  },
-});
+  }
+};
 render(<App />, document.getElementById('app'));

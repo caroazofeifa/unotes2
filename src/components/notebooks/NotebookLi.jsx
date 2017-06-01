@@ -3,25 +3,25 @@ import './_notebooks.scss';
 
 const preload = '../src/images/';
 
-const NotebookLi = React.createClass({
+class NotebookLi extends React.Component{
   deleteNotebook() {
     this.props.deleteNotebook(this.props.show._id);
-  },
+  }
   handleChange(event) {
     const nameInput = event.currentTarget.value;
     this.props.updateNameNotebookLi(nameInput);
-  },
+  }
   handleKeyPress(e) {
     if (e.key === 'Enter') {
       //console.log(' modificar nota');
       this.props.updateNotebook(this.props.show._id);
     }
-  },
+  }
   openEditorNotes (event) {
     //console.log('open')
     //this.props.showFromNotebook();
     //this.props.updateIdNotebook(this.props.show._id);
-  },
+  }
   render() {
     const { nameNotebook } = this.props.stateNotebook;
     const { name } = this.props.stateNotebookLi;
@@ -44,7 +44,7 @@ const NotebookLi = React.createClass({
         </li>
       </div>
     );
-  },
-});
+  }
+};
 
 module.exports = NotebookLi;

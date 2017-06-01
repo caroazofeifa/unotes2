@@ -6,17 +6,17 @@ const reactRouter = require('react-router-dom');
 const Link = reactRouter.Link;
 const preload = '../src/images/';
 
-const CardNotes = React.createClass({
+class CardNotes extends React.Component{
   //calls to editNote and sends the iformation of the note
   //also calls to set the mode editing by default it is adding
   editNote(event) {
     this.props.editNote(this.props.show.title, this.props.show.description, this.props.show._id, this.props.show.idNotebook,this.props.show.idTags);    
     this.props.setEditing();
-  },
+  }
   //calls to delete note with the id
   deleteNote() {
     this.props.deleteNote( this.props.show._id );
-  },
+  }
   render() {
     const { title, description } = this.props.show;
     return (
@@ -40,7 +40,7 @@ const CardNotes = React.createClass({
         </div>
       </div>
     );
-  },
-});
+  }
+};
 
 module.exports = CardNotes;

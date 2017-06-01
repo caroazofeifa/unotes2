@@ -5,13 +5,13 @@ const Option = require('../dropDown/Option');
 
 const preload = '../src/images/';
 
-const SubMenuEditorNotes = React.createClass({
+class SubMenuEditorNotes extends React.Component{
   //gets the event when the notebook is selected from the dropdown
   handleChange(event) {
     const i = event.currentTarget.selectedIndex;
     const notebookIndex = event.currentTarget[i].value;
     this.props.updateIdNotebookNote(notebookIndex);
-  },
+  }
   //gets the event when enter is pressed (input tag)
   handleKeyPress(event) {
     if (event.key === 'Enter') {
@@ -20,12 +20,12 @@ const SubMenuEditorNotes = React.createClass({
       this.props.insertTaginArray(nameTag,color);
       inputTag.value='';
     }
-  },
+  }
   //calls to delete tag when the circle tag is selected
   deleteTag(event) {
     console.log(event.currentTarget.id);
     this.props.deleteTagFromNote(event.currentTarget.id);
-  },
+  }
   render() {
     const { idNotebook, allMyNotebooks, allMyTags } = this.props.stateApp;
     const { idNotebookNote, idTagsNote, arrTagsInNote } = this.props.infoEditorNote;
@@ -83,7 +83,7 @@ const SubMenuEditorNotes = React.createClass({
             </ul>
         </nav>
     );
-  },
-});
+  }
+};
 
 module.exports = SubMenuEditorNotes;

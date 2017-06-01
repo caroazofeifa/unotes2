@@ -6,19 +6,23 @@ const reactRouter = require('react-router-dom');
 const Link = reactRouter.Link;
 const preload = '../src/images/';
 
-const NavMenu = React.createClass({
+class NavMenu extends React.Component{
+  constructor(props) {
+    super(props);
+    this.showNotes=this.showNotes.bind(this)
+  }
   //Calls to show the modal editor of notes
   showNotes() {
     this.props.showEditorNotes();
-  },
+  }
   //Calls to show the modal of notebooks
   showNotebooks() {
     this.props.showNotebooks();
-  },
+  }
   //Calls to show the modal tags
   showTags() {
     this.props.showTags();
-  },
+  }
   render() {
     return (
       <nav className='section sideNav'>
@@ -54,7 +58,8 @@ const NavMenu = React.createClass({
         </ul>
       </nav>
     );
-  },
-});
+  }
+};
 
 module.exports = NavMenu;
+// export default NavMenu;

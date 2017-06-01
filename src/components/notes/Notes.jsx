@@ -5,7 +5,7 @@ const CardNotes = require('../cardNotes/CardNotes');
 
 let i = 0;
 
-const Notes = React.createClass({
+class Notes extends React.Component{
   render() {
     const { indexSelectedNotebook } = this.props.stateNotes;
     const { allMyNotes } = this.props.stateApp;
@@ -35,7 +35,7 @@ const Notes = React.createClass({
         </div>
       </section>
     );
-  },
-});
+  }
+};
 
 module.exports = Notes;

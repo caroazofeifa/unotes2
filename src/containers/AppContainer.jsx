@@ -38,7 +38,8 @@ class AppContainer extends React.Component {
       allMyTags: [],
       //Edit
       editing:false,
-      };
+    };
+    this.showEditorNotes=this.showEditorNotes.bind(this)
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
   //This method is only executed once during the component’s life.

@@ -5,7 +5,7 @@ const Option = require('./Option');
 
 const preload = '../src/images/';
 
-const DropDown = React.createClass({
+class DropDown extends React.Component{
   //Gets the index/value selected from the dropDrown and sends it to the parrent
   handleChange(event) {
     //gets the the selected value from the dropdown
@@ -14,7 +14,7 @@ const DropDown = React.createClass({
     //console.log(`Index seleccionado: ${i}`);
     //console.log(`Nombre seleccionado: ${notebookIndex}`);
     this.props.changeNotebook(notebookIndex);
-  },
+  }
   render() {
     const { allMyNotebooks } = this.props.stateApp;
     return (
@@ -34,7 +34,7 @@ const DropDown = React.createClass({
         </button>
       </section>
     );
-  },
-});
+  }
+};
 
 module.exports = DropDown;
