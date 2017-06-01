@@ -1,7 +1,7 @@
 import React from 'react';
 import './_tags.scss';
 
-const TagLi = require('./TagLi');
+const TagsLiContainer = require('../../containers/TagsLiContainer');
 
 const preload = '../src/images/';
 const Tags = React.createClass({
@@ -43,11 +43,13 @@ const Tags = React.createClass({
             <ul id='tagsList' className='tagsList'>
               {allMyTags.map((show) => {
                 return (
-                  <TagLi
+                  <TagsLiContainer
                     key={ show._id }
                     show={ show }
-                    deleteTag={ this.props.deleteTag }
                     stateTag={ this.props.stateTag }
+                    deleteTag={ this.props.deleteTag }
+                    updateNameTag={ this.props.updateNameTag }
+                    updateTag={ this.props.updateTag }
                   />
                 );
               })

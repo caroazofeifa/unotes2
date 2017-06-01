@@ -150,11 +150,45 @@ class AppContainer extends React.Component {
       this.cleanEditorNotes();
     }
   }
+  //UPDATE NOTE
+  setEditing() {
+    this.state.editing=true;
+  }
+  //DELETE NOTE
+  deleteNote(noteId) {
+    const deleteNote = { 'id': noteId };
+    axios
+      .delete(serverNotes+'/'+noteId, deleteNote)
+      .then(function (response) {
+        this.getAllNotes();
+        //this.deleteFromState(deleteNote);
+      }.bind(this));
+  }
   //ADD NOTEBOOK
   addNotebook(nameNotebookI) {
     const newNotebook = { 'name': nameNotebookI };
     axios
       .post(serverNotebooks, newNotebook)
+      .then(function (response) {
+        this.getAllNotebooks()
+      }.bind(this));
+  }
+  //UPDATE NOTEBOOK
+  updateNotebook(idNotebook, nameNotebook ) {
+    const updateNotebook = { 'id': idNotebook, 'name': nameNotebook };
+    console.log(updateNotebook);
+    axios
+      .put(serverNotebooks+'/'+idNotebook, updateNotebook)
+      .then(function (response) {
+        this.getAllNotebooks()
+      }.bind(this));
+  }
+//DELETE NOTEBOOK
+  deleteNotebook(notebookId) {
+    console.log(notebookId);
+    const deleteNotebook = { 'id': notebookId };
+    axios
+      .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
       .then(function (response) {
         this.getAllNotebooks()
       }.bind(this));
@@ -188,6 +222,15 @@ class AppContainer extends React.Component {
         this.getAllNotebooks()
       }.bind(this));
   }
+  //UPDATE TAGS
+  updateTag(idTags, nameTag) {
+    const updateTag = { 'id': idTags, 'name': nameTag };
+    axios
+      .put(serverTags+'/'+idTags, updateTag)
+      .then(function (response) {
+        this.getAllTags()
+      }.bind(this));
+  }
   //DELETE TAG
   deleteTag(tagId) {
     const deleteTag = { 'id': tagId };
@@ -210,7 +253,6 @@ class AppContainer extends React.Component {
         this.getAllNotebooks()
       }.bind(this));
   }
-  //UPDATE TAGS
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';
@@ -227,7 +269,7 @@ class AppContainer extends React.Component {
     } else {
       this.state.tag = 'tagFile';
     }
-    return (      
+    return (
       <div>
         <div className='col-md-1 cols'>
           <NavMenu
@@ -243,6 +285,7 @@ class AppContainer extends React.Component {
                 stateApp={ this.state }
                 addTag={this.addTag.bind(this) }
                 deleteTag={ this.deleteTag.bind(this) }
+                updateTag={ this.updateTag.bind(this) }
               />
             ) : (
               <Redirect to='/' />

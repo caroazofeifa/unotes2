@@ -48,7 +48,7 @@ const Notebooks = React.createClass({
           </div>
         </div>
         <div className='row section'>
-          <input className='form-control sectionFile__input' type='text' id='inputNoteBook' placeholder='New notebook' onChange={ this.handleChange } />
+          <input className='form-control sectionFile__input' type='text' id='inputNoteBook' placeholder='New notebook' onKeyDown={ this.handleKeyPress } onChange={ this.handleChange } />
           <button className='sectionFile__button--margin' href='#' id='addNoteBook' onClick={ this.addNoteBook }>
             <img className='sectionFile__image' src={ `${preload}add.svg` } title='Add' />
           </button>

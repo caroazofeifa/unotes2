@@ -11,8 +11,6 @@ class NotebooksContainer extends React.Component {
   }
   //Set the nameNote to the name received from param
   updateNameNotebook(nameNotebookI) {
-    console.log('UPDATING');
-    console.log(nameNotebookI);
     this.setState({ nameNotebook: nameNotebookI });
   }
   //Calls to AppContainer to add a new notebook

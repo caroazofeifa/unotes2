@@ -29,29 +29,23 @@ exports.createTags = (req, res) => {
   });
 };
 
-exports.update = (req, res) => {
-  console.log('Update tag');
-  const tag = new Tag(req.body);
-  //tag.name=body.name;
-  // console.log(tag);
-  //console.log(req.body);
-  tag.save(err => {
-    if (err) {
-      res.status(404);
-      res.json(err);
-    } else {
-      res.status(201);
-      res.json(tag);
-    }
-  });
-};
-
 exports.deleteTag = (req, res) => {
   console.log('Delete tag')
   //console.log(req);
   Tag.findByIdAndRemove(req.params.id, (err, data) => {
     if (!err) {
       res.status(204).json({});
+    } else {
+      res.status(500).json({});
+    }
+  });
+};
+
+exports.updateTag = (req, res) => {
+  console.log(req.body);
+  Tag.findByIdAndUpdate(req.params.id, req.body, (err, data) => {
+    if (!err) {
+      res.status(201).json({});
     } else {
       res.status(500).json({});
     }
