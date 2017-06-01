@@ -13,12 +13,14 @@ const NotebookLi = React.createClass({
   },
   handleKeyPress(e) {
     if (e.key === 'Enter') {
-      console.log(' modificar nota');
+      //console.log(' modificar nota');
       this.props.updateNotebook(this.props.show._id);
     }
   },
-  updateNotebook (event) {
-    this.props.updateNotebook(this.props.show._id);
+  openEditorNotes (event) {
+    //console.log('open')
+    //this.props.showFromNotebook();
+    //this.props.updateIdNotebook(this.props.show._id);
   },
   render() {
     const { nameNotebook } = this.props.stateNotebook;
@@ -31,7 +33,7 @@ const NotebookLi = React.createClass({
               <input className='sectionFile__input--list' value={ name } id='inputName' type='text' placeholder='Name' onKeyDown={ this.handleKeyPress } onChange={ this.handleChange } />
             </div>
             <div className='col-md-5 col--widthD'>
-              {/*<button className='sectionFile__button' href='#' onClick={ this.updateNotebook } >
+              {/*<button className='sectionFile__button' href='#' onClick={ this.openEditorNotes } >
                 <img className='sectionFile__image' src={ `${preload}file.svg` } title='New note' />
               </button>*/}
               <button className='sectionFile__button' href='#' onClick={ this.deleteNotebook }>
