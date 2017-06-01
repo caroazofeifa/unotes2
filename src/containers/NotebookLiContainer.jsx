@@ -32,6 +32,8 @@ class NotebooksContainer extends React.Component {
         deleteNotebook={ this.props.deleteNotebook }
         updateNameNotebookLi={ this.updateNameNotebookLi.bind(this) }
         updateNotebook={ this.props.updateNotebook }
+        updateIdNotebook={ this.props.updateIdNotebook }
+        showFromNotebook={ this.props.showFromNotebook }
       />
     );
   }

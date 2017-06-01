@@ -29,7 +29,7 @@ class AppContainer extends React.Component {
       //information of the consulted note
       title: '',
       description: '',
-      idNotebook: -1,
+      idNotebook: 0,
       idNote: -1,
       idTags:[],
       //Data
@@ -49,6 +49,10 @@ class AppContainer extends React.Component {
     this.getAllNotebooks();
     //Get tags with axios from json server
     this.getAllTags();
+  }
+  //Sets the idNote to the value sended by parameter
+  updateIdNotebook(idNotebookI) {
+    this.setState({ idNotebook: idNotebookI });
   }
   //Sets true/salse variables to show Modal editor of notes
   showEditorNotes() {
@@ -74,6 +78,10 @@ class AppContainer extends React.Component {
     } else {
       this.setState({ showTag: true });
     }
+  }
+  showFromNotebook() {
+    this.setState({ showNotebook: false });
+    this.setState({ showEditor: true });
   }
   //Sets vars in the STATE from selected note
   //Shows Modal editor of notes
@@ -166,26 +174,30 @@ class AppContainer extends React.Component {
   }
   //ADD NOTEBOOK
   addNotebook(nameNotebookI) {
-    const newNotebook = { 'name': nameNotebookI };
-    axios
-      .post(serverNotebooks, newNotebook)
-      .then(function (response) {
-        this.getAllNotebooks()
-      }.bind(this));
+    if(nameNotebookI!=''){
+      const newNotebook = { 'name': nameNotebookI };
+      axios
+        .post(serverNotebooks, newNotebook)
+        .then(function (response) {
+          this.getAllNotebooks()
+        }.bind(this));
+    }
   }
   //UPDATE NOTEBOOK
   updateNotebook(idNotebook, nameNotebook ) {
-    const updateNotebook = { 'id': idNotebook, 'name': nameNotebook };
-    console.log(updateNotebook);
-    axios
-      .put(serverNotebooks+'/'+idNotebook, updateNotebook)
-      .then(function (response) {
-        this.getAllNotebooks()
-      }.bind(this));
+    if(nameNotebookI!=''){
+      const updateNotebook = { 'id': idNotebook, 'name': nameNotebook };
+      //console.log(updateNotebook);
+      axios
+        .put(serverNotebooks+'/'+idNotebook, updateNotebook)
+        .then(function (response) {
+          this.getAllNotebooks()
+        }.bind(this));
+    }
   }
 //DELETE NOTEBOOK
   deleteNotebook(notebookId) {
-    console.log(notebookId);
+    //console.log(notebookId);
     const deleteNotebook = { 'id': notebookId };
     axios
       .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
@@ -195,12 +207,14 @@ class AppContainer extends React.Component {
   }
   //ADD TAG
   addTag(nameTagI,colorTagI) {
-    const newTag = { 'name': nameTagI, 'color':colorTagI };
-    axios
-      .post(serverTags, newTag)
-      .then(function (response) {
-        this.getAllTags(); 
-      }.bind(this));
+    if(nameTagI!=0) {
+      const newTag = { 'name': nameTagI, 'color':colorTagI };
+      axios
+        .post(serverTags, newTag)
+        .then(function (response) {
+          this.getAllTags(); 
+        }.bind(this));
+    }
   }
   //DELETE NOTE
   deleteNote(noteId) {
@@ -224,12 +238,14 @@ class AppContainer extends React.Component {
   }
   //UPDATE TAGS
   updateTag(idTags, nameTag) {
-    const updateTag = { 'id': idTags, 'name': nameTag };
-    axios
-      .put(serverTags+'/'+idTags, updateTag)
-      .then(function (response) {
-        this.getAllTags()
-      }.bind(this));
+    if(nameTag!=''){
+      const updateTag = { 'id': idTags, 'name': nameTag };
+      axios
+        .put(serverTags+'/'+idTags, updateTag)
+        .then(function (response) {
+          this.getAllTags()
+        }.bind(this));
+    }
   }
   //DELETE TAG
   deleteTag(tagId) {
@@ -246,28 +262,32 @@ class AppContainer extends React.Component {
   }
   //UPDATE NOTEBOOK
   updateNotebook(idNotebook, nameNotebook ) {
-    const updateNotebook = { 'id': idNotebook, 'name': nameNotebook };
-    axios
-      .put(serverNotebooks+'/'+idNotebook, updateNotebook)
-      .then(function (response) {
-        this.getAllNotebooks()
-      }.bind(this));
+    if(nameNotebook!=''){
+      const updateNotebook = { 'id': idNotebook, 'name': nameNotebook };
+      axios
+        .put(serverNotebooks+'/'+idNotebook, updateNotebook)
+        .then(function (response) {
+          this.getAllNotebooks()
+        }.bind(this));
+    }
   }
   render() {
-    if (this.state.showEditor) {
-      this.state.editorNotes = 'notesModal--show';
-    } else {
-      this.state.editorNotes = 'notesModal';
-    }
     if (this.state.showNotebook) {
       this.state.notebook = 'sectionFile--show';
     } else {
       this.state.notebook = 'sectionFile';
+      //console.log('not show notebook');
     }
     if (this.state.showTag) {
       this.state.tag = 'tagFile--show';
     } else {
       this.state.tag = 'tagFile';
+    }
+    if (this.state.showEditor) {
+      this.state.editorNotes = 'notesModal--show';
+      //console.log('show editor');
+    } else {
+      this.state.editorNotes = 'notesModal';
     }
     return (
       <div>
@@ -300,6 +320,8 @@ class AppContainer extends React.Component {
               addNotebook={ this.addNotebook.bind(this) }
               deleteNotebook={ this.deleteNotebook.bind(this) }
               updateNotebook={ this.updateNotebook.bind(this) }
+              updateIdNotebook={ this.updateIdNotebook.bind(this) }
+              showFromNotebook={ this.showFromNotebook.bind(this) }
             />
           ) : (
             <Redirect to='/' />
