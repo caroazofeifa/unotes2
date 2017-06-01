@@ -67,7 +67,6 @@ class EditorNotesContainer extends React.Component {
       const tag = {'name':nameTag, 'color':color};
       //WAITING ASYNC???
       //const objectTag = this.props.stateApp.allMyTags.find(e => e.name === nameTag);
-      
       createArray.push(tag);
     } else{
       //const idTag = this.getTagIdByName(nameTag);
@@ -75,7 +74,6 @@ class EditorNotesContainer extends React.Component {
       const objectTag = this.props.stateApp.allMyTags.find(e => e.name === nameTag);
       createArray.push(objectTag);
     }
-
     this.setState({arrTagsInNote:createArray});
     //updateIds
     console.log(this.state.arrTagsInNote);

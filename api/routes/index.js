@@ -11,14 +11,13 @@ router.post('/notes',notesController.createNotes);
 router.post('/notebooks',notebooksController.createNotebooks);
 router.post('/tags',tagsController.createTags);
 
-//router.put('/tags', tagsController.updateTag);
-
 router.delete('/notes/:id', notesController.deleteNote);
 router.delete('/notebooks/:id', notebooksController.deleteNotebook);
 router.delete('/tags/:id',tagsController.deleteTag);
 
 router.put('/notes/:id',notesController.updateNote);
 router.put('/notebooks/:id',notebooksController.updateNotebook);
+router.put('/tags/:id', tagsController.updateTag);
 
 router.get('/', (request, response) => {
   //console.log('HIIII');

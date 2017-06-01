@@ -86,7 +86,7 @@ class AppContainer extends React.Component {
     this.setState({ idNotebook: idNotebookI });
     this.setState({ idTags: idTagsI });
     this.state.idTags = idTagsI;
-    //console.log(this.state.idTags);
+    // console.log(this.state.idTags);
     this.setState({ showEditor: true });
     //console.log(this.state);
   }
@@ -140,25 +140,9 @@ class AppContainer extends React.Component {
       }
     }
   }
-  //ADD NOTEBOOK
-  addNotebook(nameNotebookI) {
-    const newNotebook = { 'name': nameNotebookI };
-    axios
-      .post(serverNotebooks, newNotebook)
-      .then(function (response) {
-        this.getAllNotebooks()
-      }.bind(this));
-  }
-  //ADD TAG
-  addTag(nameTagI,colorTagI) {
-    const newTag = { 'name': nameTagI, 'color':colorTagI };
-    // console.log(nameTagI);
-    axios
-      .post(serverTags, newTag)
-      .then(function (response) {
-        this.getAllTags();
-      }.bind(this));
-    
+  //UPDATE NOTE
+  setEditing() {
+    this.state.editing=true;
   }
   //DELETE NOTE
   deleteNote(noteId) {
@@ -170,29 +154,14 @@ class AppContainer extends React.Component {
         //this.deleteFromState(deleteNote);
       }.bind(this));
   }
-  //DELETE NOTEBOOK
-  deleteNotebook(notebookId) {
-    console.log(notebookId);
-    const deleteNotebook = { 'id': notebookId };
+  //ADD NOTEBOOK
+  addNotebook(nameNotebookI) {
+    const newNotebook = { 'name': nameNotebookI };
     axios
-      .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
+      .post(serverNotebooks, newNotebook)
       .then(function (response) {
         this.getAllNotebooks()
       }.bind(this));
-  }
-  //DELETE TAG
-  deleteTag(tagId) {
-    console.log(tagId);
-    const deleteTag = { 'id': tagId };
-    axios
-      .delete(serverTags+'/'+tagId, deleteTag)
-      .then(function (response) {
-        this.getAllTags()
-      }.bind(this));
-  } 
-  //UPDATE NOTE
-  setEditing() {
-    this.state.editing=true;
   }
   //UPDATE NOTEBOOK
   updateNotebook(idNotebook, nameNotebook ) {
@@ -204,7 +173,47 @@ class AppContainer extends React.Component {
         this.getAllNotebooks()
       }.bind(this));
   }
+//DELETE NOTEBOOK
+  deleteNotebook(notebookId) {
+    console.log(notebookId);
+    const deleteNotebook = { 'id': notebookId };
+    axios
+      .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
+      .then(function (response) {
+        this.getAllNotebooks()
+      }.bind(this));
+  }
+  //ADD TAG
+  addTag(nameTagI,colorTagI) {
+    const newTag = { 'name': nameTagI, 'color':colorTagI };
+    // console.log(name TagI);
+    axios
+      .post(serverTags, newTag)
+      .then(function (response) {
+        this.getAllTags();
+      }.bind(this));
+    
+  }
   //UPDATE TAGS
+  updateTag(idTags, nameTag) {
+    const updateTag = { 'id': idTags, 'name': nameTag };
+    console.log(updateTag);
+    axios
+      .put(serverTags+'/'+idTags, updateTag)
+      .then(function (response) {
+        this.getAllTags()
+      }.bind(this));
+  }
+  //DELETE TAG
+  deleteTag(tagId) {
+    console.log(tagId);
+    const deleteTag = { 'id': tagId };
+    axios
+      .delete(serverTags+'/'+tagId, deleteTag)
+      .then(function (response) {
+        this.getAllTags()
+      }.bind(this));
+  }
   render() {
     if (this.state.showEditor) {
       this.state.editorNotes = 'notesModal--show';
@@ -221,7 +230,7 @@ class AppContainer extends React.Component {
     } else {
       this.state.tag = 'tagFile';
     }
-    return (      
+    return (
       <div>
         <div className='col-md-1 cols'>
           <NavMenu
@@ -237,6 +246,7 @@ class AppContainer extends React.Component {
                 stateApp={ this.state }
                 addTag={this.addTag.bind(this) }
                 deleteTag={ this.deleteTag.bind(this) }
+                updateTag={ this.updateTag.bind(this) }
               />
             ) : (
               <Redirect to='/' />

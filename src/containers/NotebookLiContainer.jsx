@@ -9,12 +9,12 @@ class NotebooksContainer extends React.Component {
       name: '',
     };
   }
+  //Before component is mounted sets the state from props, used when a note is going to be edited
   componentWillMount() {
     this.setState({ name: this.props.show.name });
   }
   //Set the nameNote to the name received from param
   updateNameNotebookLi(i) {
-    //console.log(i);
     this.setState({ name: i });
     this.props.updateNameNotebook(i);
   }

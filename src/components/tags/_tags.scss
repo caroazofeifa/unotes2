@@ -12,6 +12,7 @@
   -webkit-transition: ease 2s;
   width: 27%;
   z-index: 2;
+  // overflow: auto;
 }
 .tagFile--show{
   background-color:#C9C9C9;
@@ -26,6 +27,7 @@
   -webkit-transition: ease 2s;
   width: 25%;
   z-index: 2;
+  // overflow: auto;
 }
 .tagFile__image{
   height: 4rem;
@@ -51,12 +53,9 @@
 .tagsList--border{
   border-bottom: 1px solid gray;
   border-top: 1px solid gray;
+  overflow-y: auto;
+  max-height: 70vh;
 }
-.tagFile__input{
-  //width: 100%;
-  margin: 1rem 1rem 0 1rem;
-}
-
 .tagFile__list{
   //background-color: #66a5ca;
   border-color: transparent;
@@ -87,6 +86,79 @@
     border-bottom: 3px solid #2b4f63;
     outline: 0 none;
 }
+
+
+//viejo
+.tagFile__input--list{
+  //width: 100%;
+  // margin: 1rem 1rem 0 1rem;
+  border-radius: 0px;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  // border-bottom: 1px solid #2b4f63;
+  display: flex;
+  font-size: 18px;
+  justify-content: flex-start;
+  // margin: 3rem 1rem 3rem 2rem;
+  // outline: none;
+  -webkit-box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+  box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+}
+// .tagFile__input--list:focus{
+//   background: #C9C9C9;
+//   // color: #2b4f63;
+//   // border: 0px;
+//   // border-bottom: 3px solid #2b4f63;
+//   outline: none;
+//   opacity: 0.4;
+//   filter: alpha(opacity=50);
+//   -webkit-box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+//   box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+// }
+// fin css focus viejo
+
+
+
+
+
+// focus nuevo
+.tagFile__input__list{
+  //width: 100%;
+  // margin: 1rem 1rem 0 1rem;
+  border-radius: 0px;
+  background-color: transparent;
+  border: 0;
+  // border-bottom: 1px solid #2b4f63;
+  display: flex;
+  font-size: 18px;
+  justify-content: flex-start;
+  // margin: 3rem 1rem 3rem 2rem;
+  // outline: none;
+  -webkit-box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+  box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+}
+.tagFile__input__list--opacity{
+  // background: #C9C9C9;
+  border-radius: 0px;
+  background-color: red;
+  border: 0;
+  // color: #2b4f63;
+  // border: 0px;
+  // border-bottom: 3px solid #2b4f63;
+  outline: none;
+  opacity: 0.4;
+  filter: alpha(opacity=50);
+  -webkit-box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+  box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
+}
+//fin focus nuevo
+
+
+
+
+
+
 .form-control:focus {
   border-color: #2b4f63;
   box-shadow: none;
