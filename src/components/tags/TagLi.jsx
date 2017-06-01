@@ -34,12 +34,12 @@ const TagLi = React.createClass({
             <div className='col-md-1' >
               <div className={`circle color${color}`}></div>
             </div>
-            <div className='col-md-5 col--width'>
+            <div className='col-md-5 col--widthI'>
               {/*<input className={ styleInputTag } value={ name } id='inputName' type='text' placeholder='Name' onKeyDown={ this.handleKeyPress } onKeyUp={ this.handleKeyUp } onChange={ this.handleChange } />*/}
               <input className='tagFile__input--list' value={ name } id='inputName' type='text' placeholder='Name' onKeyDown={ this.handleKeyPress } onKeyUp={ this.handleKeyUp } onChange={ this.handleChange } />
               {/*<input className='tagFile__input--list' value={name} id='inputName' type='text' placeholder='Name' onKeyDown={this.handleKeyPress} onKeyUp={this.handleKeyUp} onChange={this.handleChange} onFocus={this.onFocus} onBlur={this.onBlur} />*/}
             </div>
-            <div className='col-md-5 col--width'>
+            <div className='col-md-5 col--widthD'>
               <button className='tagFile__button' href='#' onClick={this.deleteTag}>
                 <img className='tagFile__image' src={`${preload}delete.svg`} title='Delete' />
               </button>

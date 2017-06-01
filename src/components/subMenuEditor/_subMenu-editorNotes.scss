@@ -127,9 +127,6 @@
 .tagFile__input--margin{
   width:30%;
 }
-.section--display{
-  justify-content: flex-start;
-}
 .circle--deletable {
   border-radius: 50%;
   height: 1.5rem;
@@ -140,4 +137,8 @@
 .circle--deletable:hover {
   border:4px solid #5b5e56;
 
+}
+.section--displayCircles{
+  justify-content: flex-start;
+  max-width: 550px;
 }

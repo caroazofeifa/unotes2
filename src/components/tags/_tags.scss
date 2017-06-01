@@ -141,7 +141,7 @@
 .tagFile__input__list--opacity{
   // background: #C9C9C9;
   border-radius: 0px;
-  background-color: red;
+  // background-color: red;
   border: 0;
   // color: #2b4f63;
   // border: 0px;
@@ -153,18 +153,15 @@
   box-shadow: 0 0px 0 rgba(0,0,0,0.03) inset;
 }
 //fin focus nuevo
-
-
-
-
-
-
 .form-control:focus {
   border-color: #2b4f63;
   box-shadow: none;
 }
-.col--width{
-  width: 100%;
+.col--widthD {
+   width: 50%;
+}
+.col--widthI {
+  width: 50%;
 }
 @media only screen and (max-width: 350px) {
   .tagFile--show{
@@ -177,8 +174,11 @@
     margin: 0.3rem;
     width: 1.1rem;
   }
-  .col--width{
-    width: 100%;
+  .col--widthD {
+    width: 50%;
+  }
+  .col--widthI {
+    width: 50%;
   }
   h6{
     font-size: 1.2rem;
@@ -195,8 +195,11 @@
     margin: 0.3rem;
     width: 2rem;
   }
-    .col--width{
-    width: 100%;
+  .col--widthD {
+    width: 40%;
+  }
+  .col--widthI {
+    width: 60%;
   }
   h6{
     font-size: 1.2rem;
@@ -213,8 +216,11 @@
     margin: 0.3rem;
     width: 2rem;
   }
-  .col--width{
-    width: 100%;
+  .col--widthD {
+    width: 40%;
+  }
+  .col--widthI {
+    width: 60%;
   }
 }
 @media only screen and (min-width: 790px) and (max-width: 991px) {
@@ -228,16 +234,22 @@
     margin: 0.3rem;
     width: 2rem;
   }
-  .col--width{
-    width: 100%;
+  .col--widthD {
+    width: 25%;
+  }
+  .col--widthI {
+    width: 75%;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1250px) {
   .tagFile--show{
     width: 33%;
    }
-  .col--width{
-    width: 100%;
+  .col--widthD {
+    width: 48%;
+  }
+  .col--widthI {
+    width: 52%;
   }
 }
 .circle {

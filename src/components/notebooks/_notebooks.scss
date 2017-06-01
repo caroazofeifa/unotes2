@@ -117,14 +117,12 @@
   border-color: #2b4f63;
   box-shadow: none;
 }
-  .col--widthD {
-    width: 50%;
-    background-color: red;
-  }
-  .col--widthI {
-    width: 50%;
-    background-color: black;
-  }
+.col--widthD {
+  width: 50%;
+}
+.col--widthI {
+  width: 50%;
+}
 @media only screen and (max-width: 350px) {
   .sectionFile--show{
     left:0;
@@ -138,11 +136,9 @@
   }
   .col--widthD {
     width: 50%;
-    background-color: red;
   }
   .col--widthI {
     width: 50%;
-    background-color: black;
   }
   h6{
     font-size: 1.2rem;
@@ -153,7 +149,6 @@
     left:0;
     top: 11vh;
     width: 100%;
-    background-color: orange
   }
   .sectionFile__image{
     height: 4rem;
@@ -162,11 +157,9 @@
   }
   .col--widthD {
     width: 40%;
-    background-color: yellow;
   }
   .col--widthI {
     width: 60%;
-    background-color: green;
   }
   h6{
     font-size: 1.2rem;
@@ -177,7 +170,6 @@
     top: 14vh;
     width: 65%;
     left: 15%;
-    background-color: rebeccapurple;
    }
   .sectionFile__image{
     height: 4rem;
@@ -186,11 +178,9 @@
   }
   .col--widthD {
     width: 40%;
-    background-color: red;
   }
   .col--widthI {
     width: 60%;
-    background-color: black;
   }
 }
 @media only screen and (min-width: 790px) and (max-width: 992px) {
@@ -198,7 +188,6 @@
     top: 14vh;
     width: 60%;
     left: 15%;
-    background-color: yellow;
    }
   .sectionFile__image{
     height: 4rem;
@@ -207,24 +196,19 @@
   }
   .col--widthD {
     width: 25%;
-    background-color: blue;
   }
   .col--widthI {
     width: 75%;
-    background-color: orange;
   }
 }
 @media only screen and (min-width: 993px) and (max-width: 1250px) {
   .sectionFile--show{
     width: 33%;
-    background-color: red;
    }
   .col--widthD {
     width: 48%;
-    background-color: black;
   }
   .col--widthI {
     width: 52%;
-    background-color: green;
   }
 }

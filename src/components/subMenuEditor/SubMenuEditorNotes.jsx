@@ -58,7 +58,7 @@ const SubMenuEditorNotes = React.createClass({
                   <input id='inputTag' className='navEditor__input' type='text' placeholder='Tag' onKeyDown={ this.handleKeyPress } />
                 </li>
                 <li>
-                  <div className='row section section--display'>
+                  <div className='row section section--displayCircles'>
                     {arrTagsInNote.map((tag) => {
                         if(tag!=undefined) {
                           if(tag._id == undefined){
