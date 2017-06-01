@@ -24,7 +24,7 @@ exports.createTags = (req, res) => {
       res.json(err);
     } else {
       res.status(201);
-      res.json(id);
+      res.json(tag);
     }
   });
 };

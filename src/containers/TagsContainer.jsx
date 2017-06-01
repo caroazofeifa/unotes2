@@ -29,7 +29,7 @@ class TagsContainer extends React.Component {
   }
   updateTag(id) {
     this.props.updateTag(id, this.state.nameTag);
-    // this.props.updateTag(color, this.state.color);
+    //this.props.updateTag(color, this.state.color);
   }
   render() {
     return (

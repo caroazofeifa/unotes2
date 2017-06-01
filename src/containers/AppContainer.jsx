@@ -98,8 +98,8 @@ class AppContainer extends React.Component {
   cleanEditorNotes() {
     this.setState({ title: '' });
     this.setState({ description: '' });
-    this.setState({ idNote: '' });
-    this.setState({ idNotebook: '' });
+    this.setState({ idNote: -1 });
+    this.setState({ idNotebook: 0 });
     this.setState({ idTags: [] });
     this.state.idTags = [];
     this.setState({ showEditor: false });
@@ -132,7 +132,8 @@ class AppContainer extends React.Component {
   //ADD /UPDATE NOTE
   addNote(titleI, descriptionI, idNotebookI,idTagsI) {
     //if the note doesnt have a title and a notebook selected
-    if (titleI =='' || idNotebookI ==0) {
+    const oldNote = { '_id': this.state.idNote, 'title': this.state.title, 'description': this.state.description, 'idNotebook': this.state.idNotebook, 'idTags':this.state.idTags };
+    if (titleI =='' || idNotebookI == 0 ) {
       window.alert('Make sure you selected the notbook and the title for your note! ');
     } else {
       //UPDATE NOTE
@@ -142,6 +143,12 @@ class AppContainer extends React.Component {
           .put(serverNotes+'/'+this.state.idNote, updateNote)
           .then(function (response) {
             this.getAllNotes();
+            //this.setState({allMyNotes: this.state.allMyNotes.concat(response.data)})
+            // console.log(oldNote);
+            // console.log(updateNote);
+            // console.log(this.state.allMyNotes);
+            // const index= this.state.allMyNotes.indexOf(oldNote);
+            // this.setState({allMyNotes: this.state.allMyNotes.splice(oldNote,updateNote)})
             this.getAllTags();
           }.bind(this));
         this.state.editing=false;
@@ -152,6 +159,8 @@ class AppContainer extends React.Component {
           .post(serverNotes, newNote)
           .then(function (response) {
             this.getAllNotes();
+            console.log(response.data);
+            this.setState({allMyNotes: this.state.allMyNotes.concat(response.data)})
             this.getAllTags();
           }.bind(this));
       }
@@ -162,16 +171,6 @@ class AppContainer extends React.Component {
   setEditing() {
     this.state.editing=true;
   }
-  //DELETE NOTE
-  deleteNote(noteId) {
-    const deleteNote = { 'id': noteId };
-    axios
-      .delete(serverNotes+'/'+noteId, deleteNote)
-      .then(function (response) {
-        this.getAllNotes();
-        //this.deleteFromState(deleteNote);
-      }.bind(this));
-  }
   //ADD NOTEBOOK
   addNotebook(nameNotebookI) {
     if(nameNotebookI!=''){
@@ -179,7 +178,8 @@ class AppContainer extends React.Component {
       axios
         .post(serverNotebooks, newNotebook)
         .then(function (response) {
-          this.getAllNotebooks()
+          this.setState({allMyNotebooks: this.state.allMyNotebooks.concat(response.data)})
+          //this.getAllNotebooks()
         }.bind(this));
     }
   }
@@ -202,7 +202,9 @@ class AppContainer extends React.Component {
     axios
       .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
       .then(function (response) {
-        this.getAllNotebooks()
+        const notebooks= this.state.allMyNotebooks.filter(item => item._id != notebookId)
+        this.setState({allMyNotebooks: notebooks});
+        //this.getAllNotebooks()
       }.bind(this));
   }
   //ADD TAG
@@ -212,7 +214,8 @@ class AppContainer extends React.Component {
       axios
         .post(serverTags, newTag)
         .then(function (response) {
-          this.getAllTags(); 
+          this.setState({allMyTags: this.state.allMyTags.concat(response.data)})
+          //this.getAllTags(); 
         }.bind(this));
     }
   }
@@ -222,8 +225,9 @@ class AppContainer extends React.Component {
     axios
       .delete(serverNotes+'/'+noteId, deleteNote)
       .then(function (response) {
-        this.getAllNotes();
-        //this.deleteFromState(deleteNote);
+        //this.getAllNotes();
+        const notes= this.state.allMyNotes.filter(item => item._id != noteId)
+        this.setState({allMyNotes: notes});
       }.bind(this));
     this.setState({ showEditor: false });
   }
@@ -253,7 +257,9 @@ class AppContainer extends React.Component {
     axios
       .delete(serverTags+'/'+tagId, deleteTag)
       .then(function (response) {
-        this.getAllTags()
+        //this.getAllTags()
+        const tags= this.state.allMyTags.filter(item => item._id != tagId)
+        this.setState({allMyTags: tags});
       }.bind(this));
   } 
   //UPDATE NOTE

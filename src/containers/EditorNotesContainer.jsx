@@ -51,15 +51,41 @@ class EditorNotesContainer extends React.Component {
     this.props.addNote(this.state.titleNote, this.state.descriptionNote, this.state.idNotebookNote,this.state.idTagsNote);
   }
   //Gets the objects to show (of the actual note) tags from the array of tags 
+  //TO DO REFACTOR METHOD 
   fillTagsToshow() {
     //console.log(this.props.stateApp.idTags);
-    let array = [];
-    this.props.stateApp.idTags.map((element) => {
-      const objectTag = this.props.stateApp.allMyTags.find(e => e._id === element);
-      array.push(objectTag) ;
-    });
-    this.state.arrTagsInNote=array;
-    this.setState({ arrTagsInNote: array });
+    //console.log(`ID TAGS IN NOTE: ${this.state.idTagsNote}`);
+    //console.log(`ALL MY TAGS (PROP): ${this.props.stateApp.allMyTags}`);
+    //console.log(`ARR TAGS IN NOTE: ${this.state.arrTagsInNote}`);
+    if(this.state.idTagsNote !=[]) {
+      //console.log('mistate');
+      let array = [];
+      this.state.idTagsNote.map((element) => {
+        if(this.state.arrTagsInNote != ''){
+          //console.log('estoy en undefined de arrtagsinnote')
+          const objectTag = this.state.arrTagsInNote.find(e => e._id == element);
+          //console.log(objectTag);
+          array.push(objectTag) ;
+        }
+        else {
+          //console.log('NO estoy en undefined de arrtagsinnote')
+          const objectTag = this.props.stateApp.allMyTags.find(e => e._id == element);
+          //console.log(objectTag);
+          array.push(objectTag) ;
+      }
+      });
+      this.state.arrTagsInNote=array;
+      this.setState({ arrTagsInNote: array });
+    } else {
+      //console.log('stateapp');
+      let array = [];
+      this.props.stateApp.idTags.map((element) => {
+        const objectTag = this.props.stateApp.allMyTags.find(e => e._id === element);
+        array.push(objectTag) ;
+      });
+      this.state.arrTagsInNote=array;
+      this.setState({ arrTagsInNote: array });
+    }
   }
   //If the tag is new (first saves the tag in the db) or is already in the db, it saves the id ot he tag 
   //in the idTags ot the actual note, and when save or update is called the idtags can be send
@@ -72,7 +98,7 @@ class EditorNotesContainer extends React.Component {
       Promise.all([
         axios.post('http://localhost:3000/api/tags', newTag)      
       ]).then((values) => {
-        idTagCreated=values[0].data;
+        idTagCreated=values[0].data._id;
         const objC = {'name':nameTag,'color':color,'_id':idTagCreated}
         createArray.push(objC);
         //console.log(createArray);
