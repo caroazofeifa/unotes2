@@ -2,10 +2,8 @@ import React from 'react';
 import './_nav-menu.scss';
 
 const reactRouter = require('react-router-dom');
-// const Route = reactRouter.Route;
-// const Switch = reactRouter.Switch;
+
 const Link = reactRouter.Link;
-// const About = <h1>hola</h1>;
 const preload = '../src/images/';
 
 const NavMenu = React.createClass({

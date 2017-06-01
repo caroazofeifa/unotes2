@@ -7,19 +7,21 @@ const Link = reactRouter.Link;
 const preload = '../src/images/';
 
 const CardNotes = React.createClass({
-  editNote() {
-    this.props.editNote(this.props.show.title, this.props.show.description, this.props.show._id, this.props.show.idNotebook,this.props.show.idTags);
+  //calls to editNote and sends the iformation of the note
+  //also calls to set the mode editing by default it is adding
+  editNote(event) {
+    this.props.editNote(this.props.show.title, this.props.show.description, this.props.show._id, this.props.show.idNotebook,this.props.show.idTags);    
     this.props.setEditing();
   },
+  //calls to delete note with the id
   deleteNote() {
     this.props.deleteNote( this.props.show._id );
   },
   render() {
     const { title, description } = this.props.show;
-    //console.log(`Llega la nota: ${title} ${description}`);
     return (
       <div className='col-md-3'>
-        <div className='thumbnail'>
+        <div className='thumbnail'>  
           <div className='caption'>
             <h3 className='title--shorter'>{title}</h3>
             <p className='p--shorter'>{description}</p>

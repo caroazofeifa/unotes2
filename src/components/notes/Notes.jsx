@@ -9,25 +9,28 @@ const Notes = React.createClass({
   render() {
     const { indexSelectedNotebook } = this.props.stateNotes;
     const { allMyNotes } = this.props.stateApp;
-    const arr = [];
+    let arr = allMyNotes;
     //Gets the notes that belong to the notebook with de id of indexSelectedNotebook
-    //TO DO: change to filter
     if ( indexSelectedNotebook != 0) {
-      for (i = 0; i < allMyNotes.length; i++) {
-        if (allMyNotes[i].idNotebook === indexSelectedNotebook) {
-          arr.push(allMyNotes[i]);
+      arr = arr.filter(e => {
+        if(e.idNotebook == indexSelectedNotebook){
+          return true;
+        } else{ 
+          return false;
         }
-      }
-    } else {
-      for (i = 0; i < allMyNotes.length; i++) {
-        arr.push(allMyNotes[i]);
-      }
+      });
     }
     return (
       <section className='notes'>
         <div className='row' id='thumbnails'>
           {arr.map((show) => (
-              <CardNotes show={ show } key={ show._id } editNote={ this.props.editNote } deleteNote={ this.props.deleteNote } setEditing={ this.props.setEditing } />
+              <CardNotes
+                show={ show }
+                key={ show._id }
+                editNote={ this.props.editNote }
+                deleteNote={ this.props.deleteNote }
+                setEditing={ this.props.setEditing }
+              />
             ))}
         </div>
       </section>

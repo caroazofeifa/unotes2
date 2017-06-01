@@ -4,20 +4,21 @@ import './_menu-editorNotes.scss';
 const preload = '../src/images/';
 
 const MenuEditorNotes = React.createClass({
+  //gets the event when the title is changed (input)
   handleChange(event) {
     const title = event.currentTarget.value;
-    //console.log(title);
     this.props.updateTitleNote(title);
   },
+  //calls to save the method note
   saveNote() {
     this.props.saveNote();
   },
+  //calls to delete note, sends the id of the note 
   deleteNote() {
     this.props.deleteNote( this.props.infoEditorNote.idNote );
   },
   render() {
     const { titleNote } = this.props.infoEditorNote;
-    //this.props.updateTitleNote(nameNote.value.text);
     return (
         <nav className='section navNote'>
             <ul className='navNote__ul'>

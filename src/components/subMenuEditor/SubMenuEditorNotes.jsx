@@ -6,27 +6,29 @@ const Option = require('../dropDown/Option');
 const preload = '../src/images/';
 
 const SubMenuEditorNotes = React.createClass({
+  //gets the event when the notebook is selected from the dropdown
   handleChange(event) {
     const i = event.currentTarget.selectedIndex;
     const notebookIndex = event.currentTarget[i].value;
-    //console.log(indexDropDown);
-    //console.log('INDEX SELECCIONADO:');
-    //console.log(notebookIndex);
     this.props.updateIdNotebookNote(notebookIndex);
   },
-  handleKeyPress(e) {
-    if (e.key === 'Enter') {
+  //gets the event when enter is pressed (input tag)
+  handleKeyPress(event) {
+    if (event.key === 'Enter') {
       const nameTag = inputTag.value;
       const color='0';
-      console.log(nameTag);      
       this.props.insertTaginArray(nameTag,color);
       inputTag.value='';
     }
   },
+  //calls to delete tag when the circle tag is selected
+  deleteTag(event) {
+    console.log(event.currentTarget.id);
+    this.props.deleteTagFromNote(event.currentTarget.id);
+  },
   render() {
-    const { allMyNotebooks, allMyTags } = this.props.stateApp;
-    const { idNotebook } = this.props.stateApp;
-    const { idNotebookNote, idTagsNote, arrTagsInNote, arrNewTagsInNote } = this.props.infoEditorNote;
+    const { idNotebook, allMyNotebooks, allMyTags } = this.props.stateApp;
+    const { idNotebookNote, idTagsNote, arrTagsInNote } = this.props.infoEditorNote;
     //console.log(idNotebookNote);
     return (
        <nav className='navEditor'>
@@ -59,18 +61,18 @@ const SubMenuEditorNotes = React.createClass({
                   <div className='row section section--display'>
                     {arrTagsInNote.map((tag) => {
                         if(tag!=undefined) {
-                          console.log(tag);
-                          if(tag._id ==undefined){
-                            const objectTag = allMyTags.find(e => e.name === tag.name);
+                          if(tag._id == undefined){
+                            console.log('UNDEFINED HERE!!');
+                            const objectTag = arrTagsInNote.find(e => e.name === tag.name);
                             const nameTag = objectTag.name;
                             return (
                               <div className={`circle circle--margin color${tag.color}` } title={nameTag} ></div> 
                             )
                           } else{
-                          const objectTag = allMyTags.find(e => e._id === tag._id);
+                          const objectTag = arrTagsInNote.find(e => e._id === tag._id);
                           const nameTag = objectTag.name;
                           return (
-                              <div key={tag._id} className={`circle circle--margin color${tag.color}` } title={nameTag} ></div> 
+                              <div key={tag._id} id={tag._id} className={`circle--deletable circle--margin color${tag.color}` } title={nameTag} onClick={ this.deleteTag }></div> 
                           )
                         }
                     }

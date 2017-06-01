@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectID = require('mongodb').ObjectID;
 //const Note = mongoose.model('Note');
 const Note = require('../models/Note');
 
@@ -12,15 +13,25 @@ exports.getNotes = (req, res) => {
 };
 
 exports.createNotes = (req, res) => {
-  console.log('Create note!!');
-  const note = new Note(req.body);
-  note.save(err => {
+  console.log('Create note');
+  const id= new ObjectID();
+  const newNote = new Note({
+    _id: id,
+    title: req.body.title,
+    description:req.body.description,
+    idNotebook:req.body.idNotebook,
+    idTags:req.body.idTags,
+  });
+
+  console.log(newNote);
+  //const note = new Note(req.body);
+  newNote.save(err => {
     if (err) {
       res.status(404);
       res.json(err);
     } else {
       res.status(201);
-      res.json(note);
+      res.json(id);
     }
   });
 };

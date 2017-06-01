@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 const EditorNotes = require('../components/editorNotes/EditorNotes');
 
@@ -6,14 +7,15 @@ class EditorNotesContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      titleNote: '123',
+      //Actual information of the note
+      titleNote: '',
       descriptionNote: '',
-      idNotebookNote: 0,
+      idNotebookNote: -1,
       idNote: -1,
       idTagsNote:[],
-      //
+      //Object tags of the actual note
       arrTagsInNote:[],
-      arrNewTagsInNote:[],
+      
     };
   }
   //Before component is mounted sets the state from props, used when a note is going to be edited
@@ -22,7 +24,7 @@ class EditorNotesContainer extends React.Component {
     this.setState({ descriptionNote: this.props.stateApp.description });
     this.setState({ idNotebookNote: this.props.stateApp.idNotebook });
     this.setState({ idNote: this.props.stateApp.idNote });
-    this.state.idTagsNote=this.props.stateApp.idNote;
+    this.state.idTagsNote=this.props.stateApp.idTags;
     this.setState({ idTagsNote: this.props.stateApp.idTags });
     this.fillTagsToshow();
     //console.log(this.props.stateApp.idNotebooks);
@@ -39,6 +41,7 @@ class EditorNotesContainer extends React.Component {
   updateDescriptionNote(descriptionNoteI) {
     this.setState({ descriptionNote: descriptionNoteI });
   }
+  //Updates the id tags of the note
   updateIdTagsNote(idTagsNoteI) {
     this.setState({ idTagsNote: idTagsNoteI });
   }
@@ -47,43 +50,63 @@ class EditorNotesContainer extends React.Component {
     //console.log(this.state.idTagsNote);
     this.props.addNote(this.state.titleNote, this.state.descriptionNote, this.state.idNotebookNote,this.state.idTagsNote);
   }
+  //Gets the objects to show (of the actual note) tags from the array of tags 
   fillTagsToshow() {
-    let array =[];
-    //this.state.arrTagsInNote.map((element) => { arrayIds.push(element._id)});
     //console.log(this.props.stateApp.idTags);
-    console.log('pa ensenar');
+    let array = [];
     this.props.stateApp.idTags.map((element) => {
       const objectTag = this.props.stateApp.allMyTags.find(e => e._id === element);
-      //console.log(objectTag);
       array.push(objectTag) ;
     });
-    this.state.arrTagsInNote = array;
+    this.state.arrTagsInNote=array;
+    this.setState({ arrTagsInNote: array });
   }
+  //If the tag is new (first saves the tag in the db) or is already in the db, it saves the id ot he tag 
+  //in the idTags ot the actual note, and when save or update is called the idtags can be send
+  //TO DO REFACTOR METHOD 
   insertTaginArray(nameTag, color) {
     let createArray=this.state.arrTagsInNote;
+    let idTagCreated=-1;
     if(!this.tagAlreadyExists(nameTag)) {
-      this.createTag(nameTag,color);
-      //WE NEED THE ID OF THE TAG.
-      const tag = {'name':nameTag, 'color':color};
-      //WAITING ASYNC???
-      //const objectTag = this.props.stateApp.allMyTags.find(e => e.name === nameTag);
-      
-      createArray.push(tag);
-    } else{
-      //const idTag = this.getTagIdByName(nameTag);
-      //console.log(idTag);
-      const objectTag = this.props.stateApp.allMyTags.find(e => e.name === nameTag);
+      const newTag = { 'name': nameTag, 'color':color };
+      Promise.all([
+        axios.post('http://localhost:3000/api/tags', newTag)      
+      ]).then((values) => {
+        idTagCreated=values[0].data;
+        const objC = {'name':nameTag,'color':color,'_id':idTagCreated}
+        createArray.push(objC);
+        //console.log(createArray);
+        this.setState({ arrTagsInNote: createArray });
+        //updateIds
+        let arrayIds=[];
+        createArray.map((element) => { 
+          if(element!=undefined){
+            //console.log(element._id);
+            arrayIds.push(element._id)
+          }
+        });
+        //ids
+        this.updateIdTagsNote(arrayIds);
+      });
+    } else {
+      const objectTag = this.props.stateApp.allMyTags.find(e => e.name === nameTag); 
+      //console.log(objectTag);
       createArray.push(objectTag);
     }
-
+    //console.log(createArray);
     this.setState({arrTagsInNote:createArray});
     //updateIds
-    console.log(this.state.arrTagsInNote);
     let arrayIds=[];
-    this.state.arrTagsInNote.map((element) => { arrayIds.push(element._id)});
+    createArray.map((element) => { 
+      if(element!=undefined){
+        //console.log(element._id);
+        arrayIds.push(element._id)
+      }
+    });
     //ids
     this.updateIdTagsNote(arrayIds);
   }
+  //Gets the id of the tag by the name of the tag
   getTagIdByName(nameTag) {
     let idTag =-1;
     const objectTag = this.props.stateApp.allMyTags.find(e => e.name === nameTag);
@@ -92,6 +115,7 @@ class EditorNotesContainer extends React.Component {
     }
     return idTag;
   }
+  //Checks if the tag already exists
   tagAlreadyExists(nameTag) {
     const objectTag = this.props.stateApp.allMyTags.find(e => e.name === nameTag);
     if(objectTag!=undefined){
@@ -100,8 +124,14 @@ class EditorNotesContainer extends React.Component {
       return false;
     }
   }
-  createTag(nameTag,color) {
-    this.props.addTag(nameTag,color);
+  //Delete the tag from the idTags of the actual note
+  deleteTagFromNote(idTag) {
+    let array = this.state.idTagsNote;
+    const index = array.findIndex(a => a==idTag);
+    array.splice(index,1);
+    this.state.idTagsNote=array;
+    this.setState({ idTagsNote: array });
+    this.fillTagsToshow();
   }
   render() {
     return (
@@ -115,6 +145,7 @@ class EditorNotesContainer extends React.Component {
         insertTaginArray= {this.insertTaginArray.bind(this) }
         addNote={ this.props.addNote }
         deleteNote={ this.props.deleteNote }
+        deleteTagFromNote={ this.deleteTagFromNote.bind(this) }
       />
     );
   }

@@ -3,20 +3,17 @@ import axios from 'axios';
 import { Route } from 'react-router-dom';
 import { Redirect } from 'react-router';
 
-const queryString = require('query-string');
 const NotesContainer = require('./NotesContainer');
 const NotebooksContainer = require('./NotebooksContainer');
 const EditorNotesContainer = require('./EditorNotesContainer');
 const TagsContainer = require('./TagsContainer');
 
 const NavMenu = require('../components/navMenu/NavMenu');
-const Tags = require('../components/tags/Tags');
 
 const serverNotes = 'http://localhost:3000/api/notes';
 const serverNotebooks = 'http://localhost:3000/api/notebooks';
 const serverTags = 'http://localhost:3000/api/tags';
 
-let stateEditorNotes = '';
 
 class AppContainer extends React.Component {
   constructor(props) {
@@ -41,7 +38,7 @@ class AppContainer extends React.Component {
       allMyTags: [],
       //Edit
       editing:false,
-    };
+      };
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
   //This method is only executed once during the component’s life.
@@ -56,7 +53,8 @@ class AppContainer extends React.Component {
   //Sets true/salse variables to show Modal editor of notes
   showEditorNotes() {
     if (this.state.showEditor) {
-      this.setState({ showEditor: false });
+      //this.setState({ showEditor: false });
+      this.cleanEditorNotes();
     } else {
       this.setState({ showEditor: true });
     }
@@ -86,10 +84,19 @@ class AppContainer extends React.Component {
     this.setState({ idNotebook: idNotebookI });
     this.setState({ idTags: idTagsI });
     this.state.idTags = idTagsI;
-    //console.log(this.state.idTags);
     this.setState({ showEditor: true });
-    //console.log(this.state);
   }
+  //Cleans the inputs in the modal of editor notes
+  cleanEditorNotes() {
+    this.setState({ title: '' });
+    this.setState({ description: '' });
+    this.setState({ idNote: '' });
+    this.setState({ idNotebook: '' });
+    this.setState({ idTags: [] });
+    this.state.idTags = [];
+    this.setState({ showEditor: false });
+  }
+  //Calls to get all the notes from the db
   getAllNotes() {
     axios
       .get(serverNotes)
@@ -97,6 +104,7 @@ class AppContainer extends React.Component {
         this.setState({ allMyNotes: res.data});
       });
   }
+  //Calls to get all the notebooks from the db
   getAllNotebooks() {
     axios
       .get(serverNotebooks)
@@ -104,6 +112,7 @@ class AppContainer extends React.Component {
         this.setState({ allMyNotebooks: res.data });
       });
   }
+  //Calls to get all the tags from the db
   getAllTags() {
     axios
       .get(serverTags)
@@ -113,31 +122,32 @@ class AppContainer extends React.Component {
       });
   }
   //ADD /UPDATE NOTE
-  //addNote(titleI, descriptionI, idNotebookI,arrTags) {
   addNote(titleI, descriptionI, idNotebookI,idTagsI) {
+    //if the note doesnt have a title and a notebook selected
     if (titleI =='' || idNotebookI ==0) {
       window.alert('Make sure you selected the notbook and the title for your note! ');
     } else {
+      //UPDATE NOTE
       if(this.state.editing){
         const updateNote = { '_id': this.state.idNote, 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI, 'idTags':idTagsI };
-        //UPDATE NOTE
         axios
           .put(serverNotes+'/'+this.state.idNote, updateNote)
           .then(function (response) {
-            this.getAllNotes()
+            this.getAllNotes();
+            this.getAllTags();
           }.bind(this));
-          this.showEditorNotes();
-          this.state.editing=false;
-        } else {
-          //ADD NEW NOTE
+        this.state.editing=false;
+      } else {
+     //ADD NEW NOTE
         const newNote = { 'title': titleI, 'description': descriptionI, 'idNotebook': idNotebookI, 'idTags':idTagsI };
         axios
           .post(serverNotes, newNote)
           .then(function (response) {
-            this.getAllNotes()
+            this.getAllNotes();
+            this.getAllTags();
           }.bind(this));
-          this.showEditorNotes();
       }
+      this.cleanEditorNotes();
     }
   }
   //ADD NOTEBOOK
@@ -152,13 +162,11 @@ class AppContainer extends React.Component {
   //ADD TAG
   addTag(nameTagI,colorTagI) {
     const newTag = { 'name': nameTagI, 'color':colorTagI };
-    // console.log(nameTagI);
     axios
       .post(serverTags, newTag)
       .then(function (response) {
-        this.getAllTags();
+        this.getAllTags(); 
       }.bind(this));
-    
   }
   //DELETE NOTE
   deleteNote(noteId) {
@@ -169,10 +177,10 @@ class AppContainer extends React.Component {
         this.getAllNotes();
         //this.deleteFromState(deleteNote);
       }.bind(this));
+    this.setState({ showEditor: false });
   }
   //DELETE NOTEBOOK
   deleteNotebook(notebookId) {
-    console.log(notebookId);
     const deleteNotebook = { 'id': notebookId };
     axios
       .delete(serverNotebooks+'/'+notebookId, deleteNotebook)
@@ -182,7 +190,6 @@ class AppContainer extends React.Component {
   }
   //DELETE TAG
   deleteTag(tagId) {
-    console.log(tagId);
     const deleteTag = { 'id': tagId };
     axios
       .delete(serverTags+'/'+tagId, deleteTag)
@@ -197,7 +204,6 @@ class AppContainer extends React.Component {
   //UPDATE NOTEBOOK
   updateNotebook(idNotebook, nameNotebook ) {
     const updateNotebook = { 'id': idNotebook, 'name': nameNotebook };
-    console.log(updateNotebook);
     axios
       .put(serverNotebooks+'/'+idNotebook, updateNotebook)
       .then(function (response) {
