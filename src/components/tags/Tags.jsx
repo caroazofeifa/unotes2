@@ -5,6 +5,13 @@ const TagsLiContainer = require('../../containers/TagsLiContainer');
 
 const preload = '../src/images/';
 class Tags extends React.Component{
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+    this.addTag = this.addTag.bind(this);
+    this.selectColor = this.selectColor.bind(this);
+    this.handleChangeSearch = this.handleChangeSearch.bind(this);
+  }
   handleChange(event) {
     const name = event.currentTarget.value;
     this.props.updateNameTag(name);

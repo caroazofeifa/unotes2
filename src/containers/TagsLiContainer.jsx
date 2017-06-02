@@ -12,6 +12,10 @@ class TagsContainer extends React.Component {
       editingTag: false,
       styleInputTag: 'tagFile__input__list',
     };
+    this.updateNameTagLi=this.updateNameTagLi;
+    this.addTagContainer=this.addTagContainer;
+    this.showOpacityInput=this.showOpacityInput;
+    this.hideOpacityInput=this.hideOpacityInput;
   }
   //Before component is mounted sets the state from props, used when a note is going to be edited
   componentWillMount() {

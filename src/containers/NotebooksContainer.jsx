@@ -9,6 +9,10 @@ class NotebooksContainer extends React.Component {
       nameNotebook: '',
       searchInput:''
     };
+    this.updateNameNotebook=this.updateNameNotebook;
+    this.updateSearchInput=this.updateSearchInput;
+    this.addNotebookContainer=this.addNotebookContainer;
+    this.updateNotebook=this.updateNotebook;
   }
   //Set the nameNote to the name received from param
   updateNameNotebook(nameNotebookI) {

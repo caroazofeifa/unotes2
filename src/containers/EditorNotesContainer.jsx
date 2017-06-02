@@ -15,8 +15,13 @@ class EditorNotesContainer extends React.Component {
       idTagsNote:[],
       //Object tags of the actual note
       arrTagsInNote:[],
-      
     };
+    this.updateTitleNote=this.updateTitleNote;
+    this.updateIdNotebookNote=this.updateIdNotebookNote;
+    this.updateDescriptionNote=this.updateDescriptionNote;
+    this.saveNote=this.saveNote;
+    this.deleteTagFromNote=this.deleteTagFromNote;
+    this.insertTaginArray=this.insertTaginArray;
   }
   //Before component is mounted sets the state from props, used when a note is going to be edited
   componentWillMount() {

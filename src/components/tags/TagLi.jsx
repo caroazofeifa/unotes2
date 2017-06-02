@@ -4,6 +4,13 @@ import './_tags.scss';
 const preload = '../src/images/';
 
 class TagLi extends React.Component{
+  constructor(props) {
+    super(props);
+    this.deleteTag = this.deleteTag.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.updateTag = this.updateTag.bind(this);
+  }
   deleteTag() {
     this.props.deleteTag(this.props.show._id);
   }

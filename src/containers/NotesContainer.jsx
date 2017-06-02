@@ -9,6 +9,7 @@ class NotesContainer extends React.Component {
     this.state = {
       indexSelectedNotebook: 0, 
     };
+    this.changeNotebook=this.changeNotebook;
   }
   //Set the index of the folder/notebook selected in the dropDown
   changeNotebook(notebookI) {

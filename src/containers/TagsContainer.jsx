@@ -11,6 +11,11 @@ class TagsContainer extends React.Component {
       circleSelected:0,
       searchInput:'',
     };
+    this.updateNameTag=this.updateNameTag;
+    this.updateSearchInput=this.updateSearchInput;
+    this.addTagContainer=this.addTagContainer;
+    this.selectColor=this.selectColor;
+    this.updateTag=this.updateTag;
   }
   //Set the name Tag to the name received from param
   updateNameTag(nameTagI) {

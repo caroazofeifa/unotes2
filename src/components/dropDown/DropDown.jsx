@@ -5,7 +5,11 @@ const Option = require('./Option');
 
 const preload = '../src/images/';
 
-class DropDown extends React.Component{
+class DropDown extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
   //Gets the index/value selected from the dropDrown and sends it to the parrent
   handleChange(event) {
     //gets the the selected value from the dropdown

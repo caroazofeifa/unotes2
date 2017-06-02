@@ -39,7 +39,25 @@ class AppContainer extends React.Component {
       //Edit
       editing:false,
     };
-    this.showEditorNotes=this.showEditorNotes.bind(this)
+    this.showEditorNotes=this.showEditorNotes;
+    this.showNotebooks=this.showNotebooks;
+    this.showTags=this.showTags;
+    //TAGS
+    this.addTag=this.addTag;
+    this.deleteTag=this.deleteTag;
+    this.updateTag=this.updateTag;
+    //NOTEBOOKS
+    this.showFromNotebook=this.showFromNotebook;
+    this.addNotebook=this.addNotebook;
+    this.deleteNotebook=this.deleteNotebook;
+    this.updateNotebook=this.updateNotebook;
+    this.updateIdNotebook=this.updateIdNotebook;
+    //NOTE EDITOR
+    this.addNote=this.addNote;
+    this.deleteNote=this.deleteNote;
+    this.setEditing=this.setEditing;
+    //NOTES
+    this.editNote=this.editNote;
   }
   //will be executed when the component “mounts” (is added to the DOM) for the first time.
   //This method is only executed once during the component’s life.

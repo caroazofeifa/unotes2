@@ -9,7 +9,9 @@ const preload = '../src/images/';
 class NavMenu extends React.Component{
   constructor(props) {
     super(props);
-    this.showNotes=this.showNotes.bind(this)
+    this.showNotes=this.showNotes.bind(this);
+    this.showNotebooks=this.showNotebooks.bind(this);
+    this.showTags=this.showTags.bind(this);
   }
   //Calls to show the modal editor of notes
   showNotes() {

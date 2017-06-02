@@ -7,6 +7,11 @@ const Link = reactRouter.Link;
 const preload = '../src/images/';
 
 class CardNotes extends React.Component{
+  constructor(props) {
+    super(props);
+    this.editNote = this.editNote.bind(this);
+    this.deleteNote = this.deleteNote.bind(this);
+  }
   //calls to editNote and sends the iformation of the note
   //also calls to set the mode editing by default it is adding
   editNote(event) {

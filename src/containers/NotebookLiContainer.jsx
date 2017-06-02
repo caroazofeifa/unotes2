@@ -8,6 +8,8 @@ class NotebooksContainer extends React.Component {
     this.state = {
       name: '',
     };
+    this.updateNameNotebookLi=this.updateNameNotebookLi;
+    this.addNotebookContainer=this.addNotebookContainer.bind(this);
   }
   //Before component is mounted sets the state from props, used when a note is going to be edited
   componentWillMount() {
