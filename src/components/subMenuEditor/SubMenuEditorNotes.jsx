@@ -10,7 +10,7 @@ class SubMenuEditorNotes extends React.Component {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
-    this.shdeleteTagowTags = this.deleteTag.bind(this);
+    this.deleteTag = this.deleteTag.bind(this);
   }
   //gets the event when the notebook is selected from the dropdown
   handleChange(event) {
